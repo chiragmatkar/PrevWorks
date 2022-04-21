@@ -17,6 +17,8 @@ cd PreWorks/backend/flaskr
 
 pip install -r requirements.txt
 
+cd ..
+
 export FLASK_APP=flaskr
 
 flask run
