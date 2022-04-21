@@ -1,6 +1,6 @@
 # PrevWorks
 
-##Project Setup 
+## Project Local Setup 
 
 First make sure you have python3 installed and give further commands to install the application
 
