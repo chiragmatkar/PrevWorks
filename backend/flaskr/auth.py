@@ -3,7 +3,7 @@ from flask import (
 )
 # from werkzeug.security import check_password_hash, generate_password_hash
 
-from flaskr.db import get_db
+from flaskr.db_connect import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -16,7 +16,7 @@ def register():
         lname = request.form['last_name']
         db = get_db()
         error = None
-        print('register')
+        print('Data:',username)
         if not username:
             error = 'Username is required.'
         elif not password:
@@ -29,6 +29,7 @@ def register():
         if error is None:
             try:
                 mycursor = db.cursor()
+                print('inside')
                 mycursor.execute(
                     "INSERT INTO user (email, fname, lname, password) VALUES (%s, %s, %s, %s)",
                     (username, fname, lname, password),
@@ -48,6 +49,7 @@ def login():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
+        print("Username",username)
         db = get_db()
         error = None
         mycursor = db.cursor()

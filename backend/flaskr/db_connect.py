@@ -6,10 +6,10 @@ def get_db():
     if 'db' not in g:
         mydb = mysql.connector.connect(
             user='root',
-            password='password',
+            password='',
             host='127.0.0.1',
             port=3306,
-            database='sys'
+            database='prevworks'
         )
         g.db = mydb
     return mydb

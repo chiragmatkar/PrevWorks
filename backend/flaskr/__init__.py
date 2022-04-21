@@ -5,7 +5,7 @@ from . import forms
 from . import injuryReports
 import sys
 from . import companies
-from flaskr.db import get_db
+from flaskr.db_connect import get_db
 from datetime import datetime
 from .compensation import calc_total_comp, calc_industry_premium
 import pandas as pd
@@ -124,7 +124,7 @@ def create_app(test_config=True):
     @app.route('/table')
     def table():
         return check_session('user', render_template('table.html'))
-    
+
     #body part routes
     @app.route('/shoulder')
     def shoulder():
@@ -152,7 +152,7 @@ def create_app(test_config=True):
         return check_session('user', render_template('bodyparts/stomach.html'))
     @app.route('/elbow')
     def elbow():
-        return check_session('user', render_template('bodyparts/elbow.html'))    
+        return check_session('user', render_template('bodyparts/elbow.html'))
     @app.route('/arm')
     def arm():
         return check_session('user', render_template('bodyparts/arm.html'))
@@ -243,4 +243,5 @@ def create_app(test_config=True):
     app.register_blueprint(auth.bp)
     app.register_blueprint(forms.bp)
     app.register_blueprint(injuryReports.bp)
+
     return app
