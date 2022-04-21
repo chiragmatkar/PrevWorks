@@ -13,11 +13,9 @@ virtualenv env
 
 source env/bin/activate
 
-cd PreWorks/backend/flaskr
+cd PreWorks/backend
 
-pip install -r requirements.txt
-
-cd ..
+pip install -r flaskr/requirements.txt
 
 export FLASK_APP=flaskr
 
