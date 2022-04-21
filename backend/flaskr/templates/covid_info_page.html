@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>PrevWORKS - Report Injury</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/humanbody.css')}}">
+
+</head>
+<style>
+  *,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+body {
+  font: normal 16px/1.5 "Helvetica Neue", sans-serif;
+  background: #456990;
+  color: #fff;
+}
+
+
+/* .section SECTION
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.section {
+  background: #F45B69;
+  padding: 50px 0;
+}
+
+.section .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section h1 {
+  font-size: 2.5rem;
+}
+
+.section h2 {
+  font-size: 1.3rem;
+}
+
+
+/* TIMELINE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.timeline {
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.timeline ol {
+  font-size: 0;
+  width: 100vw;
+  padding: 250px 0;
+  transition: all 1s;
+}
+
+.timeline ol li {
+  position: relative;
+  display: inline-block;
+  list-style-type: none;
+  width: 160px;
+  height: 3px;
+  background: #fff;
+}
+
+.timeline ol li:last-child {
+  width: 280px;
+}
+
+.timeline ol li:not(:first-child) {
+  margin-left: 14px;
+}
+
+.timeline ol li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 1px);
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #F45B69;
+}
+
+.timeline ol li div {
+  position: absolute;
+  left: calc(100% + 7px);
+  width: 280px;
+  padding: 15px;
+  font-size: 1rem;
+  white-space: normal;
+  color: black;
+  background: white;
+}
+
+.timeline ol li div::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline ol li:nth-child(odd) div {
+  top: -16px;
+  transform: translateY(-100%);
+}
+
+.timeline ol li:nth-child(odd) div::before {
+  top: 100%;
+  border-width: 8px 8px 0 0;
+  border-color: white transparent transparent transparent;
+}
+
+.timeline ol li:nth-child(even) div {
+  top: calc(100% + 16px);
+}
+
+.timeline ol li:nth-child(even) div::before {
+  top: -8px;
+  border-width: 8px 0 0 8px;
+  border-color: transparent transparent transparent white;
+}
+
+.timeline time {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+
+/* TIMELINE ARROWS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.timeline .arrows {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.timeline .arrows .arrow__prev {
+  margin-right: 20px;
+}
+
+.timeline .disabled {
+  opacity: .5;
+}
+
+.timeline .arrows img {
+  width: 45px;
+  height: 45px;
+}
+
+
+/* GENERAL MEDIA QUERIES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (max-width: 599px) {
+  .timeline ol,
+  .timeline ol li {
+    width: auto; 
+  }
+  
+  .timeline ol {
+    padding: 0;
+    transform: none !important;
+  }
+  
+  .timeline ol li {
+    display: block;
+    height: auto;
+    background: transparent;
+  }
+  
+  .timeline ol li:first-child {
+    margin-top: 25px;
+  }
+  
+  .timeline ol li:not(:first-child) {
+    margin-left: auto;
+  }
+  
+  .timeline ol li div {
+    width: 94%;
+    height: auto !important;
+    margin: 0 auto 25px;
+  }
+  
+  .timeline ol li div {
+    position: static;
+  }
+  
+  .timeline ol li:nth-child(odd) div {
+    transform: none;
+  }
+  
+  .timeline ol li:nth-child(odd) div::before,
+  .timeline ol li:nth-child(even) div::before {
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border: none;
+    border-left: 1px solid white;
+    height: 25px;
+  }
+  
+  .timeline ol li:last-child,
+  .timeline ol li:nth-last-child(2) div::before,
+  .timeline ol li:not(:last-child)::after,
+  .timeline .arrows {
+    display: none;
+  }
+}
+</style>
+<script>
+      function notification() {
+          alert("Unfortunately, one of your colleagues has contracted COVID-19 and reported you as someone they have been in contact with recently. But don't panic! If you have not been tested, please do as asap and make sure to quarantine for at least 14 days. More information about quarantine and vaccination info can be found at http://localhost:5000/vaxInfo");
+      }
+</script>
+<body id="page-top">
+    <input type="text" id="flag" style="visibility: hidden" value="1">
+    <div id="wrapper">
+        <nav class="
+          navbar navbar-dark
+          align-items-start
+          sidebar sidebar-dark
+          accordion
+          bg-gradient-primary
+          p-0
+        ">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="
+              navbar-brand
+              d-flex
+              justify-content-center
+              align-items-center
+              sidebar-brand
+              m-0
+            " href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <img class="d-inline float-left" src="{{url_for('static', filename='assets/img/PrevWORKS just logo.png')}}" width="37" />
+                    <div class="sidebar-brand-text mx-3"><span>PrevWorks</span></div>
+                </a>
+                <hr class="sidebar-divider my-0" />
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+              <a class="nav-link" href="companies"
+                ><i class="fas fa-table"></i><span>Companies</span></a
+              >
+              <a class="nav-link active" href="reportInjury"
+                ><i class="fab fa-wpforms"></i><span>Report Injury</span></a
+              >
+              <a class="nav-link" href="assessment"
+                ><i class="fas fa-tachometer-alt"></i
+                ><span>Health Assesment</span></a
+              >
+              <a class="nav-link" href="table"
+                ><i class="fas fa-table"></i><span>Injuries</span></a
+              >
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" data-toggle="dropdown" href="#"
+                >My Company Tools<i class="caret"></i
+              ></a>
+                        <ul class="dropdown-menu" class="nav navbar-nav text-light" id="accordionSidebar">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="analytics.html"><i class="fas fa-tachometer-alt"></i
+                    ><span>Analytics</span></a
+                  >
+                  <a class="nav-link" href="employees"
+                    ><i class="fas fa-table"></i><span>Employees</span></a
+                  >
+                  <a class="nav-link" href="injuries"
+                    ><i class="fab fa-wpforms"></i
+                    ><span>Injury Reports</span></a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="login"
+                ><i class="far fa-user-circle"></i><span>Logout</span></a
+              >
+            </li>
+            <li class="nav-item" role="presentation"></li>
+          </ul>
+          <div class="text-center d-none d-md-inline">
+            <button
+              class="btn rounded-circle border-0"
+              id="sidebarToggle"
+              type="button"
+            ></button>
+          </div>
+        </div>
+      </nav>
+      <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+          <nav
+            class="
+              navbar navbar-light navbar-expand
+              bg-white
+              shadow
+              mb-4
+              topbar
+              static-top
+            "
+          >
+            <div class="container-fluid">
+              <button
+                class="btn btn-link d-md-none rounded-circle mr-3"
+                id="sidebarToggleTop"
+                type="button"
+              >
+                <i class="fas fa-bars"></i>
+              </button>
+              <ul class="nav navbar-nav flex-nowrap ml-auto">
+                <li class="nav-item dropdown d-sm-none no-arrow">
+                  <a
+                    class="dropdown-toggle nav-link"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                    href="#"
+                    ><i class="fas fa-search"></i
+                  ></a>
+                                <div class="
+                      dropdown-menu dropdown-menu-right
+                      p-3
+                      animated--grow-in
+                    " role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group">
+                                            <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..." />
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary py-0" type="button">
+                            <i class="fas fa-search"></i>
+                          </button>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown no-arrow" role="presentation">
+                                    <div class="nav-item dropdown no-arrow">
+                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
+                                            <span id="full-name" class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span>
+                                            <img id="upper-profile-pic" class="border rounded-circle img-profile" src="../static/assets/img/dogs/image2.jpeg" />
+                                        </a>
+                                        <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                            <a class="dropdown-item" role="presentation" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" role="presentation" onclick="notification()">&nbsp;Notifications</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span
+                        id="full-name"
+                        class="d-none d-lg-inline mr-2 text-gray-600 small"
+                        >Valerie Luna</span
+                      ><img
+                        id="upper-profile-pic"
+                        class="border rounded-circle img-profile"
+                        src="{{url_for('static', filename='assets/img/dogs/image2.jpeg')}}"
+                    /></a>
+                                    <div class="
+                        dropdown-menu
+                        shadow
+                        dropdown-menu-right
+                        animated--grow-in
+                      " role="menu">
+                                        <a class="dropdown-item" role="presentation" href="profile"><i
+                          class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"
+                        ></i
+                        >&nbsp;Profile</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" role="presentation" href="#"
+                        ><i
+                          class="
+                            fas
+                            fa-sign-out-alt fa-sm fa-fw
+                            mr-2
+                            text-gray-400
+                          "
+                        ></i
+                        >&nbsp;Logout</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" role="presentation" onclick="notification()">&nbsp;Notifications</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="container-fluid" style="padding: 24px 24px display: flex; justify-content: center; align-content: center;">
+            <section class="section intro">
+            <div class="container">
+              <h1>COVID Progression Back To Work</h1>
+            </div>
+            </section>
+
+            <section class="timeline">
+              <ol>
+                <li>
+                  <div>
+                    <time>Day 1</time> Test positive for COVID. Submitted COVID injury report and rec<br/>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <time>Days 2-9</time> Quarantine and isolate.<br/>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <time>Day 10</time> Take a PCR COVID-19 test.<br/>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <time>Day 11</time> Given a negative test and if there are no symptoms, you are free to end isolation and return to work.<br/>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <time>Days 11-20</time> Those who tested positive and have moderate to mild symptoms can end isolation after 10 days if at least 24 hours have passed without a fever and other symptoms have improved.<br/>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <time>Day 14</time> Those who were exposed to the virus but were never tested and have no symptoms should continue to quarantine for the full 14 days.<br/>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <time>Day 20</time> Those who tested positive and have severe illness may need to continue isolation for a full 20 days.<br/>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  </div>
+                </li>
+                <li></li>
+              </ol>
+              
+              <div class="arrows">
+                <button class="arrow arrow__prev disabled" disabled>
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg" alt="prev timeline arrow">
+                </button>
+                <button class="arrow arrow__next">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg" alt="next timeline arrow">
+                </button>
+              </div>
+            </section>
+            <h3 class="text-dark mb-4">COVID-19 Info on Symptoms, Testing, Vaccines, and Treatments</h3>
+            <div class="card"></div>
+            <div class="card shadow mb-5"></div>
+            <div style="position: relative; max-width: 1200px; height: 600px; margin: 50px"><iframe src="https://api-bridge.azurewebsites.net/conditions/?p=coronavirus-covid-19&aspect=name,overview_short,symptoms_short,symptoms_long,treatments_overview_short,other_treatments_long,self_care_long,prevention_short,causes_short&tab=3&uid=local" title="NHS website - health a-z" style="position: absolute; height: 100%; width: 100%; border: 2px solid #015eb8;"></iframe></div>
+
+            <h3 class="text-dark mb-4">COVID-19 Case Tracker</h3>
+            <div class="card"></div>
+            <div class="card shadow mb-5"></div>
+            <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="45%" height="600px" style="margin-left: 2%; margin-right: 2%"></iframe>
+            <iframe src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA" style="width: 45%; height: 600px; border: 0px none; margin-left: 2%; margin-right: 2%"></iframe>
+            <iframe style="width: 1150px; height: 600px; overflow: hidden;" src="https://www.arcgis.com/apps/opsdashboard/index.html#/409af567637846e3b5d4182fcd779bea" width="100" height="100" scrolling="no">Iframes not supported</iframe>
+            <h3 class="text-dark mb-4">COVID-19 Vaccine Info</h3>
+            <div class="card"></div>
+            <div class="card shadow mb-5"></div>
+            <iframe src="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/vaccine-finder-widget.html" scrolling="no" height="400" frameborder="0" width="280" title="Vaccine Finder Widget" style="overflow: hidden; frameborder="0">
+            </iframe>
+          </div>
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright">
+                            <span>Copyright © Prevworks 2020</span>
+                        </div>
+                    </div>
+                </footer>
+        </form>
+    </div>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/chart.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/bs-init.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{url_for('static', filename='assets/js/humanbody.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/theme.js')}}"></script>
+    <!-- Load Babel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel">
+      (function() {
+
+      // VARIABLES
+      const timeline = document.querySelector(".timeline ol"),
+        elH = document.querySelectorAll(".timeline li > div"),
+        arrows = document.querySelectorAll(".timeline .arrows .arrow"),
+        arrowPrev = document.querySelector(".timeline .arrows .arrow__prev"),
+        arrowNext = document.querySelector(".timeline .arrows .arrow__next"),
+        firstItem = document.querySelector(".timeline li:first-child"),
+        lastItem = document.querySelector(".timeline li:last-child"),
+        xScrolling = 280,
+        disabledClass = "disabled";
+
+      // START
+      window.addEventListener("load", init);
+
+      function init() {
+        setEqualHeights(elH);
+        animateTl(xScrolling, arrows, timeline);
+        setSwipeFn(timeline, arrowPrev, arrowNext);
+        setKeyboardFn(arrowPrev, arrowNext);
+      }
+
+      // SET EQUAL HEIGHTS
+      function setEqualHeights(el) {
+        let counter = 0;
+        for (let i = 0; i < el.length; i++) {
+          const singleHeight = el[i].offsetHeight;
+
+          if (counter < singleHeight) {
+            counter = singleHeight;
+          }
+        }
+
+        for (let i = 0; i < el.length; i++) {
+          el[i].style.height = `${counter}px`;
+        }
+      }
+
+      // CHECK IF AN ELEMENT IS IN VIEWPORT
+      // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+      function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+
+      // SET STATE OF PREV/NEXT ARROWS
+      function setBtnState(el, flag = true) {
+        if (flag) {
+          el.classList.add(disabledClass);
+        } else {
+          if (el.classList.contains(disabledClass)) {
+            el.classList.remove(disabledClass);
+          }
+          el.disabled = false;
+        }
+      }
+
+      // ANIMATE TIMELINE
+      function animateTl(scrolling, el, tl) {
+        let counter = 0;
+        for (let i = 0; i < el.length; i++) {
+          el[i].addEventListener("click", function() {
+            if (!arrowPrev.disabled) {
+              arrowPrev.disabled = true;
+            }
+            if (!arrowNext.disabled) {
+              arrowNext.disabled = true;
+            }
+            const sign = (this.classList.contains("arrow__prev")) ? "" : "-";
+            if (counter === 0) {
+              tl.style.transform = `translateX(-${scrolling}px)`;
+            } else {
+              const tlStyle = getComputedStyle(tl);
+              // add more browser prefixes if needed here
+              const tlTransform = tlStyle.getPropertyValue("-webkit-transform") || tlStyle.getPropertyValue("transform");
+              const values = parseInt(tlTransform.split(",")[4]) + parseInt(`${sign}${scrolling}`);
+              tl.style.transform = `translateX(${values}px)`;
+            }
+
+            setTimeout(() => {
+              isElementInViewport(firstItem) ? setBtnState(arrowPrev) : setBtnState(arrowPrev, false);
+              isElementInViewport(lastItem) ? setBtnState(arrowNext) : setBtnState(arrowNext, false);
+            }, 1100);
+
+            counter++;
+          });
+        }
+      }
+
+      // ADD SWIPE SUPPORT FOR TOUCH DEVICES
+      function setSwipeFn(tl, prev, next) {
+        const hammer = new Hammer(tl);
+        hammer.on("swipeleft", () => next.click());
+        hammer.on("swiperight", () => prev.click());
+      }
+
+      // ADD BASIC KEYBOARD FUNCTIONALITY
+      function setKeyboardFn(prev, next) {
+        document.addEventListener("keydown", (e) => {
+          if ((e.which === 37) || (e.which === 39)) {
+            const timelineOfTop = timeline.offsetTop;
+            const y = window.pageYOffset;
+            if (timelineOfTop !== y) {
+              window.scrollTo(0, timelineOfTop);
+            }
+            if (e.which === 37) {
+              prev.click();
+            } else if (e.which === 39) {
+              next.click();
+            }
+          }
+        });
+      }
+
+    })();
+    </script>
+    <script type="text/javascript">
+      // Alert shown after submitting injury form.
+      function reportAlert() {
+        // Provide an update on the injury type before submission.
+        document.getElementById("injury-type").value =
+          document.getElementById("data").innerText;
+
+        // Confirmation message.
+        if (
+          confirm(
+            "Are you sure that the information entered is accurate. If so, then click 'OK' to confirm submission. Else select 'Cancel' to review entries and make any revisions."
+          )
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      // Setting all the values.
+      function getCookie(name) {
+        // Split cookie string and get all individual name=value pairs in an array
+        var cookieArr = document.cookie.split(";");
+
+        // Loop through the array elements
+        for (var i = 0; i < cookieArr.length; i++) {
+          var cookiePair = cookieArr[i];
+
+                // Confirmation message.
+                if (confirm("Are you sure that the information entered is accurate. If so, then click 'OK' to confirm submission. Else select 'Cancel' to review entries and make any revisions.")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            // Setting all the values.
+            function getCookie(name) {
+                // Split cookie string and get all individual name=value pairs in an array
+                var cookieArr = document.cookie.split(";");
+
+                // Loop through the array elements
+                for (var i = 0; i < cookieArr.length; i++) {
+                    var cookiePair = cookieArr[i];
+
+                    /* Removing whitespace at the beginning of the cookie name
+                   and compare it with the given string */
+                    if (cookiePair.trim().indexOf(name + "=") == 0) {
+                        // Decode the cookie value and return
+                        var res = cookiePair.replace(name + "=", "");
+                        return res;
+                    }
+                }
+
+                // Return null if not found
+                return null;
+            }
+
+            const userData = JSON.parse(getCookie("userData"));
+            /*
+         // Filling in the Personal Info
+         document.getElementById("first-name").value = userData.data.first_name;
+         document.getElementById("last-name").value = userData.data.last_name;
+         document.getElementById("gender").value = userData.data.gender;
+         document.getElementById("birth-date").value = userData.data.birthday;
+         // Filling in the Employment Info
+         document.getElementById("company-name").value =
+           userData.data.company_name;
+         document.getElementById("employee-id").value = userData.data.employee_id;
+         document.getElementById("occupation").value = userData.data.occupation;
+         //TODO: Get the right employee name, with the employee Ref.
+         document.getElementById("supervisor").value =
+           userData.data.supervisor_name;
+         // Filling in the Contact Info
+         document.getElementById("email").value = userData.data.email;
+         document.getElementById("phone").value = userData.data.phone;
+         document.getElementById("street-address").value = userData.data.address;
+         document.getElementById("city").value =
+           userData.data.city + ", " + userData.data.state;
+         
+         // Filling in values at top of page.
+         document.getElementById("full-name").innerText =
+           userData.data.first_name + " " + userData.data.last_name;
+         
+         // If a profile pic has been previously uploaded by user than include on the page.
+         if (userData.profilePic) {
+           document.getElementById("upper-profile-pic").src = userData.profilePic;
+         }
+         */
+        </script>
+    </body>
+</html>

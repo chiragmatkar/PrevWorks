@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PrevWORKS - Analytics</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/humanbody.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div><img class="d-inline float-left" src="assets/img/PrevWORKS%20just%20logo.png" width="37">
+                    <div class="sidebar-brand-text mx-3"><span>PrevWorks</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="companyProfile.html"><i class="fas fa-user"></i><span>Company Profile</span></a>
+                        <a class="nav-link active" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Analytics</span></a>
+                        <a class="nav-link" href="employees.html"><i class="fas fa-table"></i><span>Employees</span></a>
+                        <a class="nav-link" href="injuries.html"><i class="fab fa-wpforms"></i><span>Injury Reports</span></a>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Logout</span></a></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small" id="full-name">Company Name</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image3.jpeg" id="upper-logo-pic" onerror="setPic('upper-logo-pic')"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="userProfile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
+                                        <a class="dropdown-item" role="presentation" href="index.html"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Analytics</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a></div>
+                <div class="row">
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-primary py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Injuries this month</span></div>
+
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span id="current-month-injuries">14</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-warning py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Total Injuries</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span id="total-injuries-count">100</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-certificate fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-info py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span># of Employees</span></div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span id="employee-total">1,200</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-user fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-danger py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span class="text-danger"># injured Employees</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span id="injured-employees-num">+3</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-chart-line fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7 col-xl-8">
+                        <div class="card shadow mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary font-weight-bold m-0" id="graph-title">Injuries</h6>
+                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                        role="menu">
+                                        <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area"><canvas id="injuryByMonth" data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Injuries&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10&quot;,&quot;20&quot;,&quot;5&quot;,&quot;2&quot;,&quot;10&quot;,&quot;7&quot;,&quot;15&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;},{&quot;label&quot;:&quot;&quot;,&quot;fill&quot;:true,&quot;data&quot;:[]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}]}}}"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-xl-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary font-weight-bold m-0">Employee Risk Distribution</h6>
+                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                        role="menu">
+                                        <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area"><canvas id="employeeRiskDist" data-bs-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Low Risk&quot;,&quot;Medium Risk&quot;,&quot;High Risk&quot;,&quot;Not Available&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#36b9cc&quot;,&quot;#dc8c15&quot;,&quot;#dd331b&quot;,&quot;#696565&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;50&quot;,&quot;30&quot;,&quot;15&quot;,&quot;20&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{}}}"></canvas></div>
+                                <div
+                                    class="text-center small mt-4"><span class="mr-2"><i class="fas fa-circle text-danger" style="color: #dd331b;"></i>&nbsp;High Risk</span><span class="mr-2"><i class="fas fa-circle text-warning"></i>&nbsp;Medium Risk</span></div>
+                            <div class="text-center small mt-4"><span class="mr-2"><i class="fas fa-circle text-info"></i>&nbsp;Low Risk</span><span class="mr-2"><i class="fas fa-circle text-secondary"></i>&nbsp;Not Available</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5" id="riskTable">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header text-danger bg-danger d-flex justify-content-between align-items-center">
+                            <h6 class="text-white font-weight-bold m-0">Risk Table</h6>
+                            <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                    role="menu">
+                                    <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                    <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="employeeRiskTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">ID</th>
+                                            <th>Name (Last, First)</th>
+                                            <th>Risk Level</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+<!--                                    <tbody>-->
+<!--                                        <tr>-->
+<!--                                            <td>fdx-12344</td>-->
+<!--                                            <td>Karachiani, Sina</td>-->
+<!--                                            <td class="text-info">Low Risk</td>-->
+<!--                                            <td><a href="employeeProfile.html"></a><a class="btn btn-outline-link btn-block btn-sm border rounded-0 border-primary" role="button" href="employeeProfile.html">View/Edit</a></td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>fdx-12345</td>-->
+<!--                                            <td>Parekh, Ambrish</td>-->
+<!--                                            <td>Not Available<br></td>-->
+<!--                                            <td><a href="employeeProfile.html"></a><a class="btn btn-outline-link btn-block btn-sm border rounded-0 border-primary" role="button" href="employeeProfile.html">View/Edit</a></td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>fdx-12346</td>-->
+<!--                                            <td>Negron, Xavier</td>-->
+<!--                                            <td class="text-danger">High Risk<br></td>-->
+<!--                                            <td><a href="employeeProfile.html"></a><a class="btn btn-outline-link btn-block btn-sm border rounded-0 border-primary" role="button" href="employeeProfile.html">View/Edit</a></td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>fdx-34567</td>-->
+<!--                                            <td>Rayudu, Harsha</td>-->
+<!--                                            <td class="text-warning">Medium&nbsp;</td>-->
+<!--                                            <td><a href="employeeProfile.html"></a><a class="btn btn-outline-link btn-block btn-sm border rounded-0 border-primary" role="button" href="employeeProfile.html">View/Edit</a></td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>fdx-13456</td>-->
+<!--                                            <td>Smith, John</td>-->
+<!--                                            <td class="text-danger">High Risk<br></td>-->
+<!--                                            <td><a href="employeeProfile.html"></a><a class="btn btn-outline-link btn-block btn-sm border rounded-0 border-primary" role="button" href="employeeProfile.html">View/Edit</a></td>-->
+<!--                                        </tr>-->
+<!--                                    </tbody>-->
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>ID</strong></td>
+                                            <td><strong>Name (Last, First)</strong></td>
+                                            <td><strong>Risk Level</strong></td>
+                                            <td><strong></strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © Prevworks 2020</span></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/humanbody.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script type="text/javascript">
+
+        function getCookie(name) {
+            // Split cookie string and get all individual name=value pairs in an array
+            var cookieArr = document.cookie.split(";");
+            
+            // Loop through the array elements
+            for(var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i];
+                
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+                if(cookiePair.trim().indexOf(name+"=") == 0) {
+                    // Decode the cookie value and return
+                    var res = cookiePair.replace(name+"=", "");
+                    return res;
+                }
+            }
+            
+            // Return null if not found
+            return null;
+        }
+        const userData = JSON.parse(getCookie("userData"));
+        console.log("Cookie passed to the table page:");
+        console.log(userData);
+
+        // Filling in details like company name and profile picture if present:
+        document.getElementById('full-name').innerText = userData.data.company_name;
+        // Checking if the employer cookie has a previous logo picture
+        if(userData.logoPic){
+            document.getElementById('upper-logo-pic').src = userData.logoPic;
+        }
+
+        // Making a GET request for the reports associated with the specific user:
+        const xhttpRep = new XMLHttpRequest();
+        xhttpRep.open("GET", `http://localhost:5000/reports/`, false);
+        xhttpRep.setRequestHeader("Set-Cookie", JSON.stringify(userData));
+        xhttpRep.send();
+        // Handling response from the API for GET reports:
+        const response = JSON.parse(xhttpRep.responseText);
+        // Object that contains all the reports
+        const allReports = response.results;
+
+        console.log("All the user reports for the employees under this employer:");
+        console.log(allReports);
+
+        // Set keeps track of the number of employees injured.
+        let employeeInjured = new Set();
+        // Array keeps track of the number of injuries per month.
+        let injuriesByMonth = new Array(12);
+        // Setting injury count for each month to 0.
+        for(let i = 0; i < injuriesByMonth.length; i++){
+            injuriesByMonth[i] = 0;
+        }
+
+        console.log("Current year");
+        let d = new Date();
+        console.log(d.getFullYear());
+        let currentYear = d.getFullYear().toString();
+        document.getElementById('graph-title').innerText = "Injuries in " + currentYear;
+
+        for(let i = 0; i < allReports.length; i++){
+            // Add employee id to number of employees injured set
+            let employeeID = allReports[i].data.employeeRef._path.segments[1];
+            employeeInjured.add(employeeID);
+
+            let occuredDate = allReports[i].data.occurred_date.split('-');
+
+            // Check if the report injuries are in the current year:
+            if(currentYear === occuredDate[0]){
+                injuriesByMonth[parseInt(occuredDate[1]) - 1] += 1;
+            }
+
+        }
+
+        // Setting total injuries:
+        document.getElementById("total-injuries-count").innerText = allReports.length.toString();
+        // Setting the number of employees injured:
+        document.getElementById("injured-employees-num").innerText = employeeInjured.size.toString();
+        // Setting the current month injuries:
+        document.getElementById('current-month-injuries').innerText = injuriesByMonth[d.getMonth()].toString();
+
+        let canvas = document.getElementById("injuryByMonth").getAttribute("data-bs-chart");
+        // Adding additional months for the canvas:
+        let canvasJSON = JSON.parse(canvas);
+        canvasJSON.data.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+        canvasJSON.data.datasets[0].data = injuriesByMonth;
+        // Adding the data to the injuries by month graph:
+        document.getElementById("injuryByMonth").setAttribute("data-bs-chart", JSON.stringify(canvasJSON));
+
+        //Getting the all the risk info for the employees of current employer.
+        let riskUrl = "http://localhost:5000/analysis/risk/" + userData.id;
+        const riskXhttp = new XMLHttpRequest();
+        riskXhttp.open("GET", riskUrl, false);
+        riskXhttp.send();
+
+        // Getting the response from GET for the user profile.
+        const allRisk = JSON.parse(riskXhttp.responseText);
+        console.log("Here is the risk for employees of current employer:");
+        console.log(allRisk);
+
+        document.getElementById('employee-total').innerText = allRisk.results.length.toString();
+
+        let riskTypes = new Array(4);
+        // Setting count for risk types to 0.
+        for(let i = 0; i < riskTypes.length; i++){
+            riskTypes[i] = 0;
+        }
+
+        // allRisk.results[0].risk = "High Risk";
+        // allRisk.results[1].risk = "Medium Risk";
+        // allRisk.results[2].risk = "Low Risk";
+
+        console.log("Employee Risk");
+        // Getting count of the different risk types:
+        for(let i = 0; i < allRisk.results.length; i++){
+            let employeeRisk = allRisk.results[i].risk;
+            // +1 if the current employee risk is High
+            if(employeeRisk === "Low Risk"){
+                riskTypes[0] += 1;
+            }
+            // +1 if the current employee risk is Medium
+            else if(employeeRisk === "Medium Risk"){
+                riskTypes[1] += 1;
+            }
+            // +1 if the current employee risk is Low
+            else if(employeeRisk === "High Risk"){
+                riskTypes[2] += 1;
+            }
+            // +1 if the current employee risk is Not Available
+            else if(employeeRisk === "Not Available"){
+                riskTypes[3] += 1;
+            }
+        }
+
+        // Setting values for the employee risk distribution graph:
+        let canvasDistJSON = JSON.parse(document.getElementById("employeeRiskDist").getAttribute("data-bs-chart"));
+        canvasDistJSON.data.datasets[0].data = riskTypes;
+        document.getElementById("employeeRiskDist").setAttribute("data-bs-chart", JSON.stringify(canvasDistJSON));
+
+        // Add the current employee to the employer cookie:
+        function setCurrEmployee(num) {
+            let i = parseInt(num);
+            // Update the cookie to include the information of the current employee:
+            const updatedCookie = {
+                id: userData.id,
+                data: userData.data,
+                currEmployee: allRisk.results[i],
+                analytics: true
+            };
+
+            // Checking if the employer cookie has a previous logo picture
+            if(userData.logoPic){
+                updatedCookie.logoPic = userData.logoPic;
+            }
+
+            document.cookie = "userData=" + JSON.stringify(updatedCookie);
+            window.location.href = "employeeProfile.html";
+        }
+
+
+        // Function to generate the risk table for an employer:
+        function generateRiskTable(input_employees) {
+            let table = document.getElementById("employeeRiskTable");
+            let tblBody = document.createElement("tbody");
+            tblBody.setAttribute("id", "employeeRiskTableBody");
+
+            for(let i = 0; i < input_employees.length; i++){
+                let row = document.createElement("tr");
+                // Adding the employee id cell in the table:
+                let id = document.createElement("td");
+                id.innerText = input_employees[i].data.employee_id;
+                row.appendChild(id);
+                // Adding the name cell in the table:
+                let name = document.createElement("td");
+                name.innerText = input_employees[i].data.last_name + ", " + input_employees[i].data.first_name;
+                row.appendChild(name);
+                // Adding the email cell in the table
+                let risk = document.createElement("td");
+                risk.innerText = input_employees[i].risk;
+                if(input_employees[i].risk === "High Risk"){
+                    risk.classList.add("text-danger");
+                }
+                else if(input_employees[i].risk === "Medium Risk"){
+                    risk.classList.add("text-warning");
+                }
+                else if(input_employees[i].risk === "Low Risk"){
+                    risk.classList.add("text-info");
+                }
+                row.appendChild(risk);
+                // Adding the view/edit button
+                let button = document.createElement("td");
+                let view = document.createElement("a");
+                view.setAttribute("onclick", "setCurrEmployee(" + i.toString() + ")");
+                button.appendChild(view);
+                let edit = document.createElement("a");
+                edit.classList.add("btn", "btn-outline-link", "btn-block", "btn-sm", "border", "rounded-0", "border-primary");
+                edit.setAttribute("role", "button");
+                edit.setAttribute("onclick", "setCurrEmployee(" + i.toString() + ")");
+                edit.innerText = "View/Edit";
+                button.appendChild(edit);
+
+                row.appendChild(button);
+                tblBody.appendChild(row);
+            }
+
+            table.appendChild(tblBody);
+        }
+
+        generateRiskTable(allRisk.results);
+
+        // In case of error set picture to default picture of dog
+        function setPic(id) {
+            document.getElementById(id).src = "assets/img/dogs/image2.jpeg";
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PrevWORKS - Medical History</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/humanbody.css')}}">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div><img class="d-inline float-left" src="{{url_for('static', filename='assets/img/PrevWORKS just logo.png')}}" width="37">
+                    <div class="sidebar-brand-text mx-3"><span>PrevWorks</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="profile"><i class="fas fa-user"></i><span>Profile</span></a><a class="nav-link" href="reportInjury"><i class="fab fa-wpforms"></i><span>Report Injury</span></a><a class="nav-link active" href="assessment"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a></li>
+                    <li
+                        class="nav-item" role="presentation"></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="table"><i class="fas fa-table"></i><span>Injuries</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="login"><i class="far fa-user-circle"></i><span>Logout</span></a></li>
+                        <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span id="upper-username" class="d-none d-lg-inline mr-2 text-gray-600 small">Sina Karachiani</span><img class="border rounded-circle img-profile" id="upper-profile-pic" src="{{url_for('static', filename='assets/img/dogs/image2.jpeg')}}"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="profile"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="container-fluid">
+                <div>
+                    <ul class="nav nav-tabs nav-fill">
+                        <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Medical History</a></li>
+                        <li class="nav-item bg-light"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Functional Capacity</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="tab-1">
+                            <form action="/assessment" method="post">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Medical History Assesment</h4>
+                                        <h6 class="text-muted card-subtitle mb-4">Please answer the questions as accurately as possible.</h6>
+                                        <div class="form-row">
+                                            <div class="col px-2 mx-2">
+                                                <h6 class="text-dark font-weight-bold">Medical History</h6>
+                                                <div class="form-group"><label>Have you ever been off work for more than one day due to a job-related illness/injury?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y1" name="Y1" value="t"><label class="custom-control-label" for="Y1">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N1" name="Y1" value="f"><label class="custom-control-label" for="N1">No</label></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col col-5"><label class="col-form-label d-inline">If so, when?</label></div>
+                                                        <div class="col"><input class="form-control d-inline" type="text" id="T1" name="T1"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group"><label>Have you ever been hospitalized?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y2" name="Y2" value="t"><label class="custom-control-label" for="Y2">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N2" name="Y2" value="f"><label class="custom-control-label" for="N2">No</label></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col col-5"><label class="col-form-label d-inline">If so, when?</label></div>
+                                                        <div class="col"><input class="form-control d-inline" type="text" id="T2" name="T2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="card my-2"></div>
+                                                <h6 class="text-dark font-weight-bold mt-2">Personal Habits</h6>
+                                                <div class="form-group"><label>Do you smoke now?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y3" name="Y3" value="t"><label class="custom-control-label" for="Y3">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N3" name="Y3" value="f"><label class="custom-control-label" for="N3">No</label></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col"><label class="d-inline">Packs per day</label><input class="form-control d-inline" type="text" id="T3" name="T3"></div>
+                                                        <div class="col"><label class="d-inline">Years</label><input class="form-control d-inline" type="text" id="T4" name="T4"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group"><label>have you smoked in the past?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y4" name="Y4" value="t"><label class="custom-control-label" for="Y4">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N4" name="Y4" value="f"><label class="custom-control-label" for="N4">No</label></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col"><label class="col-form-label d-inline">When did you quit?</label></div>
+                                                        <div class="col"><input class="form-control d-inline" type="text" id="T5" name="T5"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group"><label>Do you used chewing tobacco or snuff?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y5" name="Y5" value="t"><label class="custom-control-label" for="Y5">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N5" name="Y5" value="f"><label class="custom-control-label" for="N5">No</label></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col"><label class="d-inline">Times per day</label><input class="form-control d-inline" type="text" id="T6" name="T6"></div>
+                                                    <div class="col"><label class="d-inline">Years</label><input class="form-control d-inline" type="text" id="T7" name="T7"></div>
+                                                </div>
+                                                <div class="form-group"><label>Do you drink alcohol?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y6" name="Y6" value="t"><label class="custom-control-label" for="Y6">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N6" name="Y6" value="f"><label class="custom-control-label" for="N6">No</label></div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="col"><label class="col-form-label d-inline">Drinks per week:</label></div>
+                                                        <div class="col"><input class="form-control d-inline" type="text" id="T8" name="T8"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group"><label>Do you use illegal drugs?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y7" name="Y7" value="t"><label class="custom-control-label" for="Y7">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N7" name="Y7" value="f"><label class="custom-control-label" for="N7">No</label></div>
+                                                    </div><label class="d-inline">List:</label><input class="form-control d-inline" type="text" id="T9" name="T9"></div>
+                                                <div class="form-group"><label>Do you exercise for 30min 3 times a week?&nbsp;</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y8" name="Y8" value="t"><label class="custom-control-label" for="Y8">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N8" name="Y8" value="f"><label class="custom-control-label" for="N8">No</label></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col px-2 mx-2">
+                                                <h6 class="text-dark font-weight-bold">Medications</h6>
+                                                <div class="form-group"><label>Are you allergic to any mediation?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y9" name="Y9" value="t"><label class="custom-control-label" for="Y9">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N9" name="Y9" value="f"><label class="custom-control-label" for="N9">No</label></div>
+                                                    </div><label class="d-inline">List:</label><textarea class="form-control" id="T10" name="T10"></textarea></div>
+                                                <div class="form-group"><label>Have you had a tetanus booster in the past 5 years?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y10" name="Y10" value="t"><label class="custom-control-label" for="Y10">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N10" name="Y10" value="f"><label class="custom-control-label" for="N10">No</label></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group"><label>Do you take any medications?</label>
+                                                    <div class="d-block">
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y11" name="Y11" value="t"><label class="custom-control-label" for="Y11">Yes</label></div>
+                                                        <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N11" name="Y11" value="f"><label class="custom-control-label" for="N11">No</label></div>
+                                                    </div><label class="d-inline">List:</label><textarea class="form-control" id="T11" name="T11"></textarea></div>
+                                                <div class="card my-2"></div>
+                                                <h6 class="text-dark font-weight-bold">Have you had exposure to:</h6>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y12" name="Y12" value="t"><label class="custom-control-label" for="Y12">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N12" name="Y12" value="f"><label class="custom-control-label" for="N12">No</label></div><label>Asbestos</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y13" name="Y13" value="t"><label class="custom-control-label" for="Y13">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N13" name="Y13" value="f"><label class="custom-control-label" for="N13">No</label></div><label>Biological</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y14" name="Y14" value="t"><label class="custom-control-label" for="Y14">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N14" name="Y14" value="f"><label class="custom-control-label" for="N14">No</label></div><label>Coal</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y15" name="Y15" value="t"><label class="custom-control-label" for="Y15">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N15" name="Y15" value="f"><label class="custom-control-label" for="N15">No</label></div><label>Cotton Dust</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y16" name="Y16" value="t"><label class="custom-control-label" for="Y16">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N16" name="Y16" value="f"><label class="custom-control-label" for="N16">No</label></div><label>Epoxy Resins</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y17" name="Y17" value="t"><label class="custom-control-label" for="Y17">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N17" name="Y17" value="f"><label class="custom-control-label" for="N17">No</label></div><label>Foundry Work</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y18" name="Y18" value="t"><label class="custom-control-label" for="Y18">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N18" name="Y18" value="f"><label class="custom-control-label" for="N18">No</label></div><label>Fumes/Vapor (gas)</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y19" name="Y19" value="t"><label class="custom-control-label" for="Y19">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N19" name="Y19" value="f"><label class="custom-control-label" for="N19">No</label></div><label>Heavy Metals/Mining</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y20" name="Y20" value="t"><label class="custom-control-label" for="Y20">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N20" name="Y20" value="f"><label class="custom-control-label" for="N20">No</label></div><label>Heavy Dust</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y21" name="Y21" value="t"><label class="custom-control-label" for="Y21">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N21" name="Y21" value="f"><label class="custom-control-label" for="N21">No</label></div><label>Loud Noise</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y22" name="Y22" value="t"><label class="custom-control-label" for="Y22">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N22" name="Y22" value="f"><label class="custom-control-label" for="N22">No</label></div><label>Pesticides</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y23" name="Y23" value="t"><label class="custom-control-label" for="Y23">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N23" name="Y23" value="f"><label class="custom-control-label" for="N23">No</label></div><label>Solvents/Degreasers</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y24" name="Y24" value="t"><label class="custom-control-label" for="Y24">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N24" name="Y24" value="f"><label class="custom-control-label" for="N24">No</label></div><label>Vibration</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y25" name="Y25" value="t"><label class="custom-control-label" for="Y25">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N25" name="Y25" value="f"><label class="custom-control-label" for="N25">No</label></div><label>Welding/Soldering</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y26" name="Y26" value="t"><label class="custom-control-label" for="Y26">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N26" name="Y26" value="f"><label class="custom-control-label" for="N26">No</label></div><label>Other</label></div><textarea class="form-control"></textarea></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card my-4">
+                                    <div class="card-body">
+                                        <div class="form-row my-3">
+                                            <div class="col px-2 mx-2">
+                                                <h6 class="text-dark font-weight-bold">Review of Systems</h6>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y27" name="Y27" value="t"><label class="custom-control-label" for="Y27">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N27" name="Y27" value="f"><label class="custom-control-label" for="N27">No</label></div><label>Asthma</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y28" name="Y28" value="t"><label class="custom-control-label" for="Y28">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N28" name="Y28" value="f"><label class="custom-control-label" for="N28">No</label></div><label>Serious Allergies</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y29" name="Y29" value="t"><label class="custom-control-label" for="Y29">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N29" name="Y29" value="f"><label class="custom-control-label" for="N29">No</label></div><label>Back Pain</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y30" name="Y30" value="t"><label class="custom-control-label" for="Y30">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N30" name="Y30" value="f"><label class="custom-control-label" for="N30">No</label></div><label>Bronchitis</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y31" name="Y31" value="t"><label class="custom-control-label" for="Y31">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N31" name="Y31" value="f"><label class="custom-control-label" for="N31">No</label></div><label>Carpal Tunnel Syndrome</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y32" name="Y32" value="t"><label class="custom-control-label" for="Y32">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N32" name="Y32" value="f"><label class="custom-control-label" for="N32">No</label></div><label>Chest Pain</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y33" name="Y33" value="t"><label class="custom-control-label" for="Y33">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N33" name="Y33" value="f"><label class="custom-control-label" for="N33">No</label></div><label>Diabetes</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y34" name="Y34" value="t"><label class="custom-control-label" for="Y34">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N34" name="Y34" value="f"><label class="custom-control-label" for="N34">No</label></div><label>Emphysema</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y35" name="Y35" value="t"><label class="custom-control-label" for="Y35">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N35" name="Y35" value="f"><label class="custom-control-label" for="N35">No</label></div><label>Epilepsy or seizure</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y36" name="Y36" value="t"><label class="custom-control-label" for="Y36">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N36" name="Y36" value="f"><label class="custom-control-label" for="N36">No</label></div><label>Fainting Spells</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y37" name="Y37" value="t"><label class="custom-control-label" for="Y37">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N37" name="Y37" value="f"><label class="custom-control-label" for="N37">No</label></div><label>Hearing Difficulty</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y38" name="Y38" value="t"><label class="custom-control-label" for="Y38">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N38" name="Y38" value="f"><label class="custom-control-label" for="N38">No</label></div><label>Heart Attack</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y39" name="Y39" value="t"><label class="custom-control-label" for="Y39">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N39" name="Y39" value="f"><label class="custom-control-label" for="N39">No</label></div><label>Heart Disease</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y40" name="Y40" value="t"><label class="custom-control-label" for="Y40">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N40" name="Y40" value="f"><label class="custom-control-label" for="N40">No</label></div><label>Hepatitis or Liver Issues</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y41" name="Y41" value="t"><label class="custom-control-label" for="Y41">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N41" name="Y41" value="f"><label class="custom-control-label" for="N41">No</label></div><label>High Blood Pressure</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y42" name="Y42" value="t"><label class="custom-control-label" for="Y42">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N42" name="Y42" value="f"><label class="custom-control-label" for="N42">No</label></div><label>Jaundice</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y43" name="Y43" value="t"><label class="custom-control-label" for="Y43">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N43" name="Y43" value="f"><label class="custom-control-label" for="N43">No</label></div><label>Musculo-skeletal issues</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y44" name="Y44" value="t"><label class="custom-control-label" for="Y44">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N44" name="Y44" value="f"><label class="custom-control-label" for="N44">No</label></div><label>Nose Bleeds</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y45" name="Y45" value="t"><label class="custom-control-label" for="Y45">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N45" name="Y45" value="f"><label class="custom-control-label" for="N45">No</label></div><label>Shortness of Breath</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y46" name="Y46" value="t"><label class="custom-control-label" for="Y46">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N46" name="Y46" value="f"><label class="custom-control-label" for="N46">No</label></div><label>Sleep Disorder</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y47" name="Y47" value="t"><label class="custom-control-label" for="Y47">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N47" name="Y47" value="f"><label class="custom-control-label" for="N47">No</label></div><label>Surgery</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y48" name="Y48" value="t"><label class="custom-control-label" for="Y48">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N48" name="Y48" value="f"><label class="custom-control-label" for="N48">No</label></div><label>T.B. Positive</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y49" name="Y49" value="t"><label class="custom-control-label" for="Y49">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N49" name="Y49" value="f"><label class="custom-control-label" for="N49">No</label></div><label>Vision Problems</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y50" name="Y50" value="t"><label class="custom-control-label" for="Y50">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N50" name="Y50" value="f"><label class="custom-control-label" for="N50">No</label></div><label>Wear Contact Lenses</label></div>
+                                                <div class="form-group my-1">
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y51" name="Y51" value="t"><label class="custom-control-label" for="Y51">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N51" name="Y51" value="f"><label class="custom-control-label" for="N51">No</label></div><label>Wear Glasses</label></div>
+                                            </div>
+                                            <div class="col px-2 mx-2">
+                                                <h6 class="text-dark font-weight-bold">Impairment History</h6><label>Do you have:</label>
+                                                <div class="form-group mb-3"><label class="d-block">Loss of vision in either eye that cannot be corrected?</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y52" name="Y52" value="t"><label class="custom-control-label" for="Y52">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N52" name="Y52" value="f"><label class="custom-control-label" for="Y52">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Loss of hearing that requires a hearing aid?</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y53" name="Y53" value="t"><label class="custom-control-label" for="Y53">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N53" name="Y53" value="f"><label class="custom-control-label" for="N53">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Decreaseed function in either hand, including grip and strength in the use of all fingers?</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y54" name="Y54" value="t"><label class="custom-control-label" for="Y54">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N54" name="Y54" value="f"><label class="custom-control-label" for="N54">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Decreased function in the neck or lower back?</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y55" name="Y55" value="t"><label class="custom-control-label" for="Y55">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N55" name="Y55" value="f"><label class="custom-control-label" for="N55">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Decreased function in hips, knees, legs, ankles, or feet?</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y56" name="Y56" value="t"><label class="custom-control-label" for="Y56">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N56" name="Y56" value="f"><label class="custom-control-label" for="N56">No</label></div>
+                                                </div>
+                                                <div class="card my-3"></div>
+                                                <h6 class="text-dark font-weight-bold">Do you have any impairment or problems that would interfere with your ability to:</h6>
+                                                <div class="form-group my-3"><label class="d-block">Work at heights</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y57" name="Y57" value="t"><label class="custom-control-label" for="Y57">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N57" name="Y57" value="f"><label class="custom-control-label" for="N57">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Work in cold or heat</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y58" name="Y58" value="t"><label class="custom-control-label" for="Y58">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N58" name="Y58" value="f"><label class="custom-control-label" for="N58">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Work around or operate dangerous machinry</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y59" name="Y59" value="t"><label class="custom-control-label" for="Y59">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N59" name="Y59" value="f"><label class="custom-control-label" for="N59">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Drive company vehicles on public highways&nbsp;</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y60" name="Y60" value="t"><label class="custom-control-label" for="Y60">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N60" name="Y60" value="f"><label class="custom-control-label" for="N60">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Work in confined spaces</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y61" name="Y61" value="t"><label class="custom-control-label" for="Y61">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N61" name="Y61" value="f"><label class="custom-control-label" for="N61">No</label></div>
+                                                </div>
+                                                <div class="form-group my-3"><label class="d-block">Use a respirator</label>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y62" name="Y62" value="t"><label class="custom-control-label" for="Y62">Yes</label></div>
+                                                    <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N62" name="Y62" value="f"><label class="custom-control-label" for="N62">No</label></div>
+                                                </div>
+                                                <input type="hidden" id="email" name="email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><strong>Acknowledgement</strong></h4>
+                                        <p class="card-text">The above answers are true to the best of my knowledge and belief. I understand that falsification may be grounds for termination. This also authorizes release of any medical information, concerning my past or present
+                                            condition pertinent to my employment, by the physicians administng this examination.&nbsp;</p>
+                                        <div class="custom-control custom-control-inline custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-3" required=""><label class="custom-control-label" for="formCheck-3">I have read and agree with the above statement.</label></div>
+                                    </div>
+                                </div><button class="btn btn-primary btn-block" type="submit" id="save">Save</button></form>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="tab-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+<!--                                        <div class="col-md-6 text-nowrap">-->
+<!--                                            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-md-6">-->
+<!--                                            <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>-->
+<!--                                        </div>-->
+                                    </div>
+                                    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                        <table class="table dataTable my-0" id="reportTable">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-left">Report #</th>
+                                                    <th>Date</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <td><strong>Report #</strong></td>
+                                                    <td><strong>Date</strong></td>
+                                                    <td><strong></strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+<!--                                        <div class="col-md-6 align-self-center">-->
+<!--                                            <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-md-6">-->
+<!--                                            <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">-->
+<!--                                                <ul class="pagination">-->
+<!--                                                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>-->
+<!--                                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
+<!--                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                                                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
+<!--                                                </ul>-->
+<!--                                            </nav>-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Prevworks 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <div class="modal fade text-left" role="dialog" tabindex="-1" id="reportModal">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center d-xl-flex m-auto">
+                    <h4 class="modal-title text-center d-xl-flex" id="report-id">Injury Report &lt;Insert Report ID&gt;</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="card border-dark">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group"><label>Name:&nbsp;</label><label id="report-name" style="font-style: italic">INSERT NAME HERE</label></div>
+                                    <div class="form-group"><label>Email:&nbsp;</label><label id="report-email" style="font-style: italic">INSERT EMAIL HERE</label></div>
+                                    <div class="form-group"><label>Phone:&nbsp;</label><label id="report-phone" style="font-style: italic">INSERT PHONE HERE</label></div>
+                                    <div class="form-group"><label>Address:&nbsp;</label><label id="report-address" style="font-style: italic">INSERT STREET ADDRESS HERE</label><label class="d-block" id="report-city">INSERT CITY, STATE, ZIPCODE</label></div>
+                                    <div class="form-group"><label>Gender:&nbsp;</label><label id="report-gender" style="font-style: italic">INSERT GENDER HERE</label></div>
+                                    <div class="form-group"><label>BOD:&nbsp;</label><label id="report-bod" style="font-style: italic">INSERT BOD HERE</label></div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group"><label>Date:&nbsp;</label><label id="report-date" style="font-style: italic">INSERT DATE HERE</label></div>
+                                    <div class="form-group"><label>Time:&nbsp;</label><label id="report-time" style="font-style: italic">INSERT TIME HERE</label></div>
+                                    <div class="form-group"><label>Company:&nbsp;</label><label id="report-company-name" style="font-style: italic">INSERT COMPANY HERE</label></div>
+                                    <div class="form-group"><label>Employee ID:&nbsp;</label><label id="report-employee-id" style="font-style: italic">INSERT ID HERE</label></div>
+                                    <div class="form-group"><label>Occupation:&nbsp;</label><label id="report-occupation" style="font-style: italic">INSERT OCUUPATION HERE</label></div>
+                                    <div class="form-group"><label>Supervisor:&nbsp;</label><label id="report-supervisor" style="font-style: italic">INSERT SUPERVISOR HERE</label></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group"><label class="d-block">Was your problem caused by something that happened at work?&nbsp;</label><label id="report-work-related" style="font-style: italic">YES/NO</label></div>
+                                    <div class="form-group"><label class="d-block">Was the injury reported to anyone?&nbsp;</label><label id="report-injury-reported" style="font-style: italic">YES/NO</label></div><label class="d-block">If so, who did you report it to?&nbsp;</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card border-secondary">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group"><label>Name:&nbsp;</label><label id="report-reportee-name" style="font-style: italic">Insert name here</label></div>
+                                                        <div class="form-group"><label>Email:&nbsp;</label><label id="report-reportee-email" style="font-style: italic">Insert Email here</label></div>
+                                                        <div class="form-group"><label>Phone:&nbsp;</label><label id="report-reportee-phone" style="font-style: italic">Insert Phone here</label></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label>Date Reported:&nbsp;</label><label id="report-reportee-date" style="font-style: italic">Insert date here</label></div>
+                                                        <div class="form-group"><label>Time Reported:&nbsp;</label><label id="report-reportee-time" style="font-style: italic">Insert Time here</label></div>
+                                                        <div class="form-group"><label>Relation to you:&nbsp;</label><label id="report-reportee-relation" style="font-style: italic">Insert relation here</label></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="form-group"><label class="d-block">Have you been treated by PrevWorks before?<br></label><label id="report-treated-before" style="font-style: italic">YES/NO</label></div>
+                                    <div class="form-group"><label class="d-inline">If so, when?&nbsp;</label><label id="report-prev-treatment-date" style="font-style: italic">Insert Date here</label></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group"><label class="d-block">Injury Description</label>
+                                        <p id="report-injury-description" style="font-style: italic">Paragraph for description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-dark my-3">
+                        <div><a class="btn btn-light btn-block btn-lg text-center text-white bg-dark" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">Submit a Follow-Up</a>
+                            <div class="collapse" id="collapse-1">
+                                <div class="container">
+                                    <h6 class="text-center text-dark my-2">Report your progress, whether you have been getting better or worse.</h6>
+                                    <form action="/followup" method="post" onsubmit="return reportAlert()">
+                                        <div class="form-group"><label class="d-block">Date:</label><input name="follow_up_date" class="form-control" type="date"></div>
+                                        <div class="form-group"><label class="d-block">How do you feel since your last report?</label>
+                                            <div class="custom-control custom-radio"><input class="custom-control-input" type="radio" name="follow_up_feeling" value="Better" id="formCheck-better"><label class="custom-control-label" for="formCheck-better">Better</label></div>
+                                            <div class="custom-control custom-radio"><input class="custom-control-input" type="radio" name="follow_up_feeling" value="Worse" id="formCheck-worse"><label class="custom-control-label" for="formCheck-worse">Worse</label></div>
+                                            <div class="custom-control custom-radio"><input class="custom-control-input" type="radio" name="follow_up_feeling" value="No Change" id="formCheck-no_change"><label class="custom-control-label" for="formCheck-no_change">No Change</label></div>
+                                        </div>
+                                        <div class="form-group"><label class="d-block">Since your last report, please estimate the percentage level of improvement or worsening?</label><input class="form-control" type="number" name="follow_up_improvement" min="0" max="100" placeholder="%"><span></span></div>
+                                        <div
+                                            class="form-group"><label class="d-block">Since your last report, have you developed new complaints or symptoms?</label>
+                                            <div class="custom-control custom-radio"><input class="custom-control-input" name="follow_up_new_symptoms" value="true" type="radio" id="formCheck-true"><label class="custom-control-label" for="formCheck-true">Yes</label></div>
+                                            <div class="custom-control custom-radio"><input class="custom-control-input" name="follow_up_new_symptoms" value="false" type="radio" id="formCheck-false"><label class="custom-control-label" for="formCheck-false">No</label></div>
+                                </div>
+                                        <input type="hidden" id="follow_up_time" name="follow_up_time" value="">
+                                        <input type="hidden" id="follow_up_report_id" name="follow_up_report_id" value="">
+                                <div class="form-group"><label class="d-block">If yes, please explain.</label><textarea class="form-control" name="follow_up_explain"></textarea></div><button class="btn btn-primary btn-block mb-3" type="submit">Submit</button></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="prev-follow-ups">
+<!--                    <div class="card-body">-->
+<!--                        <h4 class="text-dark card-title">Follow-up Report</h4>-->
+<!--                        <h5 class="text-black-50 card-subtitle mb-2">Date</h5>-->
+<!--                        <form>-->
+<!--                            <div class="form-group"><label class="d-block">How do you feel since your last report?</label>-->
+<!--                                <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" value="Better" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">Better</label></div>-->
+<!--                                <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" value="Worse" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">Worse</label></div>-->
+<!--                                <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" value="No Change" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">No Change</label></div>-->
+<!--                            </div>-->
+<!--                            <div class="form-group"><label class="d-block">Since your last report, please estimate the percentage level of improvement or worsening?</label><input class="form-control" type="number" name="improvement" min="0" max="100" placeholder="%" readonly=""><span></span></div>-->
+<!--                            <div-->
+<!--                                class="form-group"><label class="d-block">Since your last report, have you developed new complaints or symptoms?</label>-->
+<!--                                <div class="custom-control disabled custom-radio"><input class="custom-control-input" name="new_symptoms" value="true" type="radio" id="formCheck-2"><label class="custom-control-label" for="formCheck-2">Yes</label></div>-->
+<!--                                <div class="custom-control disabled custom-radio"><input class="custom-control-input" name="new_symptoms" value="false" type="radio" id="formCheck-2"><label class="custom-control-label" for="formCheck-2">No</label></div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group"><label class="d-block">If yes, please explain.</label><textarea class="form-control" name="explain" readonly=""></textarea></div>-->
+<!--                    </form>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+    </div>
+    <script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/chart.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/bs-init.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{url_for('static', filename='assets/js/humanbody.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/theme.js')}}"></script>
+
+    <script>
+        function getCookie(name) {
+            // Split cookie string and get all individual name=value pairs in an array
+            var cookieArr = document.cookie.split(";");
+            
+            // Loop through the array elements
+            for(var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i];
+                
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+                if(cookiePair.trim().indexOf(name+"=") == 0) {
+                    // Decode the cookie value and return
+                    var res = cookiePair.replace(name+"=", "");
+                    return res;
+                }
+            }
+            
+            // Return null if not found
+            return null;
+        }
+        let userData = JSON.parse(getCookie("userData"));
+        const binary_responses = userData.data.binary_responses;
+        const text_responses = userData.data.text_responses;
+
+        console.log(text_responses);
+        
+    
+        if (text_responses)
+        {
+            for (var j = 1; j <= 11; j+=1)
+            {
+                var temp = "T" + j.toString();
+                console.log(typeof temp);
+                document.getElementById("T" + j.toString()).value = text_responses[j - 1];
+                document.getElementById("T" + j.toString()).disabled = true;
+            }
+        }
+
+        console.log(binary_responses);
+
+        if (binary_responses)
+        {
+            for (var j = 0; j < binary_responses.length; j+=1)
+            {
+                document.getElementById(binary_responses[j]).checked = true;
+            }
+
+            for (var i = 1; i <= 62; i+=1)
+            {
+                document.getElementById("Y" + i.toString()).disabled = true;
+                document.getElementById("N" + i.toString()).disabled = true;
+            }
+        }
+        else
+        {
+            for (var i = 1; i <= 62; i+=1)
+            {
+                document.getElementById("N" + i.toString()).checked = true;
+            }
+        }
+    
+        if (binary_responses || text_responses)
+        {
+            document.getElementById("save").disabled = true;
+            document.getElementById("formCheck-3").checked = true;
+            document.getElementById("formCheck-3").disabled = true;
+        }
+    
+        function getEmail() 
+        {
+            let userInfo = JSON.parse(getCookie("userData"));
+            return userInfo.id;
+        }
+
+        document.getElementById("email").value = getEmail();
+        console.log(document.getElementById("email").value);
+    </script>
+    <script type="text/javascript">
+
+        
+        userData = JSON.parse(getCookie("userData"));
+        console.log("Cookie passed to the table page:");
+        console.log(userData);
+        // Adding to the user details to the upper tab:
+        document.getElementById("upper-username").innerText = userData.data.first_name + " " + userData.data.last_name;
+        // Add the profile picture if present
+        if(userData.profilePic) {
+            document.getElementById('upper-profile-pic').src = userData.profilePic;
+        }
+
+        // Making a GET request for the reports associated with the specific user:
+        const xhttpRep = new XMLHttpRequest();
+        xhttpRep.open("GET", `http://localhost:5000/fc/`, false);
+        xhttpRep.setRequestHeader("Set-Cookie", JSON.stringify(userData));
+        xhttpRep.send();
+        // Handling response from the API for GET reports:
+        const response = JSON.parse(xhttpRep.responseText);
+        // Object that contains all the reports
+        const reports = response.results;
+
+        // Alert shown after submitting injury form.
+        function reportAlert(){
+            // Getting the current time:
+            let today = new Date();
+            let time = today.toLocaleTimeString();
+            document.getElementById('follow_up_time').value = time;
+            // Confirmation message.
+            return confirm("Are you sure that the information entered is accurate. If so, then click 'OK' to submit the follow-up for the report. Else select 'Cancel' to review entered information and make any revisions.");
+        }
+
+
+        // Function to correctly order the date to DD-MM-YYYY:
+        function fixDateOrder(date){
+            let dateArr = date.split('-');
+            let dateOutput = dateArr[1] + "-" + dateArr[2] + "-" + dateArr[0];
+            return dateOutput
+        }
+
+        function download(fc_id)
+        {
+            console.log("download frontend");
+            var xhttpRep = new XMLHttpRequest();
+            xhttpRep.open("GET", `http://localhost:5000/fc/download/` + fc_id, false);
+            xhttpRep.setRequestHeader("set-cookie", JSON.stringify(userData));
+            xhttpRep.send();
+
+            // Handling response from the API for GET reports:
+            var response = JSON.parse(xhttpRep.responseText);
+            // Object that contains all the reports
+            var url = response.url;
+            console.log(url);
+            window.open(url, "_blank"); 
+        }
+
+
+        // Dynamically generate the table and fill with values from report in user cookies:
+        function generate_table(){
+            let table = document.getElementById("reportTable");
+            let tblBody = document.createElement("tbody");
+
+            // For each report have one row:
+            for(let i = 0; i < reports.length; i++){
+                let row = document.createElement("tr");
+                // Adding the date cell in the table:
+                let id = document.createElement("td");
+                id.innerText = reports[i].id;
+                row.appendChild(id);
+                // Adding the date cell in the table:
+                let date = document.createElement("td");
+                date.innerText = fixDateOrder(reports[i].data.date);
+                row.appendChild(date);
+                // Creating the view button to open the modal:
+                let reportButton = document.createElement("td");
+                let viewButton = document.createElement("BUTTON");
+                viewButton.classList.add("btn", "btn-link", "btn-block", "btn-sm");
+                viewButton.setAttribute("type", "button");
+                viewButton.setAttribute("onclick", "download(`" + reports[i].id + "`)");
+                viewButton.innerText = "View";
+
+                reportButton.appendChild(viewButton);
+                row.appendChild(reportButton);
+
+                tblBody.appendChild(row);
+            }
+            table.appendChild(tblBody);
+        }
+
+        generate_table();
+
+    </script>
+</body>
+
+</html>

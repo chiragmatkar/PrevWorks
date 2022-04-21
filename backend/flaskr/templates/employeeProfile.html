@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PrevWORKS - Employee Profile</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/humanbody.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div><img class="d-inline float-left" src="assets/img/PrevWORKS%20just%20logo.png" width="37">
+                    <div class="sidebar-brand-text mx-3"><span>PrevWorks</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="userProfile.html"><i class="fas fa-user"></i><span>User Profile</span></a><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Analytics</span></a><a class="nav-link" href="employees.html"><i class="fas fa-table"></i><span>Employees</span></a>
+                        <a
+                            class="nav-link" href="injuries.html"><i class="fab fa-wpforms"></i><span>Injury Reports</span></a>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Logout</span></a></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small" id="full-name">Valerie Luna</span><img class="border rounded-circle img-profile" id="upper-logo-pic" onerror="setPic('upper-logo-pic')"></a>
+
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="userProfile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
+                                        <a class="dropdown-item" role="presentation" href="index.html"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Analytics</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="container-fluid" style="padding: 24px 24px ;"><a class="btn mb-3" role="button" onclick="correctBack()" style="background-color: rgba(78,115,223,0);color: rgb(93,107,232);"><i class="fas fa-arrow-circle-left" style="font-size: 50px;"></i></a>
+                <h3 class="text-dark mb-4" id="header-name">Employee Name</h3>
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow mb-5">
+                            <div class="card-header bg-success py-3">
+                                <p class="text-white m-0 font-weight-bold" style="font-size: 20px;">Employee Info</p>
+                            </div>
+                            <div class="card-body">
+                                <form action="/update-employee" method="post" onsubmit="return reportAlert()">
+                                    <div class="form-row mb-3">
+                                        <div class="col-lg-8">
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="card shadow mb-3">
+                                                        <div class="card-header py-3">
+                                                            <p class="text-primary m-0 font-weight-bold">Personal Info</p>
+                                                        </div>
+                                                        <div class="card-body">
+                                                                <div class="form-row">
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" placeholder="John" name="first_name" id="first_name" required="" maxlength="50" minlength="2"></div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" placeholder="Doe" name="last_name" id="last_name"required="" maxlength="80" minlength="2"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label for="gender"><strong>Gender</strong></label><select id="gender" name="gender" class="form-control" required=""><optgroup label="Select one:"><option value="0" selected="">-- Select --</option><option value="male">male</option><option value="female">female</option><option value="non-binary">non-binary</option></optgroup></select></div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label for="birthday"><strong>Birth Date</strong></label><input class="form-control" type="date" required="" id="birthday" name="birthday"></div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card shadow">
+                                                        <div class="card-header py-3">
+                                                            <p class="text-primary m-0 font-weight-bold">Contact</p>
+                                                        </div>
+                                                        <div class="card-body">
+                                                                <div class="form-group">
+                                                                    <div class="form-row">
+                                                                        <div class="col">
+                                                                            <div class="form-group"><label for="email"><strong>Email</strong></label><input name="email" id="email" class="form-control" type="email" placeholder="user@example.com" required="" maxlength="100" minlength="2" disabled=""></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="col">
+                                                                            <div class="form-group"><label for="phone"><strong>Phone</strong></label><input name="phone" id="phone" class="form-control" type="tel" placeholder="XXX-XXX-XXXX" required="" maxlength="10" minlength="10"></div>
+                                                                        </div>
+                                                                    </div><label for="street-address"><strong>Address</strong></label><input name="address" id="street-address" class="form-control" type="text" placeholder="Sunset Blvd, 38" name="address" required="" minlength="1"></div>
+                                                                <div class="form-row">
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label for="city"><strong>City</strong></label><input class="form-control" type="text" placeholder="Los Angeles" name="city" id="city" required=""></div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label for="state"><strong>State</strong></label><input class="form-control" type="text" placeholder="CA" name="state" id="state" required=""></div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card mb-3" style="width: 276px;">
+                                                <div class="card-body text-center shadow"><img id="profile-pic" class="rounded-circle mb-3 mt-4" src="assets/img/dogs/image2.jpeg" width="160" height="160" onerror="setPic('profile-pic')">
+                                                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="button" data-target="#profilePicModal" data-toggle="modal">Change Photo</button></div>
+                                                </div>
+                                            </div>
+                                            <div class="card shadow">
+                                                <div class="card-header py-3">
+                                                    <p class="text-primary m-0 font-weight-bold">Employment Info</p>
+                                                </div>
+                                                <div class="card-body">
+                                                        <div class="form-group"><label for="employee_id"><strong>Employee ID</strong></label><input id="employee_id" name="employee_id" class="form-control" type="text" placeholder="ID" required=""></div>
+                                                        <div class="form-group"><label for="occupation"><strong>Occupation</strong></label><input class="form-control" id="occupation" name="occupation" type="text" placeholder="Occupation" required=""></div>
+                                                        <div class="form-group"><label for="prev_occupation"><strong>Previous Occupation</strong></label><input class="form-control" id="prev_occupation" name="prev_occupation" type="text" placeholder="Previous Occupation"></div>
+                                                        <div class="form-group"><label for="supervisor_name"><strong>Supervisor</strong></label><input class="form-control" id="supervisor_name" name="supervisor_name" type="text" placeholder="Name of supervisor"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col"><button class="btn btn-primary btn-block btn-lg" type="submit">Update Employee Info</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header bg-info py-3">
+                                <p class="text-white m-0 font-weight-bold" style="font-size: 20px;">Health Assessment&nbsp;</p>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title"></h4>
+                                <p class="card-text">View employee's medical history and upload functional capacity reports.</p>
+                                <div class="row">
+                                    <div class="col"><button class="btn btn-primary btn-block btn-lg" type="button" data-target="#medicalHistoryModal" data-toggle="modal">View Medical History&nbsp;</button></div>
+                                    <div class="col"><button class="btn btn-warning btn-block btn-lg" type="button" data-target="#fcModal" data-toggle="modal">View Functional Capacity</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="card shadow">
+                            <div class="card-header bg-danger py-3">
+                                <p class="text-white m-0 font-weight-bold" style="font-size: 20px;">Submitted Injuries</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                    <table class="table dataTable my-0" id="reportTable">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left">Report #</th>
+                                                <th>Date</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+<!--                                        <tbody>-->
+<!--                                            <tr>-->
+<!--                                                <td>fdx-12344</td>-->
+<!--                                                <td>2008/11/28</td>-->
+<!--                                                <td><button class="btn btn-link btn-block btn-sm" type="button" data-target="#reportModal" data-toggle="modal">View</button></td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>fdx-12345</td>-->
+<!--                                                <td>2009/10/09<br></td>-->
+<!--                                                <td><button class="btn btn-link btn-block btn-sm" type="button" data-target="#reportModal" data-toggle="modal">View</button></td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>fdx-12346</td>-->
+<!--                                                <td>2009/01/12<br></td>-->
+<!--                                                <td><button class="btn btn-link btn-block btn-sm" type="button" data-target="#reportModal" data-toggle="modal">View</button></td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>fdx-34567</td>-->
+<!--                                                <td>2012/10/13<br></td>-->
+<!--                                                <td><button class="btn btn-link btn-block btn-sm" type="button" data-target="#reportModal" data-toggle="modal">View</button></td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>fdx-13456</td>-->
+<!--                                                <td>2011/06/07<br></td>-->
+<!--                                                <td><button class="btn btn-link btn-block btn-sm" type="button" data-target="#reportModal" data-toggle="modal">View</button></td>-->
+<!--                                            </tr>-->
+<!--                                        </tbody>-->
+                                        <tfoot>
+                                            <tr>
+                                                <td><strong>Report #</strong></td>
+                                                <td><strong>Date</strong></td>
+                                                <td><strong></strong></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Prevworks 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <div class="modal fade text-left" role="dialog" tabindex="-1" id="reportModal">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title text-light" id="report-id">Injury Report ID</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group"><label>Name:&nbsp;</label><label id="report-name" style="font-style: italic">INSERT NAME HERE</label></div>
+                                    <div class="form-group"><label>Email:&nbsp;</label><label id="report-email" style="font-style: italic">INSERT EMAIL HERE</label></div>
+                                    <div class="form-group"><label>Phone:&nbsp;</label><label id="report-phone" style="font-style: italic">INSERT PHONE HERE</label></div>
+                                    <div class="form-group"><label>Address:&nbsp;</label><label id="report-address" style="font-style: italic">INSERT STREET ADDRESS HERE</label><label class="d-block" id="report-city" style="font-style: italic">INSERT CITY, STATE, ZIPCODE</label></div>
+                                    <div class="form-group"><label>Gender:&nbsp;</label><label id="report-gender" style="font-style: italic">INSERT GENDER HERE</label></div>
+                                    <div class="form-group"><label>Date of Birth:&nbsp;</label><label id="report-bod" style="font-style: italic">INSERT BOD HERE</label></div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group"><label>Date:&nbsp;</label><label id="report-date" style="font-style: italic">INSERT DATE HERE</label></div>
+                                    <div class="form-group"><label>Time:&nbsp;</label><label id="report-time" style="font-style: italic">INSERT TIME HERE</label></div>
+                                    <div class="form-group"><label>Company:&nbsp;</label><label id="report-company-name" style="font-style: italic">INSERT COMPANY HERE</label></div>
+                                    <div class="form-group"><label>Employee ID:&nbsp;</label><label id="report-employee-id" style="font-style: italic">INSERT ID HERE</label></div>
+                                    <div class="form-group"><label>Occupation:&nbsp;</label><label id="report-occupation" style="font-style: italic">INSERT OCUUPATION HERE</label></div>
+                                    <div class="form-group"><label>Supervisor:&nbsp;</label><label id="report-supervisor" style="font-style: italic">INSERT SUPERVISOR HERE</label></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group"><label class="d-block">Was your problem caused by something that happened at work?&nbsp;</label><label id="report-work-related" style="font-style: italic">YES/NO</label></div>
+                                    <div class="form-group"><label class="d-block">Area of Physical Injury:</label><label id="report-injury-area">&lt;AREA&gt;</label></div>
+                                    <div class="form-group"><label class="d-block">Was the injury reported to anyone?&nbsp;</label><label id="report-injury-reported" style="font-style: italic">YES/NO</label></div><label class="d-block">If so, who did you report it to?&nbsp;</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card border-secondary">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group"><label>Name:&nbsp;</label><label id="report-reportee-name" style="font-style: italic">Inser name here</label></div>
+                                                        <div class="form-group"><label>Email:&nbsp;</label><label id="report-reportee-email" style="font-style: italic">Inser Email here</label></div>
+                                                        <div class="form-group"><label>Phone:&nbsp;</label><label id="report-reportee-phone" style="font-style: italic">Inser Phone here</label></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label>Date Reported:&nbsp;</label><label id="report-reportee-date" style="font-style: italic">Inser date here</label></div>
+                                                        <div class="form-group"><label>Time Reported:&nbsp;</label><label id="report-reportee-time" style="font-style: italic">Inser Time here</label></div>
+                                                        <div class="form-group"><label>Relation to you:&nbsp;</label><label id="report-reportee-relation" style="font-style: italic">Inser relation here</label></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="form-group"><label class="d-block">Have you been treated by PrevWorks before?<br></label><label id="report-treated-before" style="font-style: italic">YES/NO</label></div>
+                                    <div class="form-group"><label class="d-inline">If so, when?&nbsp;</label><label id="report-prev-treatment-date" style="font-style: italic">Insert Date here</label></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group"><label class="d-block">Injury Description</label>
+                                        <p id="report-injury-description" style="font-style: italic">Paragraph for description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="follow-ups">
+                    </div>
+<!--                    <div class="card border-dark my-3">-->
+<!--                        <div><a class="btn btn-light btn-block btn-lg text-left text-white bg-info" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">Follow-Up Report: mm/dd/yyyy</a>-->
+<!--                            <div class="collapse"-->
+<!--                                id="collapse-1">-->
+<!--                                <div class="container">-->
+<!--                                    <form class="mt-3">-->
+<!--                                        <div class="form-group"><label class="d-block">Date:</label><input class="form-control" type="date" readonly="" disabled=""></div>-->
+<!--                                        <div class="form-group"><label class="d-block">How do you feel since your last report?</label>-->
+<!--                                            <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">Better</label></div>-->
+<!--                                            <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">Worse</label></div>-->
+<!--                                            <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">No Change</label></div>-->
+<!--                                        </div>-->
+<!--                                        <div class="form-group"><label class="d-block">Since your last report, please estimate the percentage level pf improvement or worsening?</label><input class="form-control" type="number" min="0" max="100" placeholder="%" readonly=""><span></span></div>-->
+<!--                                        <div-->
+<!--                                            class="form-group"><label class="d-block">Since your last report, have you developed new complaints or symptoms?</label>-->
+<!--                                            <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-2"><label class="custom-control-label" for="formCheck-2">Yes</label></div>-->
+<!--                                            <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-2"><label class="custom-control-label" for="formCheck-2">No</label></div>-->
+<!--                                </div>-->
+<!--                                <div class="form-group"><label class="d-block">If yes, please explain.</label><textarea class="form-control" readonly=""></textarea></div>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card border-dark my-3">-->
+<!--                    <div><a class="btn btn-light btn-block btn-lg text-left text-white bg-info" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-2" href="#collapse-2" role="button">Follow-Up Report: mm/dd/yyyy</a>-->
+<!--                        <div class="collapse" id="collapse-2">-->
+<!--                            <div class="container">-->
+<!--                                <form class="mt-3">-->
+<!--                                    <div class="form-group"><label class="d-block">Date:</label><input class="form-control" type="date" disabled="" readonly=""></div>-->
+<!--                                    <div class="form-group"><label class="d-block">How do you feel since your last report?</label>-->
+<!--                                        <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">Better</label></div>-->
+<!--                                        <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">Worse</label></div>-->
+<!--                                        <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-1"><label class="custom-control-label" for="formCheck-1">No Change</label></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group"><label class="d-block">Since your last report, please estimate the percentage level pf improvement or worsening?</label><input class="form-control" type="number" min="0" max="100" placeholder="%" readonly=""><span></span></div>-->
+<!--                                    <div-->
+<!--                                        class="form-group"><label class="d-block">Since your last report, have you developed new complaints or symptoms?</label>-->
+<!--                                        <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-2"><label class="custom-control-label" for="formCheck-2">Yes</label></div>-->
+<!--                                        <div class="custom-control disabled custom-radio"><input class="custom-control-input" type="radio" id="formCheck-2"><label class="custom-control-label" for="formCheck-2">No</label></div>-->
+<!--                            </div>-->
+<!--                            <div class="form-group"><label class="d-block">If yes, please explain.</label><textarea class="form-control" readonly=""></textarea></div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+        <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+    </div>
+    </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="medicalHistoryModal">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-light bg-primary">
+                    <h4 class="modal-title">Medical History&nbsp;</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <form>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="col px-2 mx-2">
+                                        <h6 class="text-dark font-weight-bold">Medical History</h6>
+                                        <div class="form-group"><label>Have you ever been off work for more than one day due to a job-related illness/injury?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y1" name="Y1" value="t"><label class="custom-control-label" for="Y1">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N1" name="Y1" value="f"><label class="custom-control-label" for="N1">No</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="col col-5"><label class="col-form-label d-inline">If so, when?</label></div>
+                                                <div class="col"><input class="form-control d-inline" type="text" id="T1" name="T1"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label>Have you ever been hospitalized?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y2" name="Y2" value="t"><label class="custom-control-label" for="Y2">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N2" name="Y2" value="f"><label class="custom-control-label" for="N2">No</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="col col-5"><label class="col-form-label d-inline">If so, when?</label></div>
+                                                <div class="col"><input class="form-control d-inline" type="text" id="T2" name="T2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card my-2"></div>
+                                        <h6 class="text-dark font-weight-bold mt-2">Personal Habits</h6>
+                                        <div class="form-group"><label>Do you smoke now?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y3" name="Y3" value="t"><label class="custom-control-label" for="Y3">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N3" name="Y3" value="f"><label class="custom-control-label" for="N3">No</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="col"><label class="d-inline">Packs per day</label><input class="form-control d-inline" type="text" id="T3" name="T3"></div>
+                                                <div class="col"><label class="d-inline">Years</label><input class="form-control d-inline" type="text" id="T4" name="T4"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label>have you smoked in the past?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y4" name="Y4" value="t"><label class="custom-control-label" for="Y4">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N4" name="Y4" value="f"><label class="custom-control-label" for="N4">No</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="col"><label class="col-form-label d-inline">When did you quit?</label></div>
+                                                <div class="col"><input class="form-control d-inline" type="text" id="T5" name="T5"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label>Do you used chewing tobacco or snuff?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y5" name="Y5" value="t"><label class="custom-control-label" for="Y5">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N5" name="Y5" value="f"><label class="custom-control-label" for="N5">No</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col"><label class="d-inline">Times per day</label><input class="form-control d-inline" type="text" id="T6" name="T6"></div>
+                                            <div class="col"><label class="d-inline">Years</label><input class="form-control d-inline" type="text" id="T7" name="T7"></div>
+                                        </div>
+                                        <div class="form-group"><label>Do you drink alcohol?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y6" name="Y6" value="t"><label class="custom-control-label" for="Y6">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N6" name="Y6" value="f"><label class="custom-control-label" for="N6">No</label></div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col"><label class="col-form-label d-inline">Drinks per week:</label></div>
+                                                <div class="col"><input class="form-control d-inline" type="text" id="T8" name="T8"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label>Do you use illegal drugs?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y7" name="Y7" value="t"><label class="custom-control-label" for="Y7">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N7" name="Y7" value="f"><label class="custom-control-label" for="N7">No</label></div>
+                                            </div><label class="d-inline">List:</label><input class="form-control d-inline" type="text" id="T9" name="T9"></div>
+                                        <div class="form-group"><label>Do you exercise for 30min 3 times a week?&nbsp;</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y8" name="Y8" value="t"><label class="custom-control-label" for="Y8">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N8" name="Y8" value="f"><label class="custom-control-label" for="N8">No</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col px-2 mx-2">
+                                        <h6 class="text-dark font-weight-bold">Medications</h6>
+                                        <div class="form-group"><label>Are you allergic to any mediation?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y9" name="Y9" value="t"><label class="custom-control-label" for="Y9">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N9" name="Y9" value="f"><label class="custom-control-label" for="N9">No</label></div>
+                                            </div><label class="d-inline">List:</label><textarea class="form-control" id="T10" name="T10"></textarea></div>
+                                        <div class="form-group"><label>Have you had a tetanus booster in the past 5 years?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y10" name="Y10" value="t"><label class="custom-control-label" for="Y10">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N10" name="Y10" value="f"><label class="custom-control-label" for="N10">No</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label>Do you take any medications?</label>
+                                            <div class="d-block">
+                                                <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y11" name="Y11" value="t"><label class="custom-control-label" for="Y11">Yes</label></div>
+                                                <div class="custom-control custom-control-inline custom-radio d-inline ml-3"><input class="custom-control-input" type="radio" id="N11" name="Y11" value="f"><label class="custom-control-label" for="N11">No</label></div>
+                                            </div><label class="d-inline">List:</label><textarea class="form-control" id="T11" name="T11"></textarea></div>
+                                        <div class="card my-2"></div>
+                                        <h6 class="text-dark font-weight-bold">Have you had exposure to:</h6>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y12" name="Y12" value="t"><label class="custom-control-label" for="Y12">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N12" name="Y12" value="f"><label class="custom-control-label" for="N12">No</label></div><label>Asbestos</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y13" name="Y13" value="t"><label class="custom-control-label" for="Y13">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N13" name="Y13" value="f"><label class="custom-control-label" for="N13">No</label></div><label>Biological</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y14" name="Y14" value="t"><label class="custom-control-label" for="Y14">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N14" name="Y14" value="f"><label class="custom-control-label" for="N14">No</label></div><label>Coal</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y15" name="Y15" value="t"><label class="custom-control-label" for="Y15">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N15" name="Y15" value="f"><label class="custom-control-label" for="N15">No</label></div><label>Cotton Dust</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y16" name="Y16" value="t"><label class="custom-control-label" for="Y16">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N16" name="Y16" value="f"><label class="custom-control-label" for="N16">No</label></div><label>Epoxy Resins</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y17" name="Y17" value="t"><label class="custom-control-label" for="Y17">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N17" name="Y17" value="f"><label class="custom-control-label" for="N17">No</label></div><label>Foundry Work</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y18" name="Y18" value="t"><label class="custom-control-label" for="Y18">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N18" name="Y18" value="f"><label class="custom-control-label" for="N18">No</label></div><label>Fumes/Vapor (gas)</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y19" name="Y19" value="t"><label class="custom-control-label" for="Y19">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N19" name="Y19" value="f"><label class="custom-control-label" for="N19">No</label></div><label>Heavy Metals/Mining</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y20" name="Y20" value="t"><label class="custom-control-label" for="Y20">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N20" name="Y20" value="f"><label class="custom-control-label" for="N20">No</label></div><label>Heavy Dust</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y21" name="Y21" value="t"><label class="custom-control-label" for="Y21">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N21" name="Y21" value="f"><label class="custom-control-label" for="N21">No</label></div><label>Loud Noise</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y22" name="Y22" value="t"><label class="custom-control-label" for="Y22">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N22" name="Y22" value="f"><label class="custom-control-label" for="N22">No</label></div><label>Pesticides</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y23" name="Y23" value="t"><label class="custom-control-label" for="Y23">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N23" name="Y23" value="f"><label class="custom-control-label" for="N23">No</label></div><label>Solvents/Degreasers</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y24" name="Y24" value="t"><label class="custom-control-label" for="Y24">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N24" name="Y24" value="f"><label class="custom-control-label" for="N24">No</label></div><label>Vibration</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y25" name="Y25" value="t"><label class="custom-control-label" for="Y25">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N25" name="Y25" value="f"><label class="custom-control-label" for="N25">No</label></div><label>Welding/Soldering</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y26" name="Y26" value="t"><label class="custom-control-label" for="Y26">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N26" name="Y26" value="f"><label class="custom-control-label" for="N26">No</label></div><label>Other</label></div><textarea class="form-control"></textarea></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card my-4">
+                            <div class="card-body">
+                                <div class="form-row my-3">
+                                    <div class="col px-2 mx-2">
+                                        <h6 class="text-dark font-weight-bold">Review of Systems</h6>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y27" name="Y27" value="t"><label class="custom-control-label" for="Y27">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N27" name="Y27" value="f"><label class="custom-control-label" for="N27">No</label></div><label>Asthma</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y28" name="Y28" value="t"><label class="custom-control-label" for="Y28">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N28" name="Y28" value="f"><label class="custom-control-label" for="N28">No</label></div><label>Serious Allergies</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y29" name="Y29" value="t"><label class="custom-control-label" for="Y29">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N29" name="Y29" value="f"><label class="custom-control-label" for="N29">No</label></div><label>Back Pain</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y30" name="Y30" value="t"><label class="custom-control-label" for="Y30">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N30" name="Y30" value="f"><label class="custom-control-label" for="N30">No</label></div><label>Bronchitis</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y31" name="Y31" value="t"><label class="custom-control-label" for="Y31">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N31" name="Y31" value="f"><label class="custom-control-label" for="N31">No</label></div><label>Carpal Tunnel Syndrome</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y32" name="Y32" value="t"><label class="custom-control-label" for="Y32">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N32" name="Y32" value="f"><label class="custom-control-label" for="N32">No</label></div><label>Chest Pain</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y33" name="Y33" value="t"><label class="custom-control-label" for="Y33">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N33" name="Y33" value="f"><label class="custom-control-label" for="N33">No</label></div><label>Diabetes</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y34" name="Y34" value="t"><label class="custom-control-label" for="Y34">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N34" name="Y34" value="f"><label class="custom-control-label" for="N34">No</label></div><label>Emphysema</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y35" name="Y35" value="t"><label class="custom-control-label" for="Y35">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N35" name="Y35" value="f"><label class="custom-control-label" for="N35">No</label></div><label>Epilepsy or seizure</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y36" name="Y36" value="t"><label class="custom-control-label" for="Y36">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N36" name="Y36" value="f"><label class="custom-control-label" for="N36">No</label></div><label>Fainting Spells</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y37" name="Y37" value="t"><label class="custom-control-label" for="Y37">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N37" name="Y37" value="f"><label class="custom-control-label" for="N37">No</label></div><label>Hearing Difficulty</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y38" name="Y38" value="t"><label class="custom-control-label" for="Y38">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N38" name="Y38" value="f"><label class="custom-control-label" for="N38">No</label></div><label>Heart Attack</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y39" name="Y39" value="t"><label class="custom-control-label" for="Y39">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N39" name="Y39" value="f"><label class="custom-control-label" for="N39">No</label></div><label>Heart Disease</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y40" name="Y40" value="t"><label class="custom-control-label" for="Y40">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N40" name="Y40" value="f"><label class="custom-control-label" for="N40">No</label></div><label>Hepatitis or Liver Issues</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y41" name="Y41" value="t"><label class="custom-control-label" for="Y41">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N41" name="Y41" value="f"><label class="custom-control-label" for="N41">No</label></div><label>High Blood Pressure</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y42" name="Y42" value="t"><label class="custom-control-label" for="Y42">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N42" name="Y42" value="f"><label class="custom-control-label" for="N42">No</label></div><label>Jaundice</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y43" name="Y43" value="t"><label class="custom-control-label" for="Y43">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N43" name="Y43" value="f"><label class="custom-control-label" for="N43">No</label></div><label>Musculo-skeletal issues</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y44" name="Y44" value="t"><label class="custom-control-label" for="Y44">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N44" name="Y44" value="f"><label class="custom-control-label" for="N44">No</label></div><label>Nose Bleeds</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y45" name="Y45" value="t"><label class="custom-control-label" for="Y45">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N45" name="Y45" value="f"><label class="custom-control-label" for="N45">No</label></div><label>Shortness of Breath</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y46" name="Y46" value="t"><label class="custom-control-label" for="Y46">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N46" name="Y46" value="f"><label class="custom-control-label" for="N46">No</label></div><label>Sleep Disorder</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y47" name="Y47" value="t"><label class="custom-control-label" for="Y47">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N47" name="Y47" value="f"><label class="custom-control-label" for="N47">No</label></div><label>Surgery</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y48" name="Y48" value="t"><label class="custom-control-label" for="Y48">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N48" name="Y48" value="f"><label class="custom-control-label" for="N48">No</label></div><label>T.B. Positive</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y49" name="Y49" value="t"><label class="custom-control-label" for="Y49">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N49" name="Y49" value="f"><label class="custom-control-label" for="N49">No</label></div><label>Vision Problems</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y50" name="Y50" value="t"><label class="custom-control-label" for="Y50">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N50" name="Y50" value="f"><label class="custom-control-label" for="N50">No</label></div><label>Wear Contact Lenses</label></div>
+                                        <div class="form-group my-1">
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y51" name="Y51" value="t"><label class="custom-control-label" for="Y51">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N51" name="Y51" value="f"><label class="custom-control-label" for="N51">No</label></div><label>Wear Glasses</label></div>
+                                    </div>
+                                    <div class="col px-2 mx-2">
+                                        <h6 class="text-dark font-weight-bold">Impairment History</h6><label>Do you have:</label>
+                                        <div class="form-group mb-3"><label class="d-block">Loss of vision in either eye that cannot be corrected?</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y52" name="Y52" value="t"><label class="custom-control-label" for="Y52">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N52" name="Y52" value="f"><label class="custom-control-label" for="Y52">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Loss of hearing that requires a hearing aid?</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y53" name="Y53" value="t"><label class="custom-control-label" for="Y53">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N53" name="Y53" value="f"><label class="custom-control-label" for="N53">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Decreaseed function in either hand, including grip and strength in the use of all fingers?</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y54" name="Y54" value="t"><label class="custom-control-label" for="Y54">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N54" name="Y54" value="f"><label class="custom-control-label" for="N54">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Decreased function in the neck or lower back?</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y55" name="Y55" value="t"><label class="custom-control-label" for="Y55">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N55" name="Y55" value="f"><label class="custom-control-label" for="N55">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Decreased function in hips, knees, legs, ankles, or feet?</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y56" name="Y56" value="t"><label class="custom-control-label" for="Y56">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N56" name="Y56" value="f"><label class="custom-control-label" for="N56">No</label></div>
+                                        </div>
+                                        <div class="card my-3"></div>
+                                        <h6 class="text-dark font-weight-bold">Do you have any impairment or problems that would interfere with your ability to:</h6>
+                                        <div class="form-group my-3"><label class="d-block">Work at heights</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y57" name="Y57" value="t"><label class="custom-control-label" for="Y57">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N57" name="Y57" value="f"><label class="custom-control-label" for="N57">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Work in cold or heat</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y58" name="Y58" value="t"><label class="custom-control-label" for="Y58">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N58" name="Y58" value="f"><label class="custom-control-label" for="N58">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Work around or operate dangerous machinry</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y59" name="Y59" value="t"><label class="custom-control-label" for="Y59">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N59" name="Y59" value="f"><label class="custom-control-label" for="N59">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Drive company vehicles on public highways&nbsp;</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y60" name="Y60" value="t"><label class="custom-control-label" for="Y60">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N60" name="Y60" value="f"><label class="custom-control-label" for="N60">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Work in confined spaces</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y61" name="Y61" value="t"><label class="custom-control-label" for="Y61">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N61" name="Y61" value="f"><label class="custom-control-label" for="N61">No</label></div>
+                                        </div>
+                                        <div class="form-group my-3"><label class="d-block">Use a respirator</label>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="Y62" name="Y62" value="t"><label class="custom-control-label" for="Y62">Yes</label></div>
+                                            <div class="custom-control custom-control-inline custom-radio d-inline"><input class="custom-control-input" type="radio" id="N62" name="Y62" value="f"><label class="custom-control-label" for="N62">No</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="fcModal">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title text-light">Functional Capacity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="border rounded-0 border-dark mb-5"><a class="btn btn-light btn-block btn-lg text-left text-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-3" href="#collapse-3" role="button">Add Functional Capacity Report<i class="fa fa-plus mx-2" style="font-size: 20px;"></i></a>
+                        <div
+                            class="collapse" id="collapse-3">
+                            <form id="fc_form_create" method="post" enctype="multipart/form-data" action="http://localhost:5000/fc/create" onsubmit="return add_fc()">
+                                <div class="form-row">
+                                    <div class="col mx-3 mt-2">
+                                        <div class="form-group"><label class="d-block">Date:</label><input class="form-control" type="date" required="" name="date" id="fc_date"></div>
+                                    </div>
+                                    <div class="col mx-3 mt-2">
+                                        <div class="form-group"><label class="d-block">Choose a PDF file.&nbsp;</label><input type="file" required="" name="fc" id="fc_file"></div>
+                                    </div>
+                                </div><button class="btn btn-primary btn-block mx-3 mb-2" type="submit">Upload</button></form>
+                    </div>
+                </div>
+                <hr>
+                <h3 class="text-left text-dark">Reports</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="text-muted card-subtitle mb-2">Access your functional capacity reports.</h6>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table dataTable my-0" id="reportTable1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">Report #</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <td><strong>Report #</strong></td>
+                                        <td><strong>Date</strong></td>
+                                        <td><strong></strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+        </div>
+    </div>
+    </div>
+    <div class="modal fade text-left" role="dialog" tabindex="-1" id="profilePicModal">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center d-xl-flex m-auto">
+                    <h4 class="modal-title text-center d-xl-flex" id="modal-title">Change Employee Profile Picture</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=""><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="card border-dark">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <div class="form-group"><h5 id="current-profile-pic" style="font-style: italic">Current Profile Picture</h5></div>
+                                    <img id="profile-pic-modal" class="rounded-circle mb-3 mt-4" src="assets/img/dogs/image2.jpeg" width="160" height="160">
+                                    <div class="mb-3">
+                                        <label for="profile_pic_modal" style="font-weight: bold">Choose new profile picture to upload:</label>
+                                        <br/>
+                                        <label for="profile_pic_modal" style="font-style: italic; font-size: small">* Please ensure that file type of selected image is PNG.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <form method="post" id="profile_pic_form_modal" action="http://localhost:5000/users/edit/profile-pic" enctype="multipart/form-data" onsubmit="return updateProfilePic()">
+                                        <div class="mb-3">
+                                            <input type="file" id="profile_pic_modal" name="profile_pic" accept=".png" required="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary btn-sm" type="submit">Change Photo</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal" onclick="">Close</button></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/humanbody.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script type="text/javascript">
+
+        // Alert shown after attempting to update the employee.
+        function reportAlert(){
+
+            // Confirmation message.
+            return confirm("Are you sure that the information entered is accurate. If so, then click 'OK' to update the employee. Else select 'Cancel' to review changes and make any revisions.");
+        }
+
+        function getCookie(name) {
+            // Split cookie string and get all individual name=value pairs in an array
+            var cookieArr = document.cookie.split(";");
+            
+            // Loop through the array elements
+            for(var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i];
+                
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+                if(cookiePair.trim().indexOf(name+"=") == 0) {
+                    // Decode the cookie value and return
+                    var res = cookiePair.replace(name+"=", "");
+                    return res;
+                }
+            }
+            
+            // Return null if not found
+            return null;
+        }
+        console.log("\n\n\nUserData cookie: ", JSON.parse(getCookie("userData")), "\n\n\n");
+        const userData = JSON.parse(getCookie("userData"));
+        console.log("Cookie passed to the table page:");
+        console.log(userData);
+
+        // Making a GET request for the reports associated with the specific user:
+        const xhttpRep = new XMLHttpRequest();
+        xhttpRep.open("GET", `http://localhost:5000/reports/`, false);
+        xhttpRep.setRequestHeader("Set-Cookie", JSON.stringify(userData.currEmployee));
+        xhttpRep.send();
+        // Handling response from the API for GET reports:
+        const response = JSON.parse(xhttpRep.responseText);
+        // Object that contains all the reports
+        const reports = response.results;
+        console.log("The reports related to this employee");
+        console.log(reports);
+
+        // Placing the employee information in the right fields:
+        document.getElementById('header-name').innerText =  userData.currEmployee.data.first_name + " " + userData.currEmployee.data.last_name;
+        document.getElementById('first_name').value = userData.currEmployee.data.first_name;
+        document.getElementById('last_name').value = userData.currEmployee.data.last_name;
+        document.getElementById('employee_id').value = userData.currEmployee.data.employee_id;
+        document.getElementById('occupation').value = userData.currEmployee.data.occupation;
+        document.getElementById('prev_occupation').value = userData.currEmployee.data.prev_occupation;
+        //TODO: Get the right employee name, with the employee Ref.
+        document.getElementById('supervisor_name').value = userData.currEmployee.data.supervisor_name;
+        // Filling in the Contact Info
+        document.getElementById('email').value = userData.currEmployee.data.email;
+        document.getElementById('phone').value = userData.currEmployee.data.phone;
+        document.getElementById('street-address').value = userData.currEmployee.data.address;
+        document.getElementById('city').value = userData.currEmployee.data.city;
+        document.getElementById('state').value = userData.currEmployee.data.state;
+
+        // document.getElementById('profile-pic').src = userData.currEmployee.data.profile_pic;
+        // Filling in values at top of page:
+        document.getElementById('full-name').innerText = userData.data.company_name;
+        document.getElementById('gender').value = userData.currEmployee.data.gender;
+        document.getElementById('birthday').value = userData.currEmployee.data.birthday;
+        // Setting values for the profile pic modal:
+        document.getElementById('modal-title').innerText = "Change " + userData.currEmployee.data.first_name + " " + userData.currEmployee.data.last_name + " Profile Picture";
+        document.getElementById('current-profile-pic').innerText = userData.currEmployee.data.first_name + " " + userData.currEmployee.data.last_name + " Current Profile Picture";
+
+        // Checking if the employer cookie has a previous logo picture
+        if(userData.logoPic){
+            document.getElementById('upper-logo-pic').src = userData.logoPic;
+        }
+
+        // Get the latest profile pic info and add if present:
+        let reqUrl = "http://localhost:5000/users/" + userData.currEmployee.id;
+        const reqxhttp = new XMLHttpRequest();
+        reqxhttp.open("GET", reqUrl, false);
+        reqxhttp.send();
+        let userResp = JSON.parse(reqxhttp.responseText);
+        // If the user has a profile picture in the database, then add it to the employee profile page
+        if(userResp.profilePic){
+            document.getElementById('profile-pic').src = userResp.profilePic;
+            document.getElementById('profile-pic-modal').src = userResp.profilePic;
+        }
+
+        // Correct redirect back to previous page based on the user cookie
+        function correctBack(){
+            // Checking if the previous page the user visited is the analytics page.
+            if(userData.analytics){
+                window.location.href = "index.html";
+            }
+            else{
+                window.location.href = "employees.html";
+            }
+        }
+
+        // Function used to update the employee profile picture
+        function updateProfilePic(){
+            // Making the request to add the profile picture:
+            let request = new XMLHttpRequest();
+            request.open("POST", "http://localhost:5000/users/edit/profile-pic", false);
+            userResp.id = userResp.userData.email;
+            request.setRequestHeader("Set-Cookie", JSON.stringify(userResp));
+            request.send(new FormData(document.getElementById("profile_pic_form_modal")));
+            const pictureResp = JSON.parse(request.responseText);
+
+            // Checking the message to see the status of the picture upload
+            if(pictureResp.message === "Uploaded pic"){
+                alert("The new profile picture has been successfully uploaded, please wait for a few moments for the profile picture to be updated.");
+
+                // TODO: Get the latest profile pic info for employee and update the cookie:
+                let reqUrl = "http://localhost:5000/users/" + userResp.id;
+                const reqxhttp = new XMLHttpRequest();
+                reqxhttp.open("GET", reqUrl, false);
+                reqxhttp.send();
+                let newUserResp = JSON.parse(reqxhttp.responseText);
+
+                // Updating the profile pic:
+                document.getElementById('profile-pic').src = newUserResp.profilePic;
+                document.getElementById('profile-pic-modal').src = newUserResp.profilePic;
+            }
+            else{
+                alert("Error encountered when uploading the new profile picture, please try again or select a different picture.");
+            }
+
+            return false
+        }
+
+        // If there are binary response then check the right buttons for medical history
+        if(userData.currEmployee.data.binary_responses){
+            for(let i = 0; i < userData.currEmployee.data.binary_responses.length; i++){
+                document.getElementById(userData.currEmployee.data.binary_responses[i]).checked = true;
+                document.getElementById("Y" + (i + 1).toString()).disabled = true;
+                document.getElementById("N" + (i + 1).toString()).disabled = true;
+            }
+        }
+
+        // If there are text responses then fill the right boxes for medical history
+        if(userData.currEmployee.data.text_responses){
+            for(let i = 0; i < userData.currEmployee.data.text_responses.length; i++){
+                document.getElementById("T" + (i + 1).toString()).value = userData.currEmployee.data.text_responses[i];
+                document.getElementById("T" + (i + 1).toString()).disabled = true;
+            }
+        }
+
+
+        // Function to correctly order the date to DD-MM-YYYY:
+        function fixDateOrder(date){
+            let dateArr = date.split('-');
+            return dateArr[1] + "-" + dateArr[2] + "-" + dateArr[0];
+        }
+
+
+        // Dynamically generate the table and fill with values from report from get:
+        function generate_table(){
+            let table = document.getElementById("reportTable");
+            let tblBody = document.createElement("tbody");
+
+            // For each report have one row:
+            for(let i = 0; i < reports.length; i++){
+                let row = document.createElement("tr");
+                // Adding the id cell in the table:
+                let id = document.createElement("td");
+                id.innerText = reports[i].id;
+                row.appendChild(id);
+                // Adding the date cell in the table:
+                let date = document.createElement("td");
+                date.innerText = fixDateOrder(reports[i].data.occurred_date);
+                row.appendChild(date);
+
+                // Creating the view button to open the modal:
+                let reportButton = document.createElement("td");
+                let viewButton = document.createElement("BUTTON");
+                viewButton.classList.add("btn", "btn-link", "btn-block", "btn-sm");
+                viewButton.setAttribute("data-target", "#reportModal");
+                viewButton.setAttribute("type", "button");
+                viewButton.setAttribute("data-toggle", "modal");
+                viewButton.setAttribute("onclick", "setModal(" + i.toString() + ")")
+                viewButton.innerText = "View";
+
+                reportButton.appendChild(viewButton);
+                row.appendChild(reportButton);
+
+                tblBody.appendChild(row);
+            }
+            table.appendChild(tblBody);
+        }
+
+        generate_table();
+
+        function setFollowUps(rep){
+            for(let j = 0; j < rep.results.length; j++){
+                let innerDiv = document.createElement("div");
+                innerDiv.classList.add("my-3", "card", "border-dark");
+                // Creating card div
+                let cardDiv = document.createElement("div");
+                // Creating the toggle button
+                let toggleButton = document.createElement("a");
+                toggleButton.classList.add("btn", "btn-light", "btn-block", "btn-lg", "text-left", "text-white", "bg-info" );
+                toggleButton.setAttribute("data-toggle", "collapse");
+                toggleButton.setAttribute("aria-expanded", "false");
+                toggleButton.setAttribute("aria-controls", "collapse-" + j.toString());
+                toggleButton.setAttribute("href", "#collapse-" + j.toString());
+                toggleButton.setAttribute("role", "button");
+                toggleButton.innerText = "Follow-Up Report: " + fixDateOrder(rep.results[j].data.date);
+                cardDiv.appendChild(toggleButton);
+
+                // Creating the collapse div
+                let collapseDiv = document.createElement("div");
+                collapseDiv.classList.add("collapse");
+                collapseDiv.setAttribute("id", "collapse-" + j.toString());
+
+                // Creating the container div
+                let containerDiv = document.createElement("div");
+                containerDiv.classList.add("container");
+
+                // Creating the form
+                let followUpForm = document.createElement("form");
+                followUpForm.classList.add("mt-3");
+
+                // Adding the date
+                let dateDiv = document.createElement("div");
+                dateDiv.classList.add("form-group");
+                let dateLabel = document.createElement("label");
+                dateLabel.classList.add("d-block");
+                dateLabel.innerText = "Date:";
+                dateDiv.appendChild(dateLabel);
+                let dateInput = document.createElement("input");
+                dateInput.classList.add("form-control");
+                dateInput.setAttribute("type", "date");
+                dateInput.setAttribute("disabled", "");
+                dateInput.setAttribute("readonly", "");
+                dateInput.value = rep.results[j].data.date;
+                dateDiv.appendChild(dateInput);
+                followUpForm.appendChild(dateDiv);
+
+                // Adding how do you feel?
+                let feelDiv = document.createElement("div");
+                feelDiv.classList.add("form-group");
+                let feelLabel = document.createElement("label");
+                feelLabel.classList.add("d-block");
+                feelLabel.innerText = "How do you feel since your last report?";
+                // Better button:
+                let better_div = document.createElement("div");
+                better_div.classList.add("custom-control", "disabled", "custom-radio");
+                let better_input = document.createElement("input");
+                better_input.classList.add("custom-control-input");
+                better_input.setAttribute("type", "radio");
+                better_input.setAttribute("value", "Better");
+                better_input.setAttribute("id", "formCheck-1");
+
+                if(rep.results[j].data.feeling === "Better"){
+                    better_input.setAttribute("checked", "true");
+                }
+
+                let better_label = document.createElement("label");
+                better_label.classList.add("custom-control-label");
+                better_label.setAttribute("for", "formCheck-1");
+                better_label.innerText = "Better";
+                better_div.appendChild(better_input);
+                better_div.appendChild(better_label);
+                feelDiv.appendChild(better_div);
+                // Worse button:
+                let worse_div = document.createElement("div");
+                worse_div.classList.add("custom-control", "disabled", "custom-radio");
+                let worse_input = document.createElement("input");
+                worse_input.classList.add("custom-control-input");
+                worse_input.setAttribute("type", "radio");
+                worse_input.setAttribute("value", "Worse");
+                worse_input.setAttribute("id", "formCheck-1");
+
+                if(rep.results[j].data.feeling === "Worse"){
+                    worse_input.setAttribute("checked", "true");
+                }
+
+                let worse_label = document.createElement("label");
+                worse_label.classList.add("custom-control-label");
+                worse_label.setAttribute("for", "formCheck-1");
+                worse_label.innerText = "Worse";
+                worse_div.appendChild(worse_input);
+                worse_div.appendChild(worse_label);
+                feelDiv.appendChild(worse_div);
+                // No Change button:
+                let no_change_div = document.createElement("div");
+                no_change_div.classList.add("custom-control", "disabled", "custom-radio");
+                let no_change_input = document.createElement("input");
+                no_change_input.classList.add("custom-control-input");
+                no_change_input.setAttribute("type", "radio");
+                no_change_input.setAttribute("value", "No Change");
+                no_change_input.setAttribute("id", "formCheck-1");
+
+                if(rep.results[j].data.feeling === "No Change"){
+                    no_change_input.setAttribute("checked", "true");
+                }
+
+                let no_change_label = document.createElement("label");
+                no_change_label.classList.add("custom-control-label");
+                no_change_label.setAttribute("for", "formCheck-1");
+                no_change_label.innerText = "No Change";
+                no_change_div.appendChild(no_change_input);
+                no_change_div.appendChild(no_change_label);
+                feelDiv.appendChild(no_change_div);
+                // Adding feel div to the form.
+                followUpForm.appendChild(feelDiv);
+
+                // Improvment level for user:
+                let improvement_div = document.createElement("div");
+                improvement_div.classList.add("form-group");
+                let improvement_label = document.createElement("label");
+                improvement_label.classList.add("d-block");
+                improvement_label.innerText = "Since your last report, please estimate the percentage level of improvement or worsening?";
+                improvement_div.appendChild(improvement_label);
+                let improvement_input = document.createElement("input");
+                improvement_input.classList.add("form-control");
+                improvement_input.setAttribute("type", "number");
+                improvement_input.setAttribute("name", "improvement");
+                improvement_input.setAttribute("min", "0");
+                improvement_input.setAttribute("max", "100");
+                improvement_input.setAttribute("placeholder", rep.results[j].data.improvement);
+                improvement_input.setAttribute("readonly", "");
+                improvement_div.appendChild(improvement_input);
+                let improvement_span = document.createElement("span");
+                improvement_div.appendChild(improvement_span);
+                followUpForm.appendChild(improvement_div);
+
+                // New symptoms appeared?:
+                let symptoms_div = document.createElement("div");
+                symptoms_div.classList.add("form-group");
+                let symptoms_label = document.createElement("label");
+                symptoms_label.classList.add("d-block");
+                symptoms_label.innerText = "Since your last report, have you developed new complaints or symptoms?";
+                symptoms_div.appendChild(symptoms_label);
+                // True for new symptoms:
+                let True_div = document.createElement("div");
+                True_div.classList.add("custom-control", "disabled", "custom-radio");
+                let True_input = document.createElement("input");
+                True_input.classList.add("custom-control-input");
+                True_input.setAttribute("type", "radio");
+                True_input.setAttribute("name", "new_symptoms");
+                True_input.setAttribute("value", "true");
+                True_input.setAttribute("id", "formCheck-2");
+                // Check if the user has put new syptoms in this follow up report:
+                if(rep.results[j].data.new_symptoms){
+                    True_input.setAttribute("checked", "true");
+                }
+                let True_label = document.createElement("label");
+                True_label.classList.add("custom-control-label");
+                True_label.setAttribute("for", "formCheck-2");
+                True_label.innerText = "Yes";
+                True_div.appendChild(True_input);
+                True_div.appendChild(True_label);
+                symptoms_div.appendChild(True_div);
+                // False for new symptoms:
+                let false_div = document.createElement("div");
+                false_div.classList.add("custom-control", "disabled", "custom-radio");
+                let false_input = document.createElement("input");
+                false_input.classList.add("custom-control-input");
+                false_input.setAttribute("type", "radio");
+                false_input.setAttribute("name", "new_symptoms");
+                false_input.setAttribute("value", "false");
+                false_input.setAttribute("id", "formCheck-2");
+                // Check if the user has put new syptoms in this follow up report:
+                if(!rep.results[j].data.new_symptoms){
+                    false_input.setAttribute("checked", "true");
+                }
+                let false_label = document.createElement("label");
+                false_label.classList.add("custom-control-label");
+                false_label.setAttribute("for", "formCheck-2");
+                false_label.innerText = "No";
+                false_div.appendChild(false_input);
+                false_div.appendChild(false_label);
+                symptoms_div.appendChild(false_div);
+                // Add the symptoms div to the followupform:
+                followUpForm.appendChild(symptoms_div);
+
+                // Explain Area for any changes:
+                let explain_div = document.createElement("div");
+                explain_div.classList.add("form-group");
+                let explain_label = document.createElement("label");
+                explain_label.classList.add("d-block");
+                explain_label.innerText = "If yes, please explain.";
+                let explain_area = document.createElement("textarea");
+                explain_area.classList.add("form-control");
+                explain_area.setAttribute("name", "explain");
+                explain_area.setAttribute("readonly", "");
+                explain_area.innerText = rep.results[j].data.explain;
+                explain_div.appendChild(explain_label);
+                explain_div.appendChild(explain_area);
+                // Adding the explain to the followup form
+                followUpForm.appendChild(explain_div);
+
+                containerDiv.appendChild(followUpForm);
+                collapseDiv.appendChild(containerDiv);
+                cardDiv.appendChild(collapseDiv);
+                innerDiv.appendChild(cardDiv);
+
+                document.getElementById("follow-ups").appendChild(innerDiv);
+
+            }
+        }
+
+        // Remove the previous set of follow ups from previous report.
+        function removePrevFollowUps(){
+            // Deleting all previous follow-ups:
+            let basediv = document.getElementById("follow-ups");
+            let child = basediv.lastElementChild;
+            while(child){
+                basediv.removeChild(child);
+                child = basediv.lastElementChild;
+            }
+        }
+
+
+        // Function sets the modal based on the number sent by the user:
+        function setModal(num){
+            let i = parseInt(num);
+            // Setting all the personal information of the user:
+            document.getElementById("report-id").innerText = "Injury Report - ID: " + reports[i].id;
+            document.getElementById("report-name").innerText = userData.currEmployee.data.first_name + " " + userData.currEmployee.data.last_name;
+            document.getElementById("report-email").innerText = userData.currEmployee.data.email;
+            document.getElementById("report-phone").innerText = userData.currEmployee.data.phone;
+            document.getElementById("report-address").innerText = userData.currEmployee.data.address + ",";
+            document.getElementById("report-city").innerText = userData.currEmployee.data.city + ", " + userData.currEmployee.data.state;
+            document.getElementById("report-gender").innerText = userData.currEmployee.data.gender;
+            document.getElementById("report-bod").innerText = fixDateOrder(userData.currEmployee.data.birthday);
+
+
+            document.getElementById("report-date").innerText = fixDateOrder(reports[i].data.occurred_date);
+            document.getElementById("report-time").innerText = reports[i].data.occurred_time;
+            document.getElementById("report-employee-id").innerText = userData.currEmployee.data.employee_id;
+            document.getElementById('report-company-name').innerText = userData.data.company_name;
+            document.getElementById('report-occupation').innerText = userData.currEmployee.data.occupation;
+            document.getElementById('report-supervisor').innerText = userData.currEmployee.data.supervisor_name;
+            document.getElementById('report-injury-area').innerText = reports[i].data.injury_area.toUpperCase();
+
+            // Filling in information based on whether or not injury occured at work.
+            if(reports[i].data.work_related) {
+                document.getElementById('report-work-related').innerText = "YES";
+            }
+            else{
+                document.getElementById('report-work-related').innerText = "NO";
+
+            }
+
+            // Filling in information based on whether or not injury was reported to anyone.
+            if(reports[i].data.injury_reported) {
+                document.getElementById('report-injury-reported').innerText = "YES";
+                document.getElementById('report-reportee-name').innerText = reports[i].data.reportee_name;
+                document.getElementById('report-reportee-email').innerText = reports[i].data.reportee_email;
+                document.getElementById('report-reportee-phone').innerText = reports[i].data.reportee_phone;
+                document.getElementById('report-reportee-date').innerText = fixDateOrder(reports[i].data.reportee_date);
+                document.getElementById('report-reportee-time').innerText = reports[i].data.reportee_time;
+                document.getElementById('report-reportee-relation').innerText = reports[i].data.reportee_relation;
+            }
+            else{
+                document.getElementById('report-injury-reported').innerText = "NO";
+                document.getElementById('report-reportee-name').innerText = "N/A";
+                document.getElementById('report-reportee-email').innerText = "N/A";
+                document.getElementById('report-reportee-phone').innerText = "N/A";
+                document.getElementById('report-reportee-date').innerText = "N/A";
+                document.getElementById('report-reportee-time').innerText = "N/A";
+                document.getElementById('report-reportee-relation').innerText = "N/A";
+            }
+
+            if(reports[i].data.treated_by_prevworks) {
+                document.getElementById("report-treated-before").innerText = "YES";
+                document.getElementById("report-prev-treatment-date").innerText = fixDateOrder(reports[i].data.day_treated_by_prevworks);
+            }
+            else{
+                document.getElementById("report-treated-before").innerText = "NO";
+                document.getElementById("report-prev-treatment-date").innerText = "N/A";
+            }
+
+            document.getElementById("report-injury-description").innerText = reports[i].data.injury_desc;
+            // Set the report id for hidden input in follow_up form:
+            // document.getElementById("follow_up_report_id").value = reports[i].id;
+
+
+            const xhttpFollowUp = new XMLHttpRequest();
+            xhttpFollowUp.open("GET", `http://localhost:5000/reports/`, false);
+            xhttpFollowUp.setRequestHeader("Set-Cookie", JSON.stringify(userData.currEmployee));
+            xhttpFollowUp.setRequestHeader("followup", reports[i].id);
+            xhttpFollowUp.send();
+            const rep = JSON.parse(xhttpFollowUp.responseText);
+            console.log("Here is the follow up for the report" + reports[i].id);
+            console.log(rep.results);
+
+            removePrevFollowUps();
+            setFollowUps(rep);
+        }
+    </script>
+    <script type="text/javascript">
+
+        let userData1 = JSON.parse(getCookie("userData"));
+        console.log("Cookie passed to the table page:");
+        console.log(userData1);
+        // Adding to the user details to the upper tab:
+        //document.getElementById("upper-username").innerText = userData.data.name;
+        //document.getElementById('upper-profile-pic').src = userData.data.profile_pic;
+
+        // Making a GET request for the reports associated with the specific user:
+        const xhttpRep1 = new XMLHttpRequest();
+        xhttpRep1.open("GET", `http://localhost:5000/fc/`, false);
+        xhttpRep1.setRequestHeader("Set-Cookie", JSON.stringify(userData1));
+        xhttpRep1.send();
+        // Handling response from the API for GET reports:
+        const response1 = JSON.parse(xhttpRep1.responseText);
+        // Object that contains all the reports
+        const reports1 = response1.results;
+
+        console.log(response1);
+
+        // Alert shown after submitting injury form.
+        function reportAlert(){
+            // Getting the current time:
+            let today = new Date();
+            let time = today.toLocaleTimeString();
+            document.getElementById('follow_up_time').value = time;
+            // Confirmation message.
+            if(confirm("Are you sure that the information entered is accurate. If so, then click 'OK' to submit the follow-up for the report. Else select 'Cancel' to review entered information and make any revisions.")){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+        // Function to correctly order the date to DD-MM-YYYY:
+        function fixDateOrder(date){
+            let dateArr = date.split('-');
+            let dateOutput = dateArr[1] + "-" + dateArr[2] + "-" + dateArr[0];
+            return dateOutput
+        }
+
+        function download(fc_id)
+        {
+            console.log("download frontend");
+            var xhttpRep = new XMLHttpRequest();
+            xhttpRep.open("GET", `http://localhost:5000/fc/download/` + fc_id, false);
+            xhttpRep.setRequestHeader("set-cookie", JSON.stringify(userData));
+            xhttpRep.send();
+
+            // Handling response from the API for GET reports:
+            var response = JSON.parse(xhttpRep.responseText);
+            // Object that contains all the reports
+            var url = response.url;
+            console.log(url);
+            window.open(url, "_blank"); 
+        }
+
+
+        // Dynamically generate the table and fill with values from report in user cookies:
+        function generate_table(input_reports){
+            console.log(input_reports.length);
+            let table = document.getElementById("reportTable1");
+            let tblBody = document.createElement("tbody");
+            tblBody.setAttribute("id", "fcBody");
+
+            // For each report have one row:
+            for(let i = 0; i < input_reports.length; i++){
+                let row = document.createElement("tr");
+                // Adding the date cell in the table:
+                let id = document.createElement("td");
+                id.innerText = input_reports[i].id;
+                row.appendChild(id);
+                // Adding the date cell in the table:
+                let date = document.createElement("td");
+                date.innerText = fixDateOrder(input_reports[i].data.date);
+                row.appendChild(date);
+                // Creating the view button to open the modal:
+                let reportButton = document.createElement("td");
+                let viewButton = document.createElement("BUTTON");
+                viewButton.classList.add("btn", "btn-link", "btn-block", "btn-sm");
+                viewButton.setAttribute("type", "button");
+                viewButton.setAttribute("onclick", "download(`" + input_reports[i].id + "`)")
+                viewButton.innerText = "View";
+
+                reportButton.appendChild(viewButton);
+                row.appendChild(reportButton);
+
+                tblBody.appendChild(row);
+            }
+            table.appendChild(tblBody);
+        }
+
+        function add_fc()
+        {
+            //var date = document.getElementById("fc_date").value;
+            //var file = document.getElementById("fc_file").value;
+            let request = new XMLHttpRequest();
+            request.open("POST", "http://localhost:5000/fc/create", false);
+            request.setRequestHeader("Set-Cookie", JSON.stringify(userData));
+            request.send(new FormData(document.getElementById("fc_form_create")));
+            const resp = JSON.parse(request.response);
+
+            console.log(resp);
+
+            alert("Functional Capacity report has been created. Please wait for a few seconds for the update to be made.");
+
+            //generate_table();
+           if (resp.message === "Uploaded file")
+            {
+
+                // let tblBody = document.getElementById("tbody");
+                // let row = document.createElement("tr");
+                // // Adding the date cell in the table:
+                // let id = document.createElement("td");
+                // id.innerText = resp.id;
+                // row.appendChild(id);
+                // // Adding the date cell in the table:
+                // let date = document.createElement("td");
+                // date.innerText = fixDateOrder(resp.date);
+                // row.appendChild(date);
+                // // Creating the view button to open the modal:
+                // let reportButton = document.createElement("td");
+                // let viewButton = document.createElement("BUTTON");
+                // viewButton.classList.add("btn", "btn-link", "btn-block", "btn-sm");
+                // viewButton.setAttribute("type", "button");
+                // viewButton.setAttribute("onclick", "download(`" + resp.id + "`)");
+                // viewButton.innerText = "View";
+                //
+                // reportButton.appendChild(viewButton);
+                // row.appendChild(reportButton);
+                //
+                // tblBody.appendChild(row);
+
+                const xhttpRep1 = new XMLHttpRequest();
+                xhttpRep1.open("GET", `http://localhost:5000/fc/`, false);
+                xhttpRep1.setRequestHeader("Set-Cookie", JSON.stringify(userData1));
+                xhttpRep1.send();
+                // Handling response from the API for GET reports:
+                const response1 = JSON.parse(xhttpRep1.responseText);
+                // Object that contains all the reports
+                let resp2 = response1.results;
+                document.getElementById('fcBody').remove();
+                generate_table(resp2);
+            }
+
+            return false;
+        }
+
+        generate_table(reports1);
+
+        // In case of error set picture to default picture of dog
+        function setPic(id) {
+            document.getElementById(id).src = "assets/img/dogs/image2.jpeg";
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>PrevWORKS - Report Injury</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/humanbody.css')}}">
+
+</head>
+
+<body id="page-top">
+    <input type="text" id="flag" style="visibility: hidden" value="1">
+    <div id="wrapper">
+        <nav class="
+          navbar navbar-dark
+          align-items-start
+          sidebar sidebar-dark
+          accordion
+          bg-gradient-primary
+          p-0
+        ">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="
+              navbar-brand
+              d-flex
+              justify-content-center
+              align-items-center
+              sidebar-brand
+              m-0
+            " href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <img class="d-inline float-left" src="{{url_for('static', filename='assets/img/PrevWORKS just logo.png')}}" width="37" />
+                    <div class="sidebar-brand-text mx-3"><span>PrevWorks</span></div>
+                </a>
+                <hr class="sidebar-divider my-0" />
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a
+              >
+              <a class="nav-link" href="companies"
+                ><i class="fas fa-table"></i><span>Companies</span></a
+              >
+              <a class="nav-link active" href="reportInjury"
+                ><i class="fab fa-wpforms"></i><span>Report Injury</span></a
+              >
+              <a class="nav-link" href="assessment"
+                ><i class="fas fa-tachometer-alt"></i
+                ><span>Health Assesment</span></a
+              >
+              <a class="nav-link" href="table"
+                ><i class="fas fa-table"></i><span>Injuries</span></a
+              >
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" data-toggle="dropdown" href="#"
+                >My Company Tools<i class="caret"></i
+              ></a>
+                        <ul class="dropdown-menu" class="nav navbar-nav text-light" id="accordionSidebar">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="analytics.html"><i class="fas fa-tachometer-alt"></i
+                    ><span>Analytics</span></a
+                  >
+                  <a class="nav-link" href="employees"
+                    ><i class="fas fa-table"></i><span>Employees</span></a
+                  >
+                  <a class="nav-link" href="injuries"
+                    ><i class="fab fa-wpforms"></i
+                    ><span>Injury Reports</span></a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="login"
+                ><i class="far fa-user-circle"></i><span>Logout</span></a
+              >
+            </li>
+            <li class="nav-item" role="presentation"></li>
+          </ul>
+          <div class="text-center d-none d-md-inline">
+            <button
+              class="btn rounded-circle border-0"
+              id="sidebarToggle"
+              type="button"
+            ></button>
+          </div>
+        </div>
+      </nav>
+      <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+          <nav
+            class="
+              navbar navbar-light navbar-expand
+              bg-white
+              shadow
+              mb-4
+              topbar
+              static-top
+            "
+          >
+            <div class="container-fluid">
+              <button
+                class="btn btn-link d-md-none rounded-circle mr-3"
+                id="sidebarToggleTop"
+                type="button"
+              >
+                <i class="fas fa-bars"></i>
+              </button>
+              <ul class="nav navbar-nav flex-nowrap ml-auto">
+                <li class="nav-item dropdown d-sm-none no-arrow">
+                  <a
+                    class="dropdown-toggle nav-link"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                    href="#"
+                    ><i class="fas fa-search"></i
+                  ></a>
+                                <div class="
+                      dropdown-menu dropdown-menu-right
+                      p-3
+                      animated--grow-in
+                    " role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group">
+                                            <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..." />
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary py-0" type="button">
+                            <i class="fas fa-search"></i>
+                          </button>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown no-arrow" role="presentation">
+                                    <div class="nav-item dropdown no-arrow">
+                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
+                                            <span id="full-name" class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span>
+                                            <img id="upper-profile-pic" class="border rounded-circle img-profile" src="../static/assets/img/dogs/image2.jpeg" />
+                                        </a>
+                                        <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                            <a class="dropdown-item" role="presentation" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span
+                        id="full-name"
+                        class="d-none d-lg-inline mr-2 text-gray-600 small"
+                        >Valerie Luna</span
+                      ><img
+                        id="upper-profile-pic"
+                        class="border rounded-circle img-profile"
+                        src="{{url_for('static', filename='assets/img/dogs/image2.jpeg')}}"
+                    /></a>
+                                    <div class="
+                        dropdown-menu
+                        shadow
+                        dropdown-menu-right
+                        animated--grow-in
+                      " role="menu">
+                                        <a class="dropdown-item" role="presentation" href="profile"><i
+                          class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"
+                        ></i
+                        >&nbsp;Profile</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" role="presentation" href="#"
+                        ><i
+                          class="
+                            fas
+                            fa-sign-out-alt fa-sm fa-fw
+                            mr-2
+                            text-gray-400
+                          "
+                        ></i
+                        >&nbsp;Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="container-fluid" style="padding: 24px 24px">
+            <h3 class="text-dark mb-4">Contact Tracing Form</h3>
+            <div class="card"></div>
+            <div class="card shadow mb-5"></div>
+            <form
+              class="bootstrap-form-with-validation"
+              action="/send-report"
+              method="post"
+              onsubmit="return reportAlert()"
+            >
+              <h2 class="text-center"></h2>
+
+              <div class="form-row mb-3">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="text-input"
+                          >What Company Are You Reporting To?</label
+                        >
+                        <div>
+                          <a
+                            class="btn btn-secondary btn-block mb-3"
+                            data-toggle="collapse"
+                            aria-expanded="false"
+                            aria-controls="collapse-1"
+                            href="#collapse-1"
+                            role="button"
+                            >Search Filters<i
+                              class="fas fa-sort-down d-block mt-0 pt-0"
+                              style="font-size: 20px"
+                            ></i
+                          ></a>
+                                        <div class="collapse" id="collapse-1">
+                                            <form onsubmit="return searchCompanies()">
+                                                <div class="form-row mt-2 mb-5">
+                                                    <div class="col">
+                                                        <div class="form-group"><label
+                                                                for="search-company-name"><strong>Company
+                                                                    Name</strong></label><input class="form-control"
+                                                                type="search" placeholder="FedEx"
+                                                                name="search-company-name" id="search-company-name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label
+                                                                for="search-company-id"><strong>Company
+                                                                    ID</strong></label><input class="form-control"
+                                                                type="search" placeholder="xxxxxx"
+                                                                name="search-company-id" id="search-company-id"></div>
+                                                        <button class="btn btn-dark float-right" type="submit"><i
+                                                                class="fa fa-search mr-2"></i>Search&nbsp;&nbsp;</button>
+                                                        <button class="btn btn-light float-right mr-3" type="reset"
+                                                            onclick="return clearSearch()"><i
+                                                                class="fa fa-close mr-2"></i>Clear&nbsp;&nbsp;</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                            
+                                    </div>
+                                    <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group"><label for="text-input">When were you diagnosed with COVID-19?</label>
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <div class="form-group"><label for="vaccine_type"><strong>Test Type</strong></label><select class="form-control" id="vaccine_type" name="vaccine_type">
+                                                <optgroup label="Select one:">
+                                                    <option value="pcr">PCR</option>
+                                                    <option value="antigen">Antigen</option>
+                                                </optgroup></select></div>
+                                            </div>
+                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="date_input"></div>
+                                            <div class="col"><label class="d-block" for="date_input">Time</label><input class="form-control d-inline" type="time" name="date_input"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><label for="text-input">If applicable, when did you receive your COVID-19 vaccine?</label>
+                                        <div class="form-row">
+                                            <div class="col"><label for="password-input">Brand</label><input name="supervisor_name" class="form-control" type="text" placeholder="Brand" /></div>
+                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="date_input"></div>
+                                            <div class="col"><label class="d-block" for="date_input">Time</label><input class="form-control d-inline" type="time" name="date_input"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><label for="text-input">If applicable, when did you receive your COVID-19 booster?</label>
+                                        <div class="form-row">
+                                            <div class="col"><label for="password-input">Brand</label><input name="supervisor_name" class="form-control" type="text" placeholder="Brand" /></div>
+                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="date_input"></div>
+                                            <div class="col"><label class="d-block" for="date_input">Time</label><input class="form-control d-inline" type="time" name="date_input"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <div class="card" style="margin-bottom: 20px">
+                                <div class="card-body">
+                                    <label class="text-left d-block m-auto" for="password-input" style="padding-bottom: 20; margin-bottom: 20;">Who were you in contact with over the past 2 weeks?</label>
+                                    <hr />
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Person #1</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Person #2</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Person #3</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Person #4</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Person #5</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="margin-bottom: 20px">
+                                <div class="card-body">
+                                    <label class="text-left d-block m-auto" for="password-input" style="padding-bottom: 20; margin-bottom: 20;">What places have you been the past 2 weeks?</label>
+                                    <hr />
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Location #1</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Location #2</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Location #3</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Location #4</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="text-left d-block" for="password-input" style="padding-bottom: 20; margin-bottom: 20; font-weight: bold">Location #5</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="form-group"><label for="textarea-input">Additional Notes&nbsp;</label><textarea class="form-control" id="textarea-input" name="injury_description"></textarea></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block btn-lg d-flex flex-grow-1 justify-content-center flex-nowrap m-auto" type="submit">
+                            <a href="covid_info_page" style="color: white;">Submit</a>
+                        </button>
+                    </div>
+                        </form>
+                    </div>
+                </div>
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright">
+                            <span>Copyright © Prevworks 2020</span>
+                        </div>
+                    </div>
+                </footer>
+        </form>
+    </div>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/chart.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/bs-init.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{url_for('static', filename='assets/js/humanbody.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/theme.js')}}"></script>
+
+    <script type="text/javascript">
+      // Alert shown after submitting injury form.
+      function reportAlert() {
+        // Provide an update on the injury type before submission.
+        document.getElementById("injury-type").value =
+          document.getElementById("data").innerText;
+
+        // Confirmation message.
+        if (
+          confirm(
+            "Are you sure that the information entered is accurate. If so, then click 'OK' to confirm submission. Else select 'Cancel' to review entries and make any revisions."
+          )
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      // Setting all the values.
+      function getCookie(name) {
+        // Split cookie string and get all individual name=value pairs in an array
+        var cookieArr = document.cookie.split(";");
+
+        // Loop through the array elements
+        for (var i = 0; i < cookieArr.length; i++) {
+          var cookiePair = cookieArr[i];
+
+                // Confirmation message.
+                if (confirm("Are you sure that the information entered is accurate. If so, then click 'OK' to confirm submission. Else select 'Cancel' to review entries and make any revisions.")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            // Setting all the values.
+            function getCookie(name) {
+                // Split cookie string and get all individual name=value pairs in an array
+                var cookieArr = document.cookie.split(";");
+
+                // Loop through the array elements
+                for (var i = 0; i < cookieArr.length; i++) {
+                    var cookiePair = cookieArr[i];
+
+                    /* Removing whitespace at the beginning of the cookie name
+                   and compare it with the given string */
+                    if (cookiePair.trim().indexOf(name + "=") == 0) {
+                        // Decode the cookie value and return
+                        var res = cookiePair.replace(name + "=", "");
+                        return res;
+                    }
+                }
+
+                // Return null if not found
+                return null;
+            }
+
+            const userData = JSON.parse(getCookie("userData"));
+            /*
+         // Filling in the Personal Info
+         document.getElementById("first-name").value = userData.data.first_name;
+         document.getElementById("last-name").value = userData.data.last_name;
+         document.getElementById("gender").value = userData.data.gender;
+         document.getElementById("birth-date").value = userData.data.birthday;
+         // Filling in the Employment Info
+         document.getElementById("company-name").value =
+           userData.data.company_name;
+         document.getElementById("employee-id").value = userData.data.employee_id;
+         document.getElementById("occupation").value = userData.data.occupation;
+         //TODO: Get the right employee name, with the employee Ref.
+         document.getElementById("supervisor").value =
+           userData.data.supervisor_name;
+         // Filling in the Contact Info
+         document.getElementById("email").value = userData.data.email;
+         document.getElementById("phone").value = userData.data.phone;
+         document.getElementById("street-address").value = userData.data.address;
+         document.getElementById("city").value =
+           userData.data.city + ", " + userData.data.state;
+         
+         // Filling in values at top of page.
+         document.getElementById("full-name").innerText =
+           userData.data.first_name + " " + userData.data.last_name;
+         
+         // If a profile pic has been previously uploaded by user than include on the page.
+         if (userData.profilePic) {
+           document.getElementById("upper-profile-pic").src = userData.profilePic;
+         }
+         */
+        </script>
+    </body>
+</html>

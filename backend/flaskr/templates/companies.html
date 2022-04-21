@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PrevWORKS - Company Profile</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/fontawesome5-overrides.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/humanbody.css')}}">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div><img class="d-inline float-left"
+                        src="{{url_for('static', filename='assets/img/PrevWORKS just logo.png')}}" width="37">
+                    <div class="sidebar-brand-text mx-3"><span>PrevWorks</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="userProfile"><i class="fas fa-user"></i><span>Profile</span></a> 
+                        <a class="nav-link active" href="companies"><i class="fas fa-table"></i><span>Companies</span></a> 
+                        <a class="nav-link" href="reportInjury"><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
+                        <a class="nav-link" href="assessment"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
+                        <a class="nav-link" href="table"><i class="fas fa-table"></i><span>Injuries</span></a>
+                    </li>
+                        <!-- <li class="nav-item has-submenu">
+                            <a class="nav-link" href="#"> Submenu links  </a>
+                            <ul class="submenu collapse">
+                                <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                            </ul>
+                        </li> -->
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-toggle="dropdown" href="#">My Company Tools<i class="caret"></i></a>
+                        <ul class="dropdown-menu" class="nav navbar-nav text-light" id="accordionSidebar">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="analytics"><i class="fas fa-tachometer-alt"></i><span>Analytics</span></a>
+                                <a class="nav-link" href="employees"><i class="fas fa-table"></i><span>Employees</span></a>
+                                <a class="nav-link" href="injuries"><i class="fab fa-wpforms"></i><span>Injury Reports</span></a>
+                            </li>
+                            <!-- <li><a href="#">Page 1-1</a></li>
+                            <li><a href="#">Page 1-2</a></li>
+                            <li><a href="#">Page 1-3</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login"><i class="far fa-user-circle"></i><span>Logout</span></a></li>
+                <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
+                            id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
+                                    data-toggle="dropdown" aria-expanded="false" href="#"><i
+                                        class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu"
+                                    aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small"
+                                                type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0"
+                                                    type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        data-toggle="dropdown" aria-expanded="false" href="#"><span
+                                            class="d-none d-lg-inline mr-2 text-gray-600 small" id="full-name">Valerie
+                                            Luna</span><img class="border rounded-circle img-profile"
+                                            id="upper-logo-pic" src="{{url_for('static', filename='assets/img/dogs/image2.jpeg')}}"
+                                            onerror="setPic('upper-logo-pic')"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="companyProfile"><i
+                                                class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
+                                        <a class="dropdown-item" role="presentation" href="index"><i
+                                                class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Analytics</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation"
+                                            href="#"><i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid" style="padding: 24px 24px ;">
+                    <h3 class="text-dark mb-4">Companies</h3>
+                </div>
+                <div class="col-lg-11">
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Companies Employed At</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div><a class="btn btn-secondary btn-block mb-3" data-toggle="collapse"
+                                            aria-expanded="false" aria-controls="collapse-1" href="#collapse-1"
+                                            role="button">Search Filters<i class="fas fa-sort-down d-block mt-0 pt-0"
+                                                style="font-size: 20px;"></i></a>
+                                        <div class="collapse" id="collapse-1">
+                                            <form onsubmit="return searchCompanies()">
+                                                <div class="form-row mt-2 mb-5">
+                                                    <div class="col">
+                                                        <div class="form-group"><label
+                                                                for="search-company-name"><strong>Company
+                                                                    Name</strong></label><input class="form-control"
+                                                                type="search" placeholder="FedEx"
+                                                                name="search-company-name" id="search-company-name">
+                                                        </div>
+                                                        <div class="form-group"><label
+                                                                for="search-industry-type"><strong>Industry
+                                                                    Type</strong></label><select class="form-control"
+                                                                type="search" placeholder="" name="search-industry-type"
+                                                                id="search-industry-type">
+                                                                <optgroup label="Select one:">
+                                                                    <option value="aerospace">Aerospace</option>
+                                                                    <option value="agriculture">Agriculture</option>
+                                                                    <option value="construction">Construction</option>
+                                                                    <option value="education">Education</option>
+                                                                    <option value="entertainment">Entertainment</option>
+                                                                    <option value="hospitality">Hospitality</option>
+                                                                    <option value="information technology">Information
+                                                                        Technology</option>
+                                                                    <option value="manufacturing">Manufacturing</option>
+                                                                    <option value="management">Management</option>
+                                                                    <option value="business">Business</option>
+                                                                    <option value="financial">Financial</option>
+                                                                    <option value="computer">Computer</option>
+                                                                    <option value="engineering">Engineering</option>
+                                                                    <option value="science">Science</option>
+                                                                    <option value="legal">Legal</option>
+                                                                    <option value="community service">Community Service
+                                                                    </option>
+                                                                    <option value="art">Art</option>
+                                                                    <option value="media">Media</option>
+                                                                    <option value="healthcare practitioner">Healthcare
+                                                                        Practitioner</option>
+                                                                    <option value="technical">Technical</option>
+                                                                    <option value="service">Service</option>
+                                                                    <option value="sales">Sales</option>
+                                                                    <option value="office">Office</option>
+                                                                    <option value="administrative support">
+                                                                        Administrative Support</option>
+                                                                    <option value="farming">Farming</option>
+                                                                    <option value="fishing">Fishing</option>
+                                                                    <option value="forestry">Forestry</option>
+                                                                    <option value="extraction">Extraction</option>
+                                                                    <option value="installation">Installation</option>
+                                                                    <option value="maintenance">Maintenance</option>
+                                                                    <option value="repair">Repair</option>
+                                                                    <option value="production">Production</option>
+                                                                    <option value="transportation">Transportation
+                                                                    </option>
+                                                                </optgroup>
+                                                            </select></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label
+                                                                for="search-company-id"><strong>Company
+                                                                    ID</strong></label><input class="form-control"
+                                                                type="search" placeholder="xxxxxx"
+                                                                name="search-company-id" id="search-company-id"></div>
+                                                        <div class="form-group"><label
+                                                                for="search-country"><strong>Country</strong></label><input
+                                                                class="form-control" type="search" placeholder="USA"
+                                                                name="search-country" id="search-country"></div>
+                                                        <button class="btn btn-dark float-right" type="submit"><i
+                                                                class="fa fa-search mr-2"></i>Search&nbsp;&nbsp;</button>
+                                                        <button class="btn btn-light float-right mr-3" type="reset"
+                                                            onclick="return clearSearch()"><i
+                                                                class="fa fa-close mr-2"></i>Clear&nbsp;&nbsp;</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="comapniesEmployedAtTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Logo</th>
+                                            <th>ID</th>
+                                            <th>Company Name</th>
+                                            <th>Industry</th>
+                                            <th>Country</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class='clickable-row' data-href='/companyProfile'>
+                                            <td><img src="{{url_for('static', filename='assets/img/dogs/image2.jpeg')}}" id="logo-pic" width="30"
+                                                    height="30" onerror="setPic('logo-pic')"></td>
+                                            <td><strong>ID</strong></td>
+                                            <td><strong>Company Name</strong></td>
+                                            <td><strong>Industry</strong></td>
+                                            <td><strong>Country</strong></td>
+                                            <td><strong></strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Companies Owned</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div><a class="btn btn-secondary btn-block mb-3" data-toggle="collapse"
+                                            aria-expanded="false" aria-controls="collapse-2" href="#collapse-2"
+                                            role="button">Search Filters<i class="fas fa-sort-down d-block mt-0 pt-0"
+                                                style="font-size: 20px;"></i></a>
+                                        <div class="collapse" id="collapse-2">
+                                            <form onsubmit="return searchCompanies()">
+                                                <div class="form-row mt-2 mb-5">
+                                                    <div class="col">
+                                                        <div class="form-group"><label
+                                                                for="search-company-name"><strong>Company
+                                                                    Name</strong></label><input class="form-control"
+                                                                type="search" placeholder="FedEx"
+                                                                name="search-company-name" id="search-company-name">
+                                                        </div>
+                                                        <div class="form-group"><label
+                                                                for="search-industry-type"><strong>Industry
+                                                                    Type</strong></label><select class="form-control"
+                                                                type="search" placeholder="" name="search-industry-type"
+                                                                id="search-industry-type">
+                                                                <optgroup label="Select one:">
+                                                                    <option value="aerospace">Aerospace</option>
+                                                                    <option value="agriculture">Agriculture</option>
+                                                                    <option value="construction">Construction</option>
+                                                                    <option value="education">Education</option>
+                                                                    <option value="entertainment">Entertainment</option>
+                                                                    <option value="hospitality">Hospitality</option>
+                                                                    <option value="information technology">Information
+                                                                        Technology</option>
+                                                                    <option value="manufacturing">Manufacturing</option>
+                                                                    <option value="management">Management</option>
+                                                                    <option value="business">Business</option>
+                                                                    <option value="financial">Financial</option>
+                                                                    <option value="computer">Computer</option>
+                                                                    <option value="engineering">Engineering</option>
+                                                                    <option value="science">Science</option>
+                                                                    <option value="legal">Legal</option>
+                                                                    <option value="community service">Community Service
+                                                                    </option>
+                                                                    <option value="art">Art</option>
+                                                                    <option value="media">Media</option>
+                                                                    <option value="healthcare practitioner">Healthcare
+                                                                        Practitioner</option>
+                                                                    <option value="technical">Technical</option>
+                                                                    <option value="service">Service</option>
+                                                                    <option value="sales">Sales</option>
+                                                                    <option value="office">Office</option>
+                                                                    <option value="administrative support">
+                                                                        Administrative Support</option>
+                                                                    <option value="farming">Farming</option>
+                                                                    <option value="fishing">Fishing</option>
+                                                                    <option value="forestry">Forestry</option>
+                                                                    <option value="extraction">Extraction</option>
+                                                                    <option value="installation">Installation</option>
+                                                                    <option value="maintenance">Maintenance</option>
+                                                                    <option value="repair">Repair</option>
+                                                                    <option value="production">Production</option>
+                                                                    <option value="transportation">Transportation
+                                                                    </option>
+                                                                </optgroup>
+                                                            </select></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label
+                                                                for="search-company-id"><strong>Company
+                                                                    ID</strong></label><input class="form-control"
+                                                                type="search" placeholder="xxxxxx"
+                                                                name="search-company-id" id="search-company-id"></div>
+                                                        <div class="form-group"><label
+                                                                for="search-country"><strong>Country</strong></label><input
+                                                                class="form-control" type="search" placeholder="USA"
+                                                                name="search-country" id="search-country"></div>
+                                                        <button class="btn btn-dark float-right" type="submit"><i
+                                                                class="fa fa-search mr-2"></i>Search&nbsp;&nbsp;</button>
+                                                        <button class="btn btn-light float-right mr-3" type="reset"
+                                                            onclick="return clearSearch()"><i
+                                                                class="fa fa-close mr-2"></i>Clear&nbsp;&nbsp;</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="companiesOwnedTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Logo</th>
+                                            <th>ID</th>
+                                            <th>Company Name</th>
+                                            <th>Industry</th>
+                                            <th>Country</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td><img src="{{url_for('static', filename='assets/img/dogs/image2.jpeg')}}" id="logo-pic" width="30"
+                                                    height="30" onerror="setPic('logo-pic')"></td>
+                                            <td><strong>ID</strong></td>
+                                            <td><strong>Company Name</strong></td>
+                                            <td><strong>Industry</strong></td>
+                                            <td><strong>Country</strong></td>
+                                            <td><strong></strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4"><a class="btn btn-light btn-block btn-sm text-light bg-primary p-3"
+                                data-toggle="collapse" aria-expanded="false" aria-controls="collapse-3"
+                                href="#collapse-3" role="button" style="font-size: 16px;"><strong>Create
+                                    a New Company</strong></a>
+                            <div class="collapse" id="collapse-3">
+                                <div class="card shadow mb-5">
+                                    <div class="card-body">
+                                        <form action="/create-company" method="post" onsubmit="return reportAlert()">
+                                            <div class="form-row mb-3">
+                                                <div class="col-lg-6">
+                                                    <div class="card shadow mb-3">
+                                                        <div class="card-header py-3">
+                                                            <p class="text-primary m-0 font-weight-bold">
+                                                                Mailing Address</p>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <form action="/edit-employer" method="post"
+                                                                onsubmit="return reportAlert()">
+                                                                <div class="form-row">
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label
+                                                                                for="street_1"><strong>Street
+                                                                                    Address</strong></label><input
+                                                                                class="form-control mb-3" type="text"
+                                                                                placeholder="Street Address"
+                                                                                name="street_1" id="street_1"><input
+                                                                                class="form-control" type="text"
+                                                                                placeholder="Unit #" name="street_2"
+                                                                                id="street_2"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label
+                                                                                for="city"><strong>City</strong></label><input
+                                                                                class="form-control" type="text"
+                                                                                placeholder="Los Angeles" name="city"
+                                                                                id="city"></div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-group"><label
+                                                                                for="country"><strong>State</strong></label><input
+                                                                                class="form-control" type="text"
+                                                                                placeholder="CA" name="state"
+                                                                                id="state">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="form-row">
+                                                                        <div class="col">
+                                                                            <div class="form-group"><label
+                                                                                    for="city"><strong>Country</strong></label><input
+                                                                                    class="form-control" type="text"
+                                                                                    placeholder="USA"
+                                                                                    name="country_mail"
+                                                                                    id="country_mail"></div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div class="form-group"><label
+                                                                                    for="country"><strong>Zipcode</strong></label><input
+                                                                                    class="form-control" type="text"
+                                                                                    placeholder="90007" name="zipcode"
+                                                                                    id="zipcode">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="card shadow mb-3">
+                                                        <div class="card-header py-3">
+                                                            <p class="text-primary m-0 font-weight-bold">
+                                                                Company Info</p>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label for="name"><strong>Company
+                                                                                Name</strong></label><input
+                                                                            class="form-control" type="text"
+                                                                            placeholder="Fedex" name="company_name"
+                                                                            id="company_name">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="country"><strong>Country</strong></label><input
+                                                                            class="form-control" type="text"
+                                                                            placeholder="USA" name="country"
+                                                                            id="country">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="col">
+                                                                        <div class="form-group">
+                                                                            <label for="industry"><strong>Industry
+                                                                                    Type</strong></label><select
+                                                                                class="form-control" id="industry"
+                                                                                name="industry">
+                                                                                <optgroup label="Select one:">
+                                                                                    <option value="aerospace">
+                                                                                        Aerospace
+                                                                                    </option>
+                                                                                    <option value="agriculture">
+                                                                                        Agriculture
+                                                                                    </option>
+                                                                                    <option value="construction">
+                                                                                        Construction
+                                                                                    </option>
+                                                                                    <option value="education">
+                                                                                        Education
+                                                                                    </option>
+                                                                                    <option value="entertainment">
+                                                                                        Entertainment
+                                                                                    </option>
+                                                                                    <option value="hospitality">
+                                                                                        Hospitality
+                                                                                    </option>
+                                                                                    <option
+                                                                                        value="information technology">
+                                                                                        Information
+                                                                                        Technology
+                                                                                    </option>
+                                                                                    <option value="manufacturing">
+                                                                                        Manufacturing
+                                                                                    </option>
+                                                                                    <option value="management">
+                                                                                        Management
+                                                                                    </option>
+                                                                                    <option value="business">
+                                                                                        Business
+                                                                                    </option>
+                                                                                    <option value="financial">
+                                                                                        Financial
+                                                                                    </option>
+                                                                                    <option value="computer">
+                                                                                        Computer
+                                                                                    </option>
+                                                                                    <option value="engineering">
+                                                                                        Engineering
+                                                                                    </option>
+                                                                                    <option value="science">
+                                                                                        Science
+                                                                                    </option>
+                                                                                    <option value="legal">
+                                                                                        Legal
+                                                                                    </option>
+                                                                                    <option value="community service">
+                                                                                        Community
+                                                                                        Service
+                                                                                    </option>
+                                                                                    <option value="art">
+                                                                                        Art
+                                                                                    </option>
+                                                                                    <option value="media">
+                                                                                        Media
+                                                                                    </option>
+                                                                                    <option
+                                                                                        value="healthcare practitioner">
+                                                                                        Healthcare
+                                                                                        Practitioner
+                                                                                    </option>
+                                                                                    <option value="technical">
+                                                                                        Technical
+                                                                                    </option>
+                                                                                    <option value="service">
+                                                                                        Service
+                                                                                    </option>
+                                                                                    <option value="sales">
+                                                                                        Sales
+                                                                                    </option>
+                                                                                    <option value="office">
+                                                                                        Office
+                                                                                    </option>
+                                                                                    <option
+                                                                                        value="administrative support">
+                                                                                        Administrative
+                                                                                        Support
+                                                                                    </option>
+                                                                                    <option value="farming">
+                                                                                        Farming
+                                                                                    </option>
+                                                                                    <option value="fishing">
+                                                                                        Fishing
+                                                                                    </option>
+                                                                                    <option value="forestry">
+                                                                                        Forestry
+                                                                                    </option>
+                                                                                    <option value="extraction">
+                                                                                        Extraction
+                                                                                    </option>
+                                                                                    <option value="installation">
+                                                                                        Installation
+                                                                                    </option>
+                                                                                    <option value="maintenance">
+                                                                                        Maintenance
+                                                                                    </option>
+                                                                                    <option value="repair">
+                                                                                        Repair
+                                                                                    </option>
+                                                                                    <option value="production">
+                                                                                        Production
+                                                                                    </option>
+                                                                                    <option value="transportation">
+                                                                                        Transportation
+                                                                                    </option>
+                                                                                </optgroup>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="phone"><strong>Phone</strong></label><input
+                                                                                class="form-control" type="tel"
+                                                                                placeholder="XXX-XXX-XXXX" id="phone"
+                                                                                name="phone">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="col"><button
+                                                                class="btn btn-primary btn-block btn-lg"
+                                                                type="submit">Create Company</button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                                <!-- <div class="form-row">
+                            <div class="col"><button class="btn btn-primary btn-block btn-lg"
+                                    type="submit">Add Company</button></div>
+                        </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Prevworks 2020</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <div class="modal fade text-left" role="dialog" tabindex="-1" id="logoPicModal">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center d-xl-flex m-auto">
+                    <h4 class="modal-title text-center d-xl-flex" id="modal-title">Change Logo Picture</h4><button
+                        type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=""><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card border-dark">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <div class="form-group">
+                                        <h5 id="current-logo-pic" style="font-style: italic">Current logo Picture</h5>
+                                    </div>
+                                    <img id="logo-pic-modal" class="rounded-circle mb-3 mt-4"
+                                        src="{{url_for('static', filename='assets/img/dogs/image2.jpeg')}}" width="160" height="160"
+                                        onerror="setPic('logo-pic-modal')">
+                                    <div class="mb-3">
+                                        <label for="logo_pic_modal" style="font-weight: bold">Choose new logo picture to
+                                            upload:</label>
+                                        <br />
+                                        <label for="logo_pic_modal" style="font-style: italic; font-size: small">*
+                                            Please ensure that file type of selected image is PNG.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <form method="post" id="logo_pic_form_modal"
+                                        action="http://localhost:5000/users/edit/logo-pic" enctype="multipart/form-data"
+                                        onsubmit="return updateLogoPic()">
+                                        <div class="mb-3">
+                                            <input type="file" id="logo_pic_modal" name="logo_pic" accept=".png"
+                                                required="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary btn-sm" type="submit">Change Logo</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal"
+                        onclick="">Close</button></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/chart.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/bs-init.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{url_for('static', filename='assets/js/humanbody.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/theme.js')}}"></script>
+    <script type="text/javascript">
+        // Setting the field values using different items from the cookie
+        function getCookie(name) {
+            // Split cookie string and get all individual name=value pairs in an array
+            var cookieArr = document.cookie.split(";");
+
+            // Loop through the array elements
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i];
+
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+                if (cookiePair.trim().indexOf(name + "=") == 0) {
+                    // Decode the cookie value and return
+                    var res = cookiePair.replace(name + "=", "");
+                    return res;
+                }
+            }
+
+            // Return null if not found
+            return null;
+        }
+        const userData = JSON.parse(getCookie("userData"));
+        console.log("Cookie passed to the profile page");
+        console.log(userData);
+
+        // Account Settings
+        document.getElementById('email').value = userData.data.email;
+        document.getElementById('password').value = userData.data.password;
+        // Company Info
+        document.getElementById('company_name').value = userData.data.company_name;
+        document.getElementById('country').value = userData.data.country;
+        document.getElementById('phone').value = userData.data.phone;
+        document.getElementById('industry').value = userData.data.industry;
+        // Mailing Address
+        document.getElementById('street_1').value = userData.data.street_1;
+        document.getElementById('street_2').value = userData.data.street_2;
+        document.getElementById('city').value = userData.data.city;
+        document.getElementById('state').value = userData.data.state;
+        document.getElementById('country_mail').value = userData.data.country_mail;
+        document.getElementById('zipcode').value = userData.data.zipcode;
+
+        document.getElementById('full-name').innerText = userData.data.company_name;
+
+        // Checking if the employer cookie has a previous logo picture
+        if (userData.logoPic) {
+            document.getElementById('upper-logo-pic').src = userData.logoPic;
+            document.getElementById('logo-pic').src = userData.logoPic;
+            document.getElementById('logo-pic-modal').src = userData.logoPic;
+
+        }
+
+        // Function to check if the passwords entered by the user are the same
+        function checkPassword() {
+            if (document.getElementById('password').value.length === 0) {
+                alert('Please enter a value for the password!');
+                return false;
+            }
+            else if (document.getElementById('password').value === document.getElementById('retype-password').value) {
+                return reportAlert();
+            }
+            else {
+                alert('Passwords do not match! Please enter the same password in both fields!');
+                return false;
+            }
+        }
+
+        // Alert shown after attempting to update the employee.
+        function reportAlert() {
+
+            // Confirmation message.
+            if (confirm("Are you sure that the information entered is accurate. If so, then click 'OK' to edit the employer profile. Else select 'Cancel' to review changes and make any revisions.")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function updateLogoPic() {
+            // Making the request to add the profile picture:
+            let request = new XMLHttpRequest();
+            request.open("POST", "http://localhost:5000/users/edit/logo-pic", false);
+            request.setRequestHeader("Set-Cookie", JSON.stringify(userData));
+            request.send(new FormData(document.getElementById("logo_pic_form_modal")));
+            const pictureResp = JSON.parse(request.responseText);
+
+            // Checking the message to see the status of the picture upload
+            if (pictureResp.message === "Uploaded pic") {
+                alert("The new profile picture has been successfully uploaded, please wait for a few moments for the profile picture to be updated.");
+
+                // TODO: Get the latest logo pic info and update the cookie:
+                let reqUrl = "http://localhost:5000/users/employer/" + userData.id;
+                const reqxhttp = new XMLHttpRequest();
+                reqxhttp.open("GET", reqUrl, false);
+                reqxhttp.send();
+                let userResp = JSON.parse(reqxhttp.responseText);
+                console.log(userResp.logoPic);
+
+                // // Updating the profile pic:
+                document.getElementById('logo-pic').src = userResp.logoPic;
+                document.getElementById('upper-logo-pic').src = userResp.logoPic;
+                document.getElementById('logo-pic-modal').src = userResp.logoPic;
+                //
+                // Updating the cookie to include new profile picture:
+                userData.logoPic = userResp.logoPic;
+                document.cookie = "userData=" + JSON.stringify(userData);
+            }
+            else {
+                alert("Error encountered when uploading the new profile picture, please try again or select a different picture.");
+            }
+
+
+            return false
+        }
+
+        // In case of error set picture to default picture of dog
+        function setPic(id) {
+            document.getElementById(id).src = "{{url_for('static', filename='assets/img/dogs/image2.jpeg')}}";
+        }
+
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+
+</body>
+
+</html>
