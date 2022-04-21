@@ -21,3 +21,8 @@ export FLASK_APP=flaskr
 
 flask run
 ```
+
+
+## Database Local Setup 
+
+setup Local SQL Server and run all sql files to create tables in the database
