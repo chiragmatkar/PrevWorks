@@ -25,6 +25,12 @@ flask run
 
 ## Database Local Setup 
 
-setup Local SQL Server and run all sql files to create tables in the database
+setup mysql files and run those files to create tables in the database
+
+
+## Postgresql Migration 
+Project is currently being migrated to postgresql)
 
 ## Heroku Deployment
+
+https://prevworks.herokuapp.com/
