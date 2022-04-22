@@ -29,8 +29,6 @@ cb4f808b-3fcf-11ec-938e-12a7b1409b34:1-53194';
 --
 
 DROP TABLE IF EXISTS `injury`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `injury` (
   `injuryId` int NOT NULL AUTO_INCREMENT,
   `dateOccured` datetime NOT NULL,
@@ -48,9 +46,7 @@ CREATE TABLE `injury` (
   `userId` int NOT NULL,
   `companyId` int DEFAULT NULL,
   PRIMARY KEY (`injuryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=1045 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
+)
 --
 -- Dumping data for table `injury`
 --
