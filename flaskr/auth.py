@@ -50,7 +50,7 @@ def login():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
-        print("Username",username)
+
         db = get_db()
         error = None
         mycursor = db.cursor()
@@ -59,7 +59,6 @@ def login():
         )
         user = mycursor.fetchone()
 
-        print('here', user)
         if user is None:
             error = 'Incorrect username.'
         elif not check_password_hash(user[4], password):
