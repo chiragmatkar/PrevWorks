@@ -15,7 +15,8 @@ def get_db():
             password=pg_password,
             host=pg_host,
             port=5432,
-            database=pg_db
+            database=pg_db,
+            sslmode='require'
         )
         g.db = mydb
     return mydb
