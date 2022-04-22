@@ -1,4 +1,4 @@
-from flaskr.db_connect import get_db
+from flaskr.pg_db_connect import get_db
 import pandas as pd
 
 

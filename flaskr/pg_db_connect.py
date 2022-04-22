@@ -1,14 +1,13 @@
-import mysql.connector
+import psycopg2
 from flask import g
-
 
 def get_db():
     if 'db' not in g:
-        mydb = mysql.connector.connect(
-            user='root',
+        mydb = psycopg2.connect(
+            user='postgres',
             password='',
             host='127.0.0.1',
-            port=3306,
+            port=5432,
             database='prevworks'
         )
         g.db = mydb

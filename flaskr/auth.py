@@ -3,7 +3,7 @@ from flask import (
 )
 # from werkzeug.security import check_password_hash, generate_password_hash
 
-from flaskr.db_connect import get_db
+from flaskr.pg_db_connect import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -30,8 +30,9 @@ def register():
             try:
                 mycursor = db.cursor()
                 print('inside')
+                print('users')
                 mycursor.execute(
-                    "INSERT INTO user (email, fname, lname, password) VALUES (%s, %s, %s, %s)",
+                    "INSERT INTO users (email, fname, lname, password) VALUES (%s, %s, %s, %s)",
                     (username, fname, lname, password),
                 )
                 db.commit()
@@ -54,7 +55,7 @@ def login():
         error = None
         mycursor = db.cursor()
         mycursor.execute(
-            "SELECT * FROM user WHERE email = %s", (username,)
+            "SELECT * FROM users WHERE email = %s", (username,)
         )
         user = mycursor.fetchone()
         if user is None:

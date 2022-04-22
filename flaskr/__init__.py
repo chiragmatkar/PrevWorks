@@ -5,7 +5,7 @@ from . import forms
 from . import injuryReports
 import sys
 from . import companies
-from flaskr.db_connect import get_db
+from flaskr.pg_db_connect import get_db
 from datetime import datetime
 from .compensation import calc_total_comp, calc_industry_premium
 import pandas as pd

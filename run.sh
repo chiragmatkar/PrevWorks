@@ -1,2 +1,2 @@
-export FLASK_APP=backend/flaskr
+export FLASK_APP=flaskr
 flask run
