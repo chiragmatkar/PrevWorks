@@ -1,14 +1,21 @@
 import psycopg2
 from flask import g
+import os
+
+pg_host=os.environ['DB_HOST']
+pg_db=os.environ['DB_NAME']
+pg_user=os.environ['DB_USER']
+pg_password=os.environ['DB_PASSWORD']
+
 
 def get_db():
     if 'db' not in g:
         mydb = psycopg2.connect(
-            user='postgres',
-            password='',
-            host='127.0.0.1',
+            user=pg_user,
+            password=pg_password,
+            host=pg_host,
             port=5432,
-            database='prevworks'
+            database=pg_db
         )
         g.db = mydb
     return mydb
