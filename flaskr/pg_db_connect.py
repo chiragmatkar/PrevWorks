@@ -2,15 +2,15 @@ import psycopg2
 from flask import g
 import os
 
-pg_host=os.environ['DB_HOST']
-pg_db=os.environ['DB_NAME']
-pg_user=os.environ['DB_USER']
-pg_password=os.environ['DB_PASSWORD']
+
 DATABASE_URL=os.environ['DATABASE_URL']
 
 def get_db():
     if 'db' not in g:
-        mydb = psycopg2.connect(DATABASE_URL, sslmode='require')
+        if os.environ['ENVIRONMENT'] == "DEVELOPMENT":
+            mydb = psycopg2.connect(DATABASE_URL, sslmode='require')
+        elif os.environ['ENVIRONMENT'] == "LOCAL":
+            mydb = psycopg2.connect(DATABASE_URL)
         g.db = mydb
     return mydb
 

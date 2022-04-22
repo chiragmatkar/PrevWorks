@@ -1,19 +1,21 @@
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
-# from werkzeug.security import check_password_hash, generate_password_hash
-
+from werkzeug.security import generate_password_hash,check_password_hash
 from flaskr.pg_db_connect import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
+
+
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
         username = request.form['email']
-        password = request.form['password']
+        password = generate_password_hash(request.form['password'])
         fname = request.form['first_name']
         lname = request.form['last_name']
+
         db = get_db()
         error = None
         print('Data:',username)
@@ -29,8 +31,6 @@ def register():
         if error is None:
             try:
                 mycursor = db.cursor()
-                print('inside')
-                print('users')
                 mycursor.execute(
                     "INSERT INTO users (email, fname, lname, password) VALUES (%s, %s, %s, %s)",
                     (username, fname, lname, password),
@@ -58,12 +58,14 @@ def login():
             "SELECT * FROM users WHERE email = %s", (username,)
         )
         user = mycursor.fetchone()
+
+        print('here', user)
         if user is None:
             error = 'Incorrect username.'
-        # elif not check_password_hash(user[4], password):
-        #     error = 'Incorrect password.'
+        elif not check_password_hash(user[4], password):
+             error = 'Incorrect password.'
         print(error)
-        print('here')
+
         if error is None:
             print('in')
             session.clear()

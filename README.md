@@ -27,6 +27,13 @@ flask run
 
 setup mysql files and run those files to create tables in the database
 
+```commandline
+
+export ENVIRONMENT=LOCAL
+export DATABASE_URL=postgres://postresql@localhost:5432/prevworks
+
+```
+
 
 ## Postgresql Migration 
 Project is currently being migrated to postgresql)
