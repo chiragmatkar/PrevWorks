@@ -6,18 +6,11 @@ pg_host=os.environ['DB_HOST']
 pg_db=os.environ['DB_NAME']
 pg_user=os.environ['DB_USER']
 pg_password=os.environ['DB_PASSWORD']
-
+DATABASE_URL=os.environ['DATABASE_URL']
 
 def get_db():
     if 'db' not in g:
-        mydb = psycopg2.connect(
-            user=pg_user,
-            password=pg_password,
-            host=pg_host,
-            port=5432,
-            database=pg_db,
-            sslmode='require'
-        )
+        mydb = psycopg2.connect(DATABASE_URL, sslmode='require')
         g.db = mydb
     return mydb
 
