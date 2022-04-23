@@ -1,3 +1,26 @@
+
+-- Table: public.injury
+
+-- DROP TABLE IF EXISTS public.injury;
+
+CREATE TABLE injury (
+  injuryId SERIAL PRIMARY KEY NOT NULL ,
+  dateOccured timestamp  NOT NULL,
+  injuryType varchar(45) NOT NULL,
+  at_work bit(1) NOT NULL,
+  reported bit(1) NOT NULL,
+  supervisor varchar(45) NOT NULL,
+  supervisor_email varchar(100) NOT NULL,
+  supervisor_relation varchar(45) NOT NULL,
+  supervisor_phone varchar(45) NOT NULL,
+  supervisor_date timestamp  NOT NULL,
+  reported_before bit(1) NOT NULL,
+  reported_date timestamp NOT NULL,
+  description varchar(1500) NOT NULL,
+  userId int NOT NULL,
+  companyId int DEFAULT NULL
+)
+
 DROP TABLE IF EXISTS bodyParts;
 
 CREATE TABLE bodyParts (

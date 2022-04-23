@@ -6,8 +6,6 @@ from flaskr.pg_db_connect import get_db, string2bit
 
 bp = Blueprint('forms', __name__, url_prefix='/forms')
 
-
-
 @bp.route('/sendReport', methods=('GET', 'POST'))
 def send_report():
     print("Report submitted")

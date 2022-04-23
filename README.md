@@ -16,11 +16,14 @@ pip install -r requirements.txt
 
 ## Database Local Setup 
 
-setup postgresql db using create_table.sql and give below commands 
+- install postgresql
+- create a database prevworks  
+- run create_table.sql and create all required tables
+- run below commands for configuring db env
 
 ```commandline
 export ENVIRONMENT=LOCAL
-export DATABASE_URL=postgres://postresql@localhost:5432/prevworks
+export DATABASE_URL=postgresql://postgres@localhost:5432/prevworks
 ```
 ##  Local Project Run 
 

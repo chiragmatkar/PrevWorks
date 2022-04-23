@@ -196,11 +196,12 @@
             <h3 class="text-dark mb-4">Report Injury Form</h3>
             <div class="card"></div>
             <div class="card shadow mb-5"></div>
-            <form
+                  <form
               class="bootstrap-form-with-validation"
-              action="/send-sendReport"
+              action="/forms/send_report"
               method="post"
-              onsubmit="return sendReport()">
+              onsubmit="return send_report()"
+            >
               <h2 class="text-center"></h2>
 
               <div class="form-row mb-3">
@@ -681,8 +682,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary btn-block btn-lg d-flex flex-grow-1 justify-content-center flex-nowrap m-auto" type="submit">
-                                    <a href="covid" style="color: white;">Submit</a>
+                                <button class="btn btn-primary btn-block btn-lg d-flex flex-grow-1 justify-content-center flex-nowrap m-auto" type="submit" onclick="">
+                                  <a href="covid" style="color: white;">Submit</a>
                                 </button>
                             </div>
                         </form>
