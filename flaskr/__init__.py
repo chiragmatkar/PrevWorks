@@ -210,7 +210,7 @@ def create_app(test_config=True):
                     payroll += 50000
                 num_workers += 1
             payroll = 10000000
-            mycursor.execute(f"SELECT * FROM PrevWorks.companyToIndustry WHERE companyName = '{companyName}';")
+            mycursor.execute(f"SELECT * FROM companyToIndustry WHERE companyName = '{companyName}';")
             row = mycursor.fetchall()
 
             industry = row[0][1]
@@ -220,7 +220,7 @@ def create_app(test_config=True):
             hours_worked = num_workers * 40 * 50
 
             mycursor.execute(
-                "SELECT * FROM PrevWorks.injury;"
+                "SELECT * FROM injury;"
             )
             currentYear = datetime.now().year
             num_injuries = 0

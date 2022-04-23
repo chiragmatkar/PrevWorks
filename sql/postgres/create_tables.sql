@@ -2,6 +2,21 @@
 -- Table: public.injury
 
 -- DROP TABLE IF EXISTS public.injury;
+CREATE TABLE covidSurvey (
+  surveyId SERIAL PRIMARY KEY NOT NULL ,
+  hadCovid bit(1) NOT NULL,
+  healthcare bit(1) NOT NULL,
+  fever bit(1) NOT NULL,
+  loss bit(1) NOT NULL,
+  pain bit(1) NOT NULL,
+  cough bit(1) NOT NULL,
+  breath bit(1) NOT NULL,
+  conjunctivitis bit(1) NOT NULL,
+  gi bit(1) NOT NULL,
+  userId int NOT NULL,
+  date timestamp NOT NULL
+)
+
 
 CREATE TABLE injury (
   injuryId SERIAL PRIMARY KEY NOT NULL ,

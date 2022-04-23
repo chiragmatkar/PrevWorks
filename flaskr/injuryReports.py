@@ -22,8 +22,8 @@ def getFrequencyOfInjuries():
         error = None
         mycursor = db.cursor()
         query = """SELECT injuryType, COUNT(*) 
-            FROM PrevWorks.injury
-            WHERE PrevWorks.injury.companyId=%d
+            FROM injury
+            WHERE injury.companyId=%d
             GROUP BY injuryType 
             ORDER BY COUNT(*) DESC;""" % user_id
         mycursor.execute(query, (0))
@@ -65,10 +65,10 @@ def getFrequencyOfInjuries():
 
         # retreieve data for injury reports table
         mycursor.execute(
-            """SELECT PrevWorks.injury.injuryId, PrevWorks.injury.injuryType, PrevWorks.injury.reported_date, fname, lname, PrevWorks.injury.userId, PrevWorks.injury.companyId
-            FROM PrevWorks.injury
-            INNER JOIN PrevWorks.user ON PrevWorks.injury.userId = PrevWorks.user.userId
-            WHERE PrevWorks.injury.companyId=%d;""" % user_id
+            """SELECT injury.injuryId, injury.injuryType, injury.reported_date, fname, lname, injury.userId, injury.companyId
+            FROM injury
+            INNER JOIN user ON injury.userId = user.userId
+            WHERE injury.companyId=%d;""" % user_id
         )
         # TODO(karalee): add "WHERE PrevWorks.injury.companyId = 1;" to query
         injuryList = mycursor.fetchall()
@@ -85,11 +85,11 @@ def bodyPartClicked(body_part):
     db = get_db()
     error = None
     mycursor = db.cursor()
-    query = """SELECT PrevWorks.injury.injuryId, PrevWorks.injury.reported_date, fname, lname, PrevWorks.injury.userId, PrevWorks.injury.companyId
-            FROM PrevWorks.injury
-            INNER JOIN PrevWorks.user ON PrevWorks.injury.userId = PrevWorks.user.userId
-            WHERE PrevWorks.injury.companyId =%d AND
-            PrevWorks.injury.injuryType LIKE '%s';""" % (user_id, body_part)
+    query = """SELECT injury.injuryId, injury.reported_date, fname, lname, injury.userId, injury.companyId
+            FROM injury
+            INNER JOIN user ON injury.userId = user.userId
+            WHERE injury.companyId =%d AND
+            injury.injuryType LIKE '%s';""" % (user_id, body_part)
     print(body_part)
     mycursor.execute(query, (0))
     # TODO(karalee): add "WHERE PrevWorks.injury.companyId = 1;" to query
