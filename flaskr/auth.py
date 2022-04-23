@@ -85,7 +85,7 @@ def logout():
 def register_company():
     if request.method == 'POST':
         username = request.form['email']
-        password = request.form['password']
+        password = generate_password_hash(request.form['password'])
         company = request.form['company']
         db = get_db()
         error = None
@@ -130,8 +130,8 @@ def login_company():
         user = mycursor.fetchone()
         if user is None:
             error = 'Incorrect username.'
-        # elif not check_password_hash(user[7], password):
-        #     error = 'Incorrect password.'
+        elif not check_password_hash(user[7], password):
+            error = 'Incorrect password.'
         print(error)
         if error is None:
             session.clear()
