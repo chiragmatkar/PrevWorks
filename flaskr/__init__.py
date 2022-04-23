@@ -99,6 +99,10 @@ def create_app(test_config=True):
     def covid():
         return render_template('covid.html')
 
+    @app.route('/vaxInfo')
+    def vaxInfo():
+        return render_template('vaxInfo.html')
+
     # added to test
     @app.route('/covid_info_page')
     def covid_info_page():

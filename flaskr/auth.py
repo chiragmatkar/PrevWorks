@@ -171,6 +171,34 @@ def covid():
 
     return render_template('covid.html')
 
+
+@bp.route('/vaxInfo', methods=('GET', 'POST'))
+def vaxInfo():
+    if request.method == 'POST':
+        username = request.form['email']
+        password = request.form['password']
+        db = get_db()
+        error = None
+        mycursor = db.cursor()
+        mycursor.execute(
+            "SELECT * FROM company WHERE loginName = %s", (username,)
+        )
+        user = mycursor.fetchone()
+        if user is None:
+            error = 'Incorrect username.'
+        elif not check_password_hash(user[7], password):
+            error = 'Incorrect password.'
+        print(error)
+        if error is None:
+            session.clear()
+            session['user_id'] = user[0]
+            session['session_type'] = 'company'
+            return redirect(url_for('companyProfile'))
+
+        flash(error)
+
+    return render_template('vaxInfo.html')
+
 @bp.route('/covid_info_page', methods=('GET', 'POST'))
 def covid_info_page():
     if request.method == 'POST':
