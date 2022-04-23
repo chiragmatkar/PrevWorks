@@ -177,6 +177,11 @@ def create_app(test_config=True):
     def companyProfile():
         return check_session('company', render_template('companyProfile.html'))
 
+    # Simpulation
+    @app.route('/simulation')
+    def simulation():
+        return render_template('simulation.html')
+
     @app.route('/analytics')
     def analytics():
         if check_session():

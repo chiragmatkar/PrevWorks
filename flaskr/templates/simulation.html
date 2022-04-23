@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 Simulation</title>
+    
+    <!--<link rel="stylesheet" href="assets/css/simulationstyle.css"> -->
+    
+    
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/simulationstyle.css')}}">
+
+</head>
+<body>
+    <div id="container">
+
+        <div id="left-box">
+            <h3 class="no-top">Covid-19 Outbreak Simulator</h3>
+            <div id="canvas-container"></div>
+        </div>
+
+        <div id="middle-box">
+            <h3 class="no-top">Controls</h3>
+            <label for="population">Population Size:</label>
+            <input type="number" id="population" name="population" min="20" max="380" value="200">
+            <label for="init-infected">Inital infected:</label>
+            <input type="number" id="init-infected" name="init-infected" min="0" max="380" value="5">
+            <label for="per-vaxxed">Percentage Vaccinated:</label>
+            <input type="number" id="per-vaxxed" name="per-vaxxed" min="0" max="100" value="50">
+            <div class="btn-container">
+                <button class="btn" id="run-btn">run</button>
+                <button class="btn" id="stop-btn">stop</button>
+                <button class="btn" id="reset-btn">reset</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn-wide" id="vaxxed-btn">vaccinated</button>
+                <button class="btn-wide" id="unvaxxed-btn">unvaccinated</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn-wide" id="wall-btn">wall</button>
+                <button class="btn-wide" id="infected-btn">infected</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn-wide" id="erase-btn">erase</button>
+            </div>  
+        </div>
+
+        <div id="right-box">
+            <h3 class="no-top">Instructions</h3>
+            <p>Welcome to the Covid-19 Outbreak Simulator!</p>
+            <p>This tool was created to help you better assess the potential spread of covid within your community.</p>
+            <p>Green dots represent infected individuals, tan dots represent unvaccinated individuals, blue dots represent vaccinated individuals, and grey squares represent walls.</p>
+            <p>if you would like to add people or walls to specific locations in the simulation, first select what you want to add using the grey buttons the control panel and then click directly on the canvas.</p>
+            <h3 class="no-top">Statistics</h3>
+            <p class="stat-l">Day:</p>
+            <p class="stat-d" id="day-count">0</p>
+            <p class="stat-l">Infected:</p>
+            <p class="stat-d" id="infected-count">0</p>
+            <p class="stat-l">Remaining Unvaccinated:</p>
+            <p class="stat-d" id="unvaxxed-count">0</p>
+            <p class="stat-l">Remaining Vaccinated:</p>
+            <p class="stat-d" id="vaxxed-count">0</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    
+    <!--<script src="assets/js/simulationscript.js"></script> -->
+    <script src="{{url_for('static', filename='assets/js/simulationscript.js')}}"></script>
+
+    
+</body>
+</html>
