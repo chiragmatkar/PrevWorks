@@ -41,8 +41,7 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a
-              >
+                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
               <a class="nav-link" href="companies"
                 ><i class="fas fa-table"></i><span>Companies</span></a
               >
@@ -57,10 +56,11 @@
                 ><i class="fas fa-table"></i><span>Injuries</span></a
               >
 
-            <a class="nav-link" href="simulation"
+              <a class="nav-link" href="simulation"
                 ><i class="fas fa-table"></i><span>Simulation</span></a
               >
             </li>
+
 
 
             <li class="nav-item" role="presentation">
@@ -205,7 +205,7 @@
               class="bootstrap-form-with-validation"
               action="/send-report"
               method="post"
-              onsubmit="return sendReport()"
+              onsubmit="return reportAlert()"
             >
               <h2 class="text-center"></h2>
 
@@ -257,7 +257,7 @@
                                             </form>
                                         </div>
                                     </div>
-                            
+
                                     </div>
                                     <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
@@ -551,7 +551,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>     
+                    </div>
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="form-group"><label for="textarea-input">Additional Notes&nbsp;</label><textarea class="form-control" id="textarea-input" name="injury_description"></textarea></div>
@@ -663,11 +663,11 @@
          document.getElementById("street-address").value = userData.data.address;
          document.getElementById("city").value =
            userData.data.city + ", " + userData.data.state;
-         
+
          // Filling in values at top of page.
          document.getElementById("full-name").innerText =
            userData.data.first_name + " " + userData.data.last_name;
-         
+
          // If a profile pic has been previously uploaded by user than include on the page.
          if (userData.profilePic) {
            document.getElementById("upper-profile-pic").src = userData.profilePic;
