@@ -67,7 +67,7 @@ def create_app(test_config=True):
     def login_home():
         return render_template('auth/login.html')
 
-    @app.route('/registerCompany')
+    @app.route('/registerCompany', methods=('GET', 'POST'))
     def register_company():
         class_df = pd.read_csv('data/raw/Employee_Classification_Rates.csv')
         industry_df = pd.read_excel('data/raw/labor_statistics/by_industry/rate/cd_r5_2019.xlsx')
@@ -77,6 +77,8 @@ def create_app(test_config=True):
         industries.pop(0)
         industries.pop(0)
         classifications.pop(0)
+        print("---Register_company_init----")
+        print(request.method)
         if request.method == 'POST':
             industry = request.args.get('industry')
             classification = request.args.get('classification')

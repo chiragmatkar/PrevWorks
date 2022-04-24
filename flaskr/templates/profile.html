@@ -48,8 +48,7 @@
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span id="full-name" class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img id="upper-profile-pic" class="border rounded-circle img-profile" src="assets/img/dogs/image2.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
                                         <a class="dropdown-item" role="presentation" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="login.html"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
-                                    <a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Logout</span></a></li
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
                     </div>
                     </li>
                     </ul>
@@ -89,7 +88,7 @@
                                         <p class="text-primary m-0 font-weight-bold">Contact Settings</p>
                                     </div>
                                     <div class="card-body">
-                                        <form action="/edit" method="post" onsubmit="return profile()">
+                                        <form action="/edit" method="post" onsubmit="return reportAlert()">
                                             <div class="form-group">
                                                 <div class="form-row">
                                                     <div class="col">
@@ -116,7 +115,7 @@
                                         <p class="text-primary m-0 font-weight-bold">User Settings</p>
                                     </div>
                                     <div class="card-body">
-                                        <form action="/edit" method="post" onsubmit="return profile()">
+                                        <form action="/edit" method="post" onsubmit="return reportAlert()">
                                             <div class="form-row">
                                                 <div class="col">
                                                     <div class="form-group"><label for="first-name"><strong>First Name</strong></label><input id="first-name" class="form-control" type="text" placeholder=getCookie(firstName) name="first_name" disabled=""></div>
