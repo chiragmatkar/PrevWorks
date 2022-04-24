@@ -7,7 +7,7 @@ from flaskr.pg_db_connect import get_db, string2bit
 bp = Blueprint('forms', __name__, url_prefix='/forms')
 
 @bp.route('/sendReport', methods=('GET', 'POST'))
-def sendReport():
+def send_report():
     print("Report submitted")
     print(request.form)
     if request.form['problemType'] in ['1','3']:
