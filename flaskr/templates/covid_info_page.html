@@ -238,7 +238,7 @@ body {
 </style>
 <script>
       function notification() {
-          alert("Unfortunately, one of your colleagues has contracted COVID-19 and reported you as someone they have been in contact with recently. But don't panic! If you have not been tested, please do as asap and make sure to quarantine for at least 14 days. More information about quarantine and vaccination info can be found at http://localhost:5000/vaxInfo");
+          alert("Unfortunately, one of your colleagues has contracted COVID-19 and reported you as someone they have been in contact with recently. But don't panic! If you have not been tested, please do as asap and make sure to quarantine for at least 14 days. More information about quarantine and vaccination info can be found at [VaxInfo] section on the left");
       }
 </script>
 <body id="page-top">
@@ -269,20 +269,13 @@ body {
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
-              <a class="nav-link" href="companies"
-                ><i class="fas fa-table"></i><span>Companies</span></a
-              >
-              <a class="nav-link active" href="reportInjury"
-                ><i class="fab fa-wpforms"></i><span>Report Injury</span></a
-              >
-              <a class="nav-link" href="assessment"
-                ><i class="fas fa-tachometer-alt"></i
-                ><span>Health Assesment</span></a
-              >
-              <a class="nav-link" href="table"
-                ><i class="fas fa-table"></i><span>Injuries</span></a
-              >
+                 <a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i><span>Profile</span></a>
+                <a class="nav-link" href="{{ url_for('companies') }}"><i class="fas fa-table"></i><span>Companies</span></a>
+              <a class="nav-link active" href="{{ url_for('report_injury') }}"><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
+              <a class="nav-link" href="{{ url_for('assessment') }}"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
+              <a class="nav-link" href="{{ url_for('table') }}"><i class="fas fa-table"></i><span>Injuries</span></a>
+              <a class="nav-link" href="{{ url_for('simulation') }}"><i class="fas fa-table"></i><span>Simulation</span></a>
+               <a class="nav-link" href="{{ url_for('vaxInfo') }}"><i class="fas fa-table"></i><span>VaxInfo</span></a>
             </li>
 
             <li class="nav-item" role="presentation">

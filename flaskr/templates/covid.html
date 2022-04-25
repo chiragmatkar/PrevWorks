@@ -41,24 +41,12 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
 
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
-              <a class="nav-link" href="companies"
-                ><i class="fas fa-table"></i><span>Companies</span></a
-              >
-              <a class="nav-link active" href="reportInjury"
-                ><i class="fab fa-wpforms"></i><span>Report Injury</span></a
-              >
-              <a class="nav-link" href="assessment"
-                ><i class="fas fa-tachometer-alt"></i
-                ><span>Health Assesment</span></a
-              >
-              <a class="nav-link" href="table"
-                ><i class="fas fa-table"></i><span>Injuries</span></a
-              >
-              
-              <a class="nav-link" href="simulation"
-                ><i class="fas fa-table"></i><span>Simulation</span></a
-              >
+                        <a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i><span>Profile</span></a>
+              <a class="nav-link" href="{{ url_for('companies') }}"><i class="fas fa-table"></i><span>Companies</span></a>
+              <a class="nav-link active" href="{{ url_for('report_injury') }}"><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
+              <a class="nav-link" href="{{ url_for('assessment') }}"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
+              <a class="nav-link" href="{{ url_for('table') }}"><i class="fas fa-table"></i><span>Injuries</span></a>
+              <a class="nav-link" href="{{ url_for('simulation') }}"><i class="fas fa-table"></i><span>Simulation</span></a>
             </li>
                     
     
@@ -266,7 +254,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-row mb-3">
+            </form>
+
+                <form class="user" onsubmit="return registerEmployer()" id="registration_form" action="{{ url_for('forms.contactTracing') }}" method="post">
+                                <div class="form-row mb-3">
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
@@ -279,22 +270,22 @@
                                                     <option value="antigen">Antigen</option>
                                                 </optgroup></select></div>
                                             </div>
-                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="date_input"></div>
-                                            <div class="col"><label class="d-block" for="date_input">Time</label><input class="form-control d-inline" type="time" name="date_input"></div>
+                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="test_date_input"></div>
+                                            <div class="col"><label class="d-block" for="time_input">Time</label><input class="form-control d-inline" type="time" name="test_time_input"></div>
                                         </div>
                                     </div>
                                     <div class="form-group"><label for="text-input">If applicable, when did you receive your COVID-19 vaccine?</label>
                                         <div class="form-row">
-                                            <div class="col"><label for="password-input">Brand</label><input name="supervisor_name" class="form-control" type="text" placeholder="Brand" /></div>
-                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="date_input"></div>
-                                            <div class="col"><label class="d-block" for="date_input">Time</label><input class="form-control d-inline" type="time" name="date_input"></div>
+                                            <div class="col"><label for="password-input">Brand</label><input name="vaccine" class="form-control" type="text" placeholder="Brand" /></div>
+                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="vaccine_date_input"></div>
+                                            <div class="col"><label class="d-block" for="time_input">Time</label><input class="form-control d-inline" type="time" name="vaccine_time_input"></div>
                                         </div>
                                     </div>
                                     <div class="form-group"><label for="text-input">If applicable, when did you receive your COVID-19 booster?</label>
                                         <div class="form-row">
-                                            <div class="col"><label for="password-input">Brand</label><input name="supervisor_name" class="form-control" type="text" placeholder="Brand" /></div>
-                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="date_input"></div>
-                                            <div class="col"><label class="d-block" for="date_input">Time</label><input class="form-control d-inline" type="time" name="date_input"></div>
+                                            <div class="col"><label for="password-input">Brand</label><input name="booster" class="form-control" type="text" placeholder="Brand" /></div>
+                                            <div class="col"><label class="d-block" for="date_input">Date</label><input class="form-control d-inline" type="date" name="booster_date_input"></div>
+                                            <div class="col"><label class="d-block" for="time_input">Time</label><input class="form-control d-inline" type="time" name="booster_time_input"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -312,24 +303,24 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Name</label><input name="contact1_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Email</label><input name="contact1_email" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="contact1_relation" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="contact1_phone" class="form-control" type="tel" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="contact1_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="contact1_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -337,24 +328,24 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Name</label><input name="contact2_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Email</label><input name="contact2_email" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="contact2_relation" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="contact2_phone" class="form-control" type="tel" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="contact2_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="contact2_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -362,24 +353,24 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Name</label><input name="contact3_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Email</label><input name="contact3_email" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="contact3_relation" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="contact3_phone" class="form-control" type="tel" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="contact3_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="contact3_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -387,24 +378,24 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Name</label><input name="contact4_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Email</label><input name="contact4_email" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="contact4_relation" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="contact4_phone" class="form-control" type="tel" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="contact4_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="contact4_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -412,24 +403,24 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Name</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Name</label><input name="contact5_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Email</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Email</label><input name="contact5_email" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Relation to you?&nbsp;</label><input name="contact5_relation" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Phone</label><input name="supervisor_phone" class="form-control" type="tel" /></div>
+                                            <div class="form-group"><label for="password-input">Phone</label><input name="contact5_phone" class="form-control" type="tel" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="contact5_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="contact5_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                 </div>
@@ -443,21 +434,21 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Location</label><input name="location1_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="location1_add1" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="location1_add2" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="location1_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="location1_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -465,21 +456,21 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Location</label><input name="location2_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="location2_add1" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="location2_add2" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="location2_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="location2_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -487,21 +478,21 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Location</label><input name="location3_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="location3_add1" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="location3_add2" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="location3_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="location3_add2" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -509,21 +500,21 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Location</label><input name="location4_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="location4_add1" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="location4_add2" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="location4_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="location4_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -531,37 +522,36 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Location</label><input name="supervisor_name" class="form-control" type="text" placeholder="Name" /></div>
+                                            <div class="form-group"><label for="password-input">Location</label><input name="location5_name" class="form-control" type="text" placeholder="Name" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="supervisor_email" class="form-control" type="email" placeholder="Email" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 1</label><input name="location5_add1" class="form-control" type="email" placeholder="Email" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="supervisor_relation" class="form-control" type="text" placeholder="Relation" /></div>
+                                            <div class="form-group"><label for="password-input">Address Line 2&nbsp;</label><input name="location5_add2" class="form-control" type="text" placeholder="Relation" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Date</label><input name="supervisor_date" class="form-control" type="date" /></div>
+                                            <div class="form-group"><label for="password-input">Date</label><input name="location5_date" class="form-control" type="date" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="password-input">Time</label><input name="supervisor_time" class="form-control" type="time" /></div>
+                                            <div class="form-group"><label for="password-input">Time</label><input name="location5_time" class="form-control" type="time" /></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>     
+                    </div>
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="form-group"><label for="textarea-input">Additional Notes&nbsp;</label><textarea class="form-control" id="textarea-input" name="injury_description"></textarea></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary btn-block btn-lg d-flex flex-grow-1 justify-content-center flex-nowrap m-auto" type="submit">
-                            <a href="covid_info_page" style="color: white;">Submit</a>
-                        </button>
-                    </div>
+                                  <button class="btn btn-primary btn-block btn-lg d-flex flex-grow-1 justify-content-center flex-nowrap m-auto" type="submit"> <a style="color: white;">Submit</a> </button>
+                            </form>
+
+
                         </form>
                     </div>
                 </div>
