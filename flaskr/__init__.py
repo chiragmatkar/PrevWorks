@@ -21,11 +21,16 @@ import pandas as pd
 #         return False
 
 
+
+
+
+
 # def check_session(session_type, target_render):
 def check_session(*args):
     if args:
         session_type = args[0]
         target_render = args[1]
+
         try:
             if int(session['user_id']) > 0 and session['session_type'] == session_type:
                 return target_render

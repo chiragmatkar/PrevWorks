@@ -69,6 +69,7 @@ def login():
             print('in')
             session.clear()
             session['user_id'] = user[0]
+            session['username'] = username
             session['session_type'] = 'user'
             return redirect(url_for('profile'))
 
