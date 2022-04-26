@@ -38,12 +38,6 @@ flask run
 
 https://prevworks.herokuapp.com/
 
-## Demo Credentials
-
-```
-user1@gmail.com
-test1
-```
 
 ## Prevworks UI Design
 
