@@ -211,27 +211,27 @@ def contactTracing():
         if error is None:
             try:
                 db = get_db()
-                mycursor = db.cursor()
+                # mycursor = db.cursor()
+                #
+                # cols = ('userId' , 'test_type', 'diagnosis_date', 'vaccine' , vaccine_date, booster, booster_date,
+                #      contact1 , contact1_email , contact1_rel, contact1_phone ,contact1_date ,
+                #      contact2 , contact2_email , contact2_rel, contact2_phone ,contact2_date ,
+                #      contact3 , contact3_email , contact3_rel, contact3_phone ,contact3_date ,
+                #      contact4 , contact4_email , contact4_rel, contact4_phone ,contact4_date ,
+                #      contact5 , contact5_email , contact5_rel, contact5_phone ,contact5_date ,
+                #      location1 , location1_email , location1_add1 ,location1_add2, location1_date ,
+                #      location2 , location2_email , location2_add1 ,location2_add2 , location2_date ,
+                #      location3 , location3_email , location3_add1 ,location3_add2 , location3_date ,
+                #      location4 , location4_email , location4_add1 ,location4_add2 , location4_date ,
+                #      location5 , location5_email , location5_add1 ,location5_add2 , location5_date ,
+                #      description)
+                # vals = (
+                #
+                # )
+                # query = f"INSERT INTO contacttracing {cols} values {vals}"
+                #
 
-                cols = ('userId' , 'test_type', 'diagnosis_date', 'vaccine' , vaccine_date, booster, booster_date,
-                     contact1 , contact1_email , contact1_rel, contact1_phone ,contact1_date ,
-                     contact2 , contact2_email , contact2_rel, contact2_phone ,contact2_date ,
-                     contact3 , contact3_email , contact3_rel, contact3_phone ,contact3_date ,
-                     contact4 , contact4_email , contact4_rel, contact4_phone ,contact4_date ,
-                     contact5 , contact5_email , contact5_rel, contact5_phone ,contact5_date ,
-                     location1 , location1_email , location1_add1 ,location1_add2, location1_date ,
-                     location2 , location2_email , location2_add1 ,location2_add2 , location2_date ,
-                     location3 , location3_email , location3_add1 ,location3_add2 , location3_date ,
-                     location4 , location4_email , location4_add1 ,location4_add2 , location4_date ,
-                     location5 , location5_email , location5_add1 ,location5_add2 , location5_date ,
-                     description)
-                vals = (
-
-                )
-                query = f"INSERT INTO contacttracing {cols} values {vals}"
-
-
-                print(query)
+                #print(query)
                 #mycursor.execute(query)
                 #db.commit()
                 #close_db()
