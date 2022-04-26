@@ -60,6 +60,15 @@ https://prevworks.herokuapp.com/
 
 ![Screenshot 2022-04-26 at 4 21 25 PM](https://user-images.githubusercontent.com/335651/165284493-e475191b-dc10-43cf-bcdf-869dca216976.png)
 
+### Body Diagram
+-  Employees can report injured body parts by clicking on the body diagram. 
+-  Multiple body parts can be selected and the selected parts are visually differentiable by color. 
+-  The color of the selected parts changes to orange. Employees can deselect by clicking on the part again.
+
+![Screenshot 2022-04-26 at 4 24 39 PM](https://user-images.githubusercontent.com/335651/165285037-1a25635b-5cb0-4832-94d6-0a32bd2821d4.png)
+
+ -  Submit Report
+ -  ![Screenshot 2022-04-26 at 4 25 44 PM](https://user-images.githubusercontent.com/335651/165285181-af02c03f-9990-4779-9ad0-ca483c9852a5.png)
 
 
 
