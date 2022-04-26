@@ -52,4 +52,14 @@ https://prevworks.herokuapp.com/
 
 ![Screenshot 2022-04-26 at 4 18 49 PM](https://user-images.githubusercontent.com/335651/165284165-4063d636-2dcf-4d35-a7b0-b1bac2c63bd1.png)
 
+### Report Injury
+-  Employees can submit a report of their injuries on the Report Injury page. 
+-  The page provides a form to report covid-19 symptoms and a body diagram to select injured body parts. 
+-  Employees can report the injured date and descriptions through the provided text box.
+-  Covid-19 Symptoms Report
+
+![Screenshot 2022-04-26 at 4 21 25 PM](https://user-images.githubusercontent.com/335651/165284493-e475191b-dc10-43cf-bcdf-869dca216976.png)
+
+
+
 
