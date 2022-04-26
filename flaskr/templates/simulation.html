@@ -43,14 +43,32 @@
             </div>
             <div class="btn-container">
                 <button class="btn-wide" id="erase-btn">erase</button>
+                <button class="btn-wide" id="select-btn">select</button>
+
             </div>  
+
+            <div class="employee-Container">
+                <h3 class="no-top">Employees:</h3>
+                <div class="btn-container">
+                    <button class="btn-wide btn-employee" data-id="5">John Jones</button>
+                    <button class="btn-wide btn-employee" data-id="6">Erica Smith</button>
+                </div>
+                <div class="btn-container">
+                    <button class="btn-wide btn-employee" data-id="7">Alice Young</button>
+                    <button class="btn-wide btn-employee" data-id="8">Donald White</button>
+                </div>
+                <div class="btn-container">
+                    <button class="btn-wide btn-employee" data-id="9">Angela Lewis</button>
+                    <button class="btn-wide btn-employee" data-id="10">Martin Strong</button>
+                </div>
+            </div>
         </div>
 
         <div id="right-box">
             <h3 class="no-top">Instructions</h3>
             <p>Welcome to the Covid-19 Outbreak Simulator!</p>
             <p>This tool was created to help you better assess the potential spread of covid within your community.</p>
-            <p>Green dots represent infected individuals, tan dots represent unvaccinated individuals, blue dots represent vaccinated individuals, and grey squares represent walls.</p>
+            <p>Circles represent unvaccinated individuals, hexagons represent vaccinated individuals, and diamonds represent infected individuals. Unknown that are infected are red and otherwise are tan. Named employees each have a unique color.</p>
             <p>if you would like to add people or walls to specific locations in the simulation, first select what you want to add using the grey buttons the control panel and then click directly on the canvas.</p>
             <h3 class="no-top">Statistics</h3>
             <p class="stat-l">Day:</p>
@@ -62,6 +80,12 @@
             <p class="stat-l">Remaining Vaccinated:</p>
             <p class="stat-d" id="vaxxed-count">0</p>
         </div>
+    </div>
+
+    <div id="select-box">
+        <p>Name: <span id="name">???</span></p>
+        <p>Employee Id: <span id="employee-id">???</span></p>
+        <p>Status: <span id="status">???</span></p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
