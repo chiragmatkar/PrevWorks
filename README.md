@@ -47,4 +47,9 @@ https://prevworks.herokuapp.com/
 
 ![Screenshot 2022-04-26 at 4 14 51 PM](https://user-images.githubusercontent.com/335651/165283453-b80008da-9fd0-4819-92f9-8761a95be34e.png)
 
+#### Companies Page
+-  Includes information about the companies that the employee is a part of and allows them to add and remove companies from their list.
+
+![Screenshot 2022-04-26 at 4 14 51 PM](https://user-images.githubusercontent.com/335651/165284076-ecdd71d1-505b-4db2-8be8-6c7dad8cb30c.png)
+
 
