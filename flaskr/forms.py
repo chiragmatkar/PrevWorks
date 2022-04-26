@@ -44,7 +44,7 @@ def sendReport():
                      request.form['date_input'] + ' ' + request.form['time_input'],
                         request.form['injury_type'], request.form['at_work'],
                         request.form['reported'],
-                        request.form['supervisor_name'], request.form['supervisor_email'], 
+                        request.form['supervisor_name'], request.form['supervisor_email'],
                         request.form['supervisor_relation'],request.form['supervisor_phone'],
                         request.form['supervisor_date'] + ' ' + request.form['supervisor_time'],
                         request.form['reported_before'], request.form['reported_before_date'],
@@ -58,7 +58,7 @@ def sendReport():
 
 
 
-@bp.route('/contactTracing', methods=('GET', 'POST'))
+@bp.route('/contactTracing',methods=('GET','POST'))
 def contactTracing():
     print("contactTracing Report submitted")
     print(request.form)
@@ -225,16 +225,17 @@ def contactTracing():
                 #      location4 , location4_email , location4_add1 ,location4_add2 , location4_date ,
                 #      location5 , location5_email , location5_add1 ,location5_add2 , location5_date ,
                 #      description)
-                # vals = (
-                #
+                 #vals = (
+
                 # )
-                # query = f"INSERT INTO contacttracing {cols} values {vals}"
-                #
+                 #query = f"INSERT INTO contacttracing {cols} values {vals}"
+
 
                 #print(query)
                 #mycursor.execute(query)
                 #db.commit()
                 #close_db()
+                print("--Here1---")
             except Exception as e:
                 print(e)
 

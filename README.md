@@ -4,7 +4,7 @@
 
 First make sure you have python3 installed and give further commands to install the application
 
-Clone the project locally and and run below commands to setup local python env , install required libraries and then run the flask app
+Clone the project locally and run below commands to setup local python env , install required libraries and then run the flask app
 
 ```
 pip install virtualenv
