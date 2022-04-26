@@ -37,3 +37,14 @@ flask run
 ## Heroku Deployment
 
 https://prevworks.herokuapp.com/
+
+
+## Prevworks UI Design
+
+### Authentication Pages Employee Pages
+#### Profile Page
+- Includes information about the user and forms that allow the user to change information about the user such as address and password.
+
+![Screenshot 2022-04-26 at 4 14 51 PM](https://user-images.githubusercontent.com/335651/165283453-b80008da-9fd0-4819-92f9-8761a95be34e.png)
+
+
