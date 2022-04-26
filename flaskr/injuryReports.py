@@ -1,7 +1,6 @@
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
-from werkzeug.security import check_password_hash, generate_password_hash
 
 from flaskr.pg_db_connect import get_db
 
@@ -95,3 +94,18 @@ def bodyPartClicked(body_part):
     # TODO(karalee): add "WHERE PrevWorks.injury.companyId = 1;" to query
     injuries = mycursor.fetchall()
     return(jsonify(allInjuries=injuries))
+
+
+@bp.route('/listOfUserInjuries')
+def listOfUserInjuries():
+        user_id = session['user_id']
+        db = get_db()
+        error = None
+        mycursor = db.cursor()
+        query = """select injury.injuryid , injury.injurytype, injury.dateoccured , users.fname , users.lname , injury.userid
+                    from injury
+                    INNER JOIN users on injury.userid = users.userid 
+                    where injury.userid=%s """ % (user_id)
+        mycursor.execute(query)
+        data = mycursor.fetchall()
+        return render_template('table.html',data=data)

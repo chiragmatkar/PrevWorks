@@ -21,12 +21,12 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" href="profile"><i class="fas fa-user"></i><span>Profile</span></a> 
-                        <a class="nav-link" href="companies"><i class="fas fa-table"></i><span>Companies</span></a> 
-                        <a class="nav-link" href='/reportInjury'><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
-                        <a class="nav-link" href="assessment"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
-                        <a class="nav-link" href="table"><i class="fas fa-table"></i><span>Injuries</span></a>
-                        <a class="nav-link" href="simulation"><i class="fas fa-table"></i><span>Simulation</span></a>
+                         <a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i><span>Profile</span></a>
+                         <a class="nav-link" href="{{ url_for('companies') }}"><i class="fas fa-table"></i><span>Companies</span></a>
+                         <a class="nav-link active" href="{{ url_for('report_injury') }}"><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
+                         <a class="nav-link" href="{{ url_for('assessment') }}"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
+                        <a class="nav-link" href="{{ url_for('injuries.listOfUserInjuries') }}"><i class="fas fa-table"></i><span>Injuries</span></a>
+                        <a class="nav-link" href="{{ url_for('simulation') }}"><i class="fas fa-table"></i><span>Simulation</span></a>
                     </li>
                         <!-- <li class="nav-item has-submenu">
                             <a class="nav-link" href="#"> Submenu links  </a>

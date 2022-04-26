@@ -25,16 +25,14 @@
                 </a>
                 <hr class="sidebar-divider my-0" />
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="profile"><i class="fas fa-user"></i><span>Profile</span></a>
-                        <a class="nav-link" href="reportInjury"><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
-                        <a class="nav-link" href="assessment"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
+                     <li class="nav-item" role="presentation">
+                         <a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i><span>Profile</span></a>
+                         <a class="nav-link" href="{{ url_for('companies') }}"><i class="fas fa-table"></i><span>Companies</span></a>
+                         <a class="nav-link active" href="{{ url_for('report_injury') }}"><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
+                         <a class="nav-link" href="{{ url_for('assessment') }}"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
+                        <a class="nav-link" href="{{ url_for('injuries.listOfUserInjuries') }}"><i class="fas fa-table"></i><span>Injuries</span></a>
+                        <a class="nav-link" href="{{ url_for('simulation') }}"><i class="fas fa-table"></i><span>Simulation</span></a>
                     </li>
-                    <li
-                        class="nav-item" role="presentation"></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link active" href="table"><i class="fas fa-table"></i><span>Injuries</span></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="login"><i class="far fa-user-circle"></i><span>Logout</span></a></li>
-                        <li class="nav-item" role="presentation"></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -71,6 +69,47 @@
                     </ul>
             </div>
             </nav>
+                          <div class="container-fluid">
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="card shadow">
+                            <div class="card-header bg-danger py-3">
+                                <p class="text-white m-0 font-weight-bold" style="font-size: 20px;" id="tableTitle">Injury Reports</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                    <table class="table dataTable my-0" id="reportTable">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left">Report #</th>
+                                                <th class="text-left">Injury Type</th>
+                                                <th>Date</th>
+                                                <th class="text-left">Name</th>
+                                                <th class="text-left">Employee ID</th>
+                                            </tr>
+                                        </thead>
+                                       <tbody>
+                                      </tbody>
+                                        <tfoot>
+                                        {% for item in data %}
+                                    <tr>
+                                        <td>{{item[0]}}</td>
+                                        <td>{{item[1]}}</td>
+                                         <td>{{item[2]}}</td>
+                                         <td>{{item[3]}} {{item[4]}}</td>
+                                        <td>{{item[5]}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">Submitted Injuries</h3>
                 <div class="card shadow">

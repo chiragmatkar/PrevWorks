@@ -26,7 +26,7 @@
 				    <a class="nav-link" href="{{ url_for('companies') }}"><i class="fas fa-table"></i><span>Companies</span></a>
               		<a class="nav-link active" href="{{ url_for('report_injury') }}"><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
               		<a class="nav-link" href="{{ url_for('assessment') }}"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
-              		<a class="nav-link" href="{{ url_for('table') }}"><i class="fas fa-table"></i><span>Injuries</span></a>
+              		<a class="nav-link" href="{{ url_for('injuries.listOfUserInjuries') }}"><i class="fas fa-table"></i><span>Injuries</span></a>
               		<a class="nav-link" href="{{ url_for('simulation') }}"><i class="fas fa-table"></i><span>Simulation</span></a>
 			   </li>
                <li class="nav-item" role="presentation">
@@ -257,8 +257,8 @@
                               <div class="form-row">
                                  <div class="col">
                                     <hr />
-                                    <div class="text-center" id="area"><label class="d-block">Selected Body Area:</label><span id="data" name="body-area">None</span></div>
-                                    <input type="hidden" id="injury-type" name="injury_type" value="" />
+                                    <div class="text-center" name="injury" id="area"><label class="d-block">Selected Body Area:</label><span id="data" name="body-area">None</span></div>
+                                    <input type="hidden" id="injury_type" name="injury_type" value="" />
                                  </div>
                               </div>
                            </div>
