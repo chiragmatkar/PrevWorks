@@ -1,5 +1,10 @@
 # PrevWorks
 
+## Heroku Deployment
+
+https://prevworks.herokuapp.com/
+
+
 ## Project Local Install
 
 First make sure you have python3 installed and give further commands to install the application
@@ -33,10 +38,6 @@ cd PrevWorks
 export FLASK_APP=flaskr
 flask run
 ```
-
-## Heroku Deployment
-
-https://prevworks.herokuapp.com/
 
 
 ## Prevworks UI Design

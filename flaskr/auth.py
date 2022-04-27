@@ -69,7 +69,7 @@ def login():
             print('in')
             session.clear()
             session['user_id'] = user[0]
-            session['username'] = username
+            session['username'] = user[2] + " " + user[3]
             session['session_type'] = 'user'
             return redirect(url_for('profile'))
 

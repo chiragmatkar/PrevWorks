@@ -257,8 +257,10 @@
                               <div class="form-row">
                                  <div class="col">
                                     <hr />
-                                    <div class="text-center" name="injury" id="area"><label class="d-block">Selected Body Area:</label><span id="data" name="body-area">None</span></div>
-                                    <input type="hidden" id="injury_type" name="injury_type" value="" />
+                                    <div class="text-center" name="injury" id="area"><label class="d-block">Selected Body Area:</label>
+                                       <input name="injury_type" type="hidden" id="injury_type"  value="">
+                                       <span id="data" name="body-area">None</span>
+                                    </div>
                                  </div>
                               </div>
                            </div>
@@ -268,8 +270,10 @@
                         <div class="card-body">
                            <div class="form-group">
                               <label for="email-input">Was your problem caused by something that happened at work?</label>
-                              <div class="form-check"><input class="form-check-input" type="radio" name="at_work" value="true" id="formCheck-6" /><label class="form-check-label" for="formCheck-6">Yes</label></div>
-                              <div class="form-check"><input class="form-check-input" type="radio" name="at_work" value="false" id="formCheck-8" checked="checked" /><label class="form-check-label" for="formCheck-8">No</label></div>
+                              <div class="form-check"><input class="form-check-input" type="radio" name="at_work" value="true" id="formCheck-6" />
+                                 <label class="form-check-label" for="formCheck-6">Yes</label></div>
+                              <div class="form-check"><input class="form-check-input" type="radio" name="at_work" value="false" id="formCheck-8" checked="checked" />
+                                 <label class="form-check-label" for="formCheck-8">No</label></div>
                            </div>
                            <div class="form-group">
                               <label for="email-input">Was the injury reported to anyone?</label>

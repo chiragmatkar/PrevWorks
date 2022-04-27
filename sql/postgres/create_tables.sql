@@ -18,22 +18,24 @@ CREATE TABLE covidSurvey (
 )
 
 
-CREATE TABLE injury (
-  injuryId SERIAL PRIMARY KEY NOT NULL ,
-  dateOccured timestamp  NOT NULL,
-  injuryType varchar(45) NOT NULL,
-  at_work bit(1) NOT NULL,
-  reported bit(1) NOT NULL,
-  supervisor varchar(45) NOT NULL,
-  supervisor_email varchar(100) NOT NULL,
-  supervisor_relation varchar(45) NOT NULL,
-  supervisor_phone varchar(45) NOT NULL,
-  supervisor_date timestamp  NOT NULL,
-  reported_before bit(1) NOT NULL,
-  reported_date timestamp NOT NULL,
-  description varchar(1500) NOT NULL,
-  userId int NOT NULL,
-  companyId int DEFAULT NULL
+CREATE TABLE IF NOT EXISTS public.injury
+(
+    injuryId SERIAL PRIMARY KEY NOT NULL ,
+    dateoccured character varying(45) COLLATE pg_catalog."default",
+    injurytype character varying(45) COLLATE pg_catalog."default" NOT NULL,
+    at_work boolean NOT NULL,
+    reported boolean NOT NULL,
+    supervisor character varying(45) COLLATE pg_catalog."default",
+    supervisor_email character varying(100) COLLATE pg_catalog."default",
+    supervisor_relation character varying(45) COLLATE pg_catalog."default",
+    supervisor_phone character varying(45) COLLATE pg_catalog."default",
+    supervisor_date character varying(45) COLLATE pg_catalog."default",
+    reported_before boolean,
+    reported_date character varying(45) COLLATE pg_catalog."default",
+    description character varying(1500) COLLATE pg_catalog."default",
+    userid integer NOT NULL,
+    companyid integer,
+    date timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 )
 
 DROP TABLE IF EXISTS bodyParts;

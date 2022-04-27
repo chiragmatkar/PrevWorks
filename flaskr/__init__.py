@@ -191,7 +191,14 @@ def create_app(test_config=True):
     # Simpulation
     @app.route('/simulation')
     def simulation():
-        return render_template('simulation.html')
+        user_id = session['user_id']
+        db = get_db()
+        error = None
+        mycursor = db.cursor()
+        query = """select * from users order by userid asc limit 6 """
+        mycursor.execute(query)
+        data = mycursor.fetchall()
+        return render_template('simulation.html',employees=data)
 
     @app.route('/analytics')
     def analytics():
