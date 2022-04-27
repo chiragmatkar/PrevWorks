@@ -18,11 +18,11 @@
     <div id="left-box">
         <h3 class="no-top">Employee Info</h3>
         <p class="stat-l">Employee Name:</p>
-        <p class="stat-d" id="infected-count">{{ session['username'] }}</p>
+        <p class="stat-d">{{ session['username'] }}</p>
         <p class="stat-l">Employee ID:</p>
-        <p class="stat-d" id="infected-count">{{session['user_id']}}</p>
+        <p class="stat-d">{{session['user_id']}}</p>
         <p class="stat-l">Status:</p>
-        <p class="stat-d" id="infected-count">Unvaccinated</p>
+        <p class="stat-d">Unvaccinated</p>
     </div>
 
     <div id="left-box">
@@ -56,7 +56,7 @@
         </div>
         <table>
             <tr>
-                <th><h3 class="no-top">Employees</h3></th>
+                <th><h3 class="no-top">Employees:</h3></th>
             </tr>
             {% for item in employees %}
             <tr>
