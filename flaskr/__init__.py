@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request, redirect, session, url_for
 from . import auth
 from . import forms
+from . import covidinfo
 from . import injuryReports
 import sys
 from . import companies
@@ -261,10 +262,10 @@ def create_app(test_config=True):
         return injuryReports.getFrequencyOfInjuries()
         # return check_session('company', render_template('companyProfile.html'))
 
-
-
+    app.register_blueprint(covidinfo.bp)
     app.register_blueprint(auth.bp)
     app.register_blueprint(forms.bp)
     app.register_blueprint(injuryReports.bp)
+
 
     return app

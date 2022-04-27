@@ -10,6 +10,14 @@ bp = Blueprint('forms', __name__, url_prefix='/forms')
 def sendReport():
     print("Report submitted")
     print(request.form)
+    dateOccured =  request.form['date_input'] or None
+    timeOccured = request.form['time_input'] or None
+
+    if dateOccured == None or timeOccured == None:
+        datetimeOccured=None
+    else:
+        datetimeOccured=request.form['date_input']+" "+request.form['time_input']
+
 
     if request.form['problemType'] in ['1','3'] and request.method == 'POST':
         error = None
@@ -19,9 +27,9 @@ def sendReport():
                 db = get_db()
                 mycursor = db.cursor()
                 mycursor.execute(
-                    "INSERT INTO covidSurvey (userId, hadCovid, healthcare, fever, loss, pain, cough, breath, conjunctivitis, gi) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                    "INSERT INTO covidSurvey (userId, hadCovid, healthcare, fever, loss, pain, cough, breath, conjunctivitis, gi , dateoccured) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                     (int(session['user_id']), request.form['hadCovid'],request.form['healthcare'],request.form['fever'],
-                        request.form['loss'],request.form['pain'],request.form['cough'],request.form['breath'],request.form['conjunctivitis'],request.form['gi']))
+                        request.form['loss'],request.form['pain'],request.form['cough'],request.form['breath'],request.form['conjunctivitis'],request.form['gi'],datetimeOccured))
                 db.commit()
                 close_db()
             except Exception as e:

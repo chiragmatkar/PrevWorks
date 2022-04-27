@@ -265,23 +265,15 @@ body {
                 </a>
                 <hr class="sidebar-divider my-0" />
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                <li class="nav-item" role="presentation">
+                         <a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i><span>Profile</span></a>
+                         <a class="nav-link" href="{{ url_for('companies') }}"><i class="fas fa-table"></i><span>Companies</span></a>
+                         <a class="nav-link active" href="{{ url_for('report_injury') }}"><i class="fab fa-wpforms"></i><span>Report Injury</span></a>
+                         <a class="nav-link" href="{{ url_for('assessment') }}"><i class="fas fa-tachometer-alt"></i><span>Health Assesment</span></a>
+                        <a class="nav-link" href="{{ url_for('injuries.listOfUserInjuries') }}"><i class="fas fa-table"></i><span>Injury Report</span></a>
+                        <a class="nav-link" href="{{ url_for('simulation') }}"><i class="fas fa-table"></i><span>Simulation</span></a>
 
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
-              <a class="nav-link" href="companies"
-                ><i class="fas fa-table"></i><span>Companies</span></a
-              >
-              <a class="nav-link active" href="reportInjury"
-                ><i class="fab fa-wpforms"></i><span>Report Injury</span></a
-              >
-              <a class="nav-link" href="assessment"
-                ><i class="fas fa-tachometer-alt"></i
-                ><span>Health Assesment</span></a
-              >
-              <a class="nav-link" href="table"
-                ><i class="fas fa-table"></i><span>Injuries</span></a
-              >
-            </li>
+                    </li>
 
             <li class="nav-item" role="presentation">
               <a class="nav-link" data-toggle="dropdown" href="#"
@@ -380,10 +372,6 @@ body {
                                 </div>
                             </li>
 
-
-
-
-
                                     <div class="
                         dropdown-menu
                         shadow
@@ -424,35 +412,17 @@ body {
                   <tr>
                       <th scope="col">#</th>
                       <th scope="col">Name</th>
-                      <th scope="col">Covid Free Date</th>
+                      <th scope="col">Covid Infected Date</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                      <th scope="row">1</th>
-                      <td>Aniya Williamson</td>
-                      <td>Oct 17, 2022</td>
+                  {% for patient in covid_patients %}
+                   <tr>
+                      <th scope="row">{{patient[0]}}</th>
+                      <td>{{patient[1]}} {{patient[2]}}</td>
+                      <td>{{patient[3]}}</td>
                   </tr>
-                  <tr>
-                      <th scope="row">2</th>
-                      <td>Sherlyn Blackwell</td>
-                      <td>Oct 15, 2022</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">3</th>
-                      <td>Casey Phillips</td>
-                      <td>Oct 02, 2022</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">4</th>
-                      <td>Adeline Sloan</td>
-                      <td>May 25, 2022</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">5</th>
-                      <td>Jerry Travis</td>
-                      <td>Oct 05, 2022</td>
-                  </tr>
+                   {% endfor %}
                   </tbody>
               </table>
 
