@@ -54,16 +54,21 @@
         <div class="btn-container">
             <button class="btn-wide" id="erase-btn">erase</button>
         </div>
-        <table>
-            <tr>
-                <th><h3 class="no-top">Employees:</h3></th>
-            </tr>
-            {% for item in employees %}
-            <tr>
-                <th>{{item[2]}} {{item[3]}}</th>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="employee-Container">
+                <h3 class="no-top">Employees:</h3>
+                <div class="btn-container">
+                    <button class="btn-wide btn-employee" data-id="5">{{employees[0][2]}} {{employees[0][3]}}</button>
+                    <button class="btn-wide btn-employee" data-id="6">{{employees[1][2]}} {{employees[1][3]}}</button>
+                </div>
+                <div class="btn-container">
+                    <button class="btn-wide btn-employee" data-id="7">{{employees[2][2]}} {{employees[2][3]}}</button>
+                    <button class="btn-wide btn-employee" data-id="8">{{employees[3][2]}} {{employees[3][3]}}</button>
+                </div>
+                <div class="btn-container">
+                    <button class="btn-wide btn-employee" data-id="9">{{employees[4][2]}} {{employees[4][3]}}</button>
+                    <button class="btn-wide btn-employee" data-id="10">{{employees[5][2]}} {{employees[5][3]}}</button>
+                </div>
+            </div>
 
     </div>
 
