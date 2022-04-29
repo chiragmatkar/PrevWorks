@@ -71,146 +71,149 @@ def sendReport():
 def contactTracing():
     print("contactTracing Report submitted")
     print(request.form)
-
-    test_type= request.form.get('test_type') or None
-    vaccine_type =request.form.get('vaccine') or None
-    booster =request.form.get('booster') or None
-    booster_date= request.form.get('booster_date_input') or None
-
-    diagnosis_date = request.form.get('diagnosis_date_input') or None
-    diagnosis_time = request.form.get('diagnosis_time_input') or None
-
-    if diagnosis_date == None or diagnosis_time == None:
-        diagnosis_timestamp = None
-    else:
-        diagnosis_timestamp = diagnosis_date + " " + diagnosis_time
-
-    vaccine_date = request.form.get('vaccine_date_input') or None
-    vaccine_time = request.form.get('vaccine_time_input') or None
-
-    if vaccine_date == None or vaccine_time == None:
-        vaccine_timestamp = None
-    else:
-        vaccine_timestamp = vaccine_date + " " + vaccine_time
-
-    booster_date = request.form.get('booster_date_input') or None
-    booster_time = request.form.get('booster_time_input') or None
-
-    if booster_date == None or booster_time == None:
-        booster_timestamp = None
-    else:
-        booster_timestamp = booster_date + " " + booster_time
-
-    person1 = request.form['person1_name'] or None
-    person1_email = request.form['person1_email'] or None
-    person1_rel = request.form['person1_relation'] or None
-    person1_phone = request.form['person1_phone'] or None
-    person1_date = request.form['person1_date'] or None
-    person1_time = request.form['person1_time'] or None
-
-    person1_timestamp = None
-    if person1_date == None or person1_time == None:
-        person1_timestamp = None
-    else:
-        person1_timestamp = person1_date + " " + person1_time
-
-    person2 = request.form['person2_name'] or None
-    person2_email = request.form['person2_email'] or None
-    person2_rel = request.form['person2_relation'] or None
-    person2_phone = request.form['person2_phone'] or None
-    person2_date = request.form['person2_date'] or None
-    person2_time = request.form['person2_time'] or None
-
-    person2_timestamp = None
-    if person2_date == None or person2_time == None:
-        person2_timestamp = None
-    else:
-        person2_timestamp = person2_date + " " + person2_time
-
-    person3 = request.form['person3_name'] or None
-    person3_email = request.form['person3_email'] or None
-    person3_rel = request.form['person3_relation'] or None
-    person3_phone = request.form['person3_phone'] or None
-    person3_date = request.form['person3_date'] or None
-    person3_time = request.form['person3_time'] or None
-
-    person3_timestamp = None
-    if person3_date == None or person3_time == None:
-        person3_timestamp = None
-    else:
-        person3_timestamp = person3_date + " " + person3_time
-
-    person4 = request.form['person4_name'] or None
-    person4_email = request.form['person4_email'] or None
-    person4_rel = request.form['person4_relation'] or None
-    person4_phone = request.form['person4_phone'] or None
-    person4_date = request.form['person4_date'] or None
-    person4_time = request.form['person4_time'] or None
-
-    person4_timestamp = None
-    if person1_date == None or person4_time == None:
-        person4_timestamp = None
-    else:
-        person4_timestamp = person4_date + " " + person4_time
-
-    person5 = request.form['person5_name'] or None
-    person5_email = request.form['person5_email'] or None
-    person5_rel = request.form['person5_relation'] or None
-    person5_phone = request.form['person5_phone'] or None
-    person5_date = request.form['person5_date'] or None
-    person5_time = request.form['person5_time'] or None
-
-    person5_timestamp = None
-    if person5_date == None or person5_time == None:
-        person5_timestamp = None
-    else:
-        person5_timestamp = person1_date + " " + person1_time
-
-    location1 = request.form['location1_name'] or None
-    location1_email = request.form['location1_email'] or None
-    location1_add1= request.form['location1_add1'] or None
-    location1_add2 = request.form['location1_add2']  or None
-    location1_date = request.form['location1_date'] or None
-    location1_time = request.form['location1_time'] or None
-
-
-    location1_timestamp = None
-    if location1_date == None or location1_time == None:
-        contact5_timestamp = None
-    else:
-        contact5_timestamp = person1_date + " " + person1_time
-
-    location2 = request.form['location2_name'] or None
-    location2_email = request.form['location2_email'] or None
-    location2_add1 = request.form['location2_add1'] or None
-    location2_add2 = request.form['location2_add2'] or None
-    location2_date = request.form['location1_date'] or None
-    location2_time = request.form['location1_time'] or None
-
-    location3 = request.form['location3_name'] or None
-    location3_email = request.form['location3_email'] or None
-    location3_add1 = request.form['location3_add1'] or None
-    location3_add2 = request.form['location3_add2'] or None
-    location3_date = request.form['location1_date'] or None
-    location3_time = request.form['location1_time'] or None
-
-
-    location4 = request.form['location4_name'] or None
-    location4_email = request.form['location4_email'] or None
-    location4_add1 = request.form['location4_add1'] or None
-    location4_add2 = request.form['location4_add2'] or None
-    location4_date = request.form['location4_date'] or None
-    location4_time = request.form['location4_time'] or None
-
-
-    location5 = request.form['location5_name'] or None
-    location5_email = request.form['location5_email'] or None
-    location5_add1 = request.form['location5_add1'] or None
-    location5_add2 = request.form['location5_add2'] or None
-    location5_date = request.form['location5_date'] or None
-    location5_time = request.form['location5_time'] or None
-
-    description = request.form['injury_description'] or None
+    #
+    # test_type= request.form.get('test_type') or None
+    # vaccine_type =request.form.get('vaccine') or None
+    # booster =request.form.get('booster') or None
+    # booster_date= request.form.get('booster_date_input') or None
+    #
+    # diagnosis_date = request.form.get('diagnosis_date_input') or None
+    # diagnosis_time = request.form.get('diagnosis_time_input') or None
+    #
+    # if diagnosis_date == None or diagnosis_time == None:
+    #     diagnosis_timestamp = None
+    # else:
+    #     diagnosis_timestamp = diagnosis_date + " " + diagnosis_time
+    #
+    # vaccine_date = request.form.get('vaccine_date_input') or None
+    # vaccine_time = request.form.get('vaccine_time_input') or None
+    #
+    # if vaccine_date == None or vaccine_time == None:
+    #     vaccine_timestamp = None
+    # else:
+    #     vaccine_timestamp = vaccine_date + " " + vaccine_time
+    #
+    # booster_date = request.form.get('booster_date_input') or None
+    # booster_time = request.form.get('booster_time_input') or None
+    #
+    # if booster_date == None or booster_time == None:
+    #     booster_timestamp = None
+    # else:
+    #     booster_timestamp = booster_date + " " + booster_time
+    #
+    # contact1 = request.form['contact1_name'] or None
+    # contact1_email= request.form['contact1_email'] or None
+    # contact1_rel = request.form['contact1_relation']  or None
+    # contact1_phone = request.form['contact1_phone'] or None
+    # contact1_date = request.form['contact1_date'] or None
+    # contact1_time = request.form['contact1_time'] or None
+    #
+    # contact1_timestamp = None
+    # if contact1_date == None or contact1_time == None:
+    #     contact1_timestamp = None
+    # else:
+    #     contact1_timestamp = contact1_date + " " + contact1_time
+    #
+    #
+    #
+    # contact2 = request.form['contact2_name'] or None
+    # contact2_email = request.form['contact2_email'] or None
+    # contact2_rel = request.form['contact2_relation'] or None
+    # contact2_phone = request.form['contact2_phone'] or None
+    # contact2_date = request.form['contact2_date'] or None
+    # contact2_time = request.form['contact2_time'] or None
+    #
+    # contact2_timestamp = None
+    # if contact2_date == None or contact2_time == None:
+    #     contact2_timestamp = None
+    # else:
+    #     contact2_timestamp = contact2_date + " " + contact2_time
+    #
+    #
+    # contact3 = request.form['contact3_name'] or None
+    # contact3_email = request.form['contact3_email'] or None
+    # contact3_rel = request.form['contact3_relation'] or None
+    # contact3_phone = request.form['contact3_phone'] or None
+    # contact3_date = request.form['contact3_date'] or None
+    # contact3_time = request.form['contact3_time'] or None
+    #
+    # contact3_timestamp = None
+    # if contact3_date == None or contact3_time == None:
+    #     contact3_timestamp = None
+    # else:
+    #     contact3_timestamp = contact3_date + " " + contact3_time
+    #
+    # contact4 = request.form['contact4_name'] or None
+    # contact4_email = request.form['contact4_email'] or None
+    # contact4_rel = request.form['contact4_relation'] or None
+    # contact4_phone = request.form['contact4_phone'] or None
+    # contact4_date = request.form['contact4_date'] or None
+    # contact4_time = request.form['contact4_time'] or None
+    #
+    # contact4_timestamp = None
+    # if contact1_date == None or contact4_time == None:
+    #     contact4_timestamp = None
+    # else:
+    #     contact4_timestamp = contact4_date + " " + contact4_time
+    #
+    # contact5 = request.form['contact5_name'] or None
+    # contact5_email = request.form['contact5_email'] or None
+    # contact5_rel = request.form['contact5_relation'] or None
+    # contact5_phone = request.form['contact5_phone'] or None
+    # contact5_date = request.form['contact5_date'] or None
+    # contact5_time = request.form['contact5_time'] or None
+    #
+    # contact5_timestamp = None
+    # if contact5_date == None or contact5_time == None:
+    #     contact5_timestamp = None
+    # else:
+    #     contact5_timestamp = contact1_date + " " + contact1_time
+    #
+    # location1 = request.form['location1_name'] or None
+    # location1_email = request.form['location1_email'] or None
+    # location1_add1= request.form['location1_add1'] or None
+    # location1_add2 = request.form['location1_add2']  or None
+    # location1_date = request.form['location1_date'] or None
+    # location1_time = request.form['location1_time'] or None
+    #
+    #
+    # location1_timestamp = None
+    # if location1_date == None or location1_time == None:
+    #     contact5_timestamp = None
+    # else:
+    #     contact5_timestamp = contact1_date + " " + contact1_time
+    #
+    # location2 = request.form['location2_name'] or None
+    # location2_email = request.form['location2_email'] or None
+    # location2_add1 = request.form['location2_add1'] or None
+    # location2_add2 = request.form['location2_add2'] or None
+    # location2_date = request.form['location1_date'] or None
+    # location2_time = request.form['location1_time'] or None
+    #
+    # location3 = request.form['location3_name'] or None
+    # location3_email = request.form['location3_email'] or None
+    # location3_add1 = request.form['location3_add1'] or None
+    # location3_add2 = request.form['location3_add2'] or None
+    # location3_date = request.form['location1_date'] or None
+    # location3_time = request.form['location1_time'] or None
+    #
+    #
+    # location4 = request.form['location4_name'] or None
+    # location4_email = request.form['location4_email'] or None
+    # location4_add1 = request.form['location4_add1'] or None
+    # location4_add2 = request.form['location4_add2'] or None
+    # location4_date = request.form['location4_date'] or None
+    # location4_time = request.form['location4_time'] or None
+    #
+    #
+    # location5 = request.form['location5_name'] or None
+    # location5_email = request.form['location5_email'] or None
+    # location5_add1 = request.form['location5_add1'] or None
+    # location5_add2 = request.form['location5_add2'] or None
+    # location5_date = request.form['location5_date'] or None
+    # location5_time = request.form['location5_time'] or None
+    #
+    # description = request.form['injury_description'] or None
 
     if request.method == 'POST':
         error = None
