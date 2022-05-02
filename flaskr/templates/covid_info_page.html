@@ -278,30 +278,24 @@ body {
                <a class="nav-link" href="{{ url_for('vaxInfo') }}"><i class="fas fa-table"></i><span>VaxInfo</span></a>
             </li>
 
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" data-toggle="dropdown" href="#"
-                >My Company Tools<i class="caret"></i
-              ></a>
+                  <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-toggle="dropdown" href="#">My Company Tools<i class="caret"></i></a>
                         <ul class="dropdown-menu" class="nav navbar-nav text-light" id="accordionSidebar">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" href="analytics.html"><i class="fas fa-tachometer-alt"></i
-                    ><span>Analytics</span></a
-                  >
-                  <a class="nav-link" href="employees"
-                    ><i class="fas fa-table"></i><span>Employees</span></a
-                  >
-                  <a class="nav-link" href="injuries"
-                    ><i class="fab fa-wpforms"></i
-                    ><span>Injury Reports</span></a
-                  >
-                </li>
-              </ul>
-            </li>
+                                <a class="nav-link" href="analytics"><i class="fas fa-tachometer-alt"></i><span>Analytics</span></a>
+                                <a class="nav-link" href="employees"><i class="fas fa-table"></i><span>Employees</span></a>
+                                <a class="nav-link" href="injuries"><i class="fab fa-wpforms"></i><span>Injury Reports</span></a>
+                            </li>
+                            <!-- <li><a href="#">Page 1-1</a></li>
+                            <li><a href="#">Page 1-2</a></li>
+                            <li><a href="#">Page 1-3</a></li> -->
+                        </ul>
+                    </li>
+
             <li class="nav-item" role="presentation">
-              <a class="nav-link" href="login"
-                ><i class="far fa-user-circle"></i><span>Logout</span></a
-              >
+              <a class="nav-link" href="{{ url_for('auth.login') }}"><i class="far fa-user-circle"></i><span>Logout</span></a>
             </li>
+
             <li class="nav-item" role="presentation"></li>
           </ul>
           <div class="text-center d-none d-md-inline">
