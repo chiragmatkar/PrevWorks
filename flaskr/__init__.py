@@ -4,13 +4,16 @@ from . import auth
 from . import forms
 from . import covidinfo
 from . import injuryReports
+from . import sendmail
 import sys
 from . import companies
 from flaskr.pg_db_connect import get_db
 from datetime import datetime
 from .compensation import calc_total_comp, calc_industry_premium
 import pandas as pd
+from flask_mail import Mail
 
+mail = Mail()
 
 # def check_session():
 #     try:
@@ -266,6 +269,8 @@ def create_app(test_config=True):
     app.register_blueprint(auth.bp)
     app.register_blueprint(forms.bp)
     app.register_blueprint(injuryReports.bp)
+    app.register_blueprint(sendmail.bp)
+    #mail.init_app(app)
 
 
     return app
